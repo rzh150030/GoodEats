@@ -9,3 +9,11 @@ class Ingredient(db.Model):
     recipe_id = db.Column(db.Integer, db.ForeignKey('recipes.id', ondelete="CASCADE"), nullable=False)
 
     recipe = db.relationship("Recipe", back_populates="ingredients")
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "ingredient": self.ingredient,
+            "recipe_id": self.recipe_id
+        }
+
