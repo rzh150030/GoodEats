@@ -8,3 +8,6 @@ class Review(db.Model):
     review = db.Column(db.String(5000), nullable=False)
     recipe_id = db.Column(db.Integer, db.ForeignKey('recipes.id', ondelete="CASCADE"), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+
+    recipe = db.relationship("Recipe", back_populates="reviews")
+    user = db.relationship("User", back_populates="reviews")
