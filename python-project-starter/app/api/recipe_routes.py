@@ -30,3 +30,11 @@ def recipe(id):
     recipe = Recipe.query.get(id)
 
     return recipe.to_dict_with_details()
+
+# Create a new recipe with ingredients and steps
+@recipe_routes.route("/create", methods=["POST"])
+def create_recipe():
+    #form = RecipeForm()
+    #form["csrf_token"].data = request.cookies["csrf_token"]
+    #data = request.json
+    
