@@ -9,3 +9,8 @@ class Direction(db.Model):
     recipe_id = db.Column(db.Integer, db.ForeignKey('recipes.id', ondelete="CASCADE"), nullable=False)
 
     recipe = db.relationship("Recipe", back_populates="directions")
+
+    def to_dict(self):
+        return {
+            
+        }

@@ -16,3 +16,11 @@ class Recipe(db.Model):
     reviews = db.relationship("Review", cascade="all, delete", passive_deletes=True, back_populates="recipe")
     user = db.relationship("User", back_populates="recipes")
     userfavs = db.relationship("User", secondary=favorites, back_populates="recipefavs")
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "category_id": self.name,
+            "user_id": self.user_id
+        }

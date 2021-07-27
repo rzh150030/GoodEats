@@ -16,4 +16,6 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 # Get all current user's recipes
-
+@recipe_routes.route("/user/:id")
+def user_recipes():
+    
