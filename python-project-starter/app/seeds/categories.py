@@ -1,3 +1,4 @@
+from click.decorators import password_option
 from app.models import db, Category
 
 
@@ -49,9 +50,13 @@ def seed_categories():
     thai = Category(name="Thai")
     vietnam = Category(name="Vietnamese")
     zambian = Category(name="Zambian")
+    cuisines = [ainu, albanian, argentine, american, anglo_indian, arab, balochi, bangladeshi, bengali, british, brazilian, belarusian,
+    cantonese, caribbean, chinese, czech, ethiopian, french, filipino, finnish, german, greek, iceland, indian, irish, italian,
+    japan, jewish, korean, kurdish, laotian, malaysian, mexican, norwegian, polish, pakistani, persian, portugal, romanian, russian,
+    swedish, taiwan, texan, turkish, thai, vietnam, zambian]
 
-    db.session.add(ainu)
-    
+    for food in cuisines:
+        db.session.add(food)
 
     db.session.commit()
 
