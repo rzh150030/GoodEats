@@ -11,6 +11,17 @@ def seed_directions():
     r4directions = [Direction(step="Make pizza", recipe_id=4), Direction(step="Bake pizza", recipe_id=4),
     Direction(step="???", recipe_id=4), Direction(step="Eat", recipe_id=4)]
 
+    for dir1 in r1directions:
+        db.session.add(dir1)
+    for dir2 in r2directions:
+        db.session.add(dir2)
+    for dir3 in r3directions:
+        db.session.add(dir3)
+    for dir4 in r4directions:
+        db.session.add(dir4)
+
+    db.session.commit()
+
 def undo_directions():
     db.session.execute('TRUNCATE directions RESTART IDENTITY CASCADE;')
     db.session.commit()
