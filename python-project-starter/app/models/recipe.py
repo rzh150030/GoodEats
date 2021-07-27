@@ -12,4 +12,6 @@ class Recipe(db.Model):
     category = db.relationship("Category", back_populates="recipes")
     ingredients = db.relationship("Ingredient", cascade="all, delete", passive_deletes=True, back_populates="recipe")
     directions = db.relationship("Direction", cascade="all, delete", passive_deletes=True, back_populates="recipe")
+    ratings = db.relationship("Rating", cascade="all, delete", passive_deletes=True, back_populates="recipe")
+    reviews = db.relationship("Review", cascade="all, delete", passive_deletes=True, back_populates="recipe")
     user = db.relationship("User", back_populates="recipes")
