@@ -8,4 +8,8 @@ class Recipe(db.Model):
     name = db.Column(db.String(100), nullable=False)
     category_id = db.Column(db.Integer, db.ForeignKey('categories.id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-    
+
+    category = db.relationship("Category", back_populates="recipes")
+    ingredients = db.relationship("Ingredient", cascade="all, delete", passive_deletes=True, back_populates="recipe")
+    directions = db.relationship("Direction", cascade="all, delete", passive_deletes=True, back_populates="recipe")
+    user = db.relationship("User", back_populates="recipes")
