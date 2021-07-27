@@ -34,7 +34,12 @@ def recipe(id):
 # Create a new recipe with ingredients and steps
 @recipe_routes.route("/create", methods=["POST"])
 def create_recipe():
-    #form = RecipeForm()
-    #form["csrf_token"].data = request.cookies["csrf_token"]
-    #data = request.json
+    #recipeForm = RecipeForm()
+    #ingredientForm = IngredientForm()
+    #directionForm = DirectionForm()
+    #recipeForm["csrf_token"].data = request.cookies["csrf_token"]
+    #ingredientForm["csrf_token"].data = request.cookies["csrf_token"]
+    #directionForm["csrf_token"].data = request.cookies["csrf_token"]
+    data = request.json
     
+    newRecipe = Recipe()

@@ -30,5 +30,7 @@ class Recipe(db.Model):
             "id": self.id,
             "name": self.name,
             "ingredients": [ingred.to_dict() for ingred in self.ingredients],
-            "directions": [direct.to_dict() for direct in self.directions]
+            "directions": [direct.to_dict() for direct in self.directions],
+            "category_id": self.category_id,
+            "user_id": self.user_id
         }
