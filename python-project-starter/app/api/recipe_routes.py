@@ -1,5 +1,6 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
+from flask_migrate import current
 from app.models import db, Recipe, Ingredient, Direction
 
 recipe_routes = Blueprint("recipes", __name__)
@@ -17,5 +18,8 @@ def validation_errors_to_error_messages(validation_errors):
 
 # Get all current user's recipes
 @recipe_routes.route("/user/:id")
-def user_recipes():
-    
+def user_recipes(id):
+    if id == current_user.id:
+        recipes = Recipe.query.filter_by(user_id=f"{current_user.id}").all()
+        return {"recipes": [recipe.to_dict() for recipe in recipes]}
+    return {"errors": ["Unauthorized"]}
