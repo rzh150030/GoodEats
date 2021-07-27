@@ -24,3 +24,6 @@ class Recipe(db.Model):
             "category_id": self.category_id,
             "user_id": self.user_id
         }
+
+    def to_dict_with_details(self):
+        return 

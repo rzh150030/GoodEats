@@ -12,5 +12,7 @@ class Direction(db.Model):
 
     def to_dict(self):
         return {
-            
+            "id": self.id,
+            "step": self.step,
+            "recipe_id": self.recipe_id
         }

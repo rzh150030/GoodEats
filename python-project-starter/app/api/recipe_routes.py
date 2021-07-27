@@ -23,3 +23,10 @@ def user_recipes(id):
         recipes = Recipe.query.filter_by(user_id=f"{id}").all()
         return {"recipes": [recipe.to_dict() for recipe in recipes]}
     return {"errors": ["Unauthorized"]}
+
+# Get a specific recipe and its ingredients and directions
+@recipe_routes.route("/<int:id>")
+def recipe(id):
+    recipe = Recipe.query.get(id)
+
+    return 
