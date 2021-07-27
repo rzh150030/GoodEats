@@ -1,4 +1,3 @@
-from click.decorators import password_option
 from app.models import db, Category
 
 
