@@ -1,4 +1,3 @@
-from flask.scaffold import F
 from .db import db
 
 
