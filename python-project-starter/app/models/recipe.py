@@ -26,4 +26,9 @@ class Recipe(db.Model):
         }
 
     def to_dict_with_details(self):
-        return 
+        return {
+            "id": self.id,
+            "name": self.name,
+            "ingredients": [ingred.to_dict() for ingred in self.ingredients],
+            "directions": [direct.to_dict() for direct in self.directions]
+        }

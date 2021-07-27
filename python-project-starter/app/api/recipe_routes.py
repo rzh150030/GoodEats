@@ -29,4 +29,4 @@ def user_recipes(id):
 def recipe(id):
     recipe = Recipe.query.get(id)
 
-    return 
+    return recipe.to_dict_with_details()
