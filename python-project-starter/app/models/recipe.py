@@ -21,6 +21,6 @@ class Recipe(db.Model):
         return {
             "id": self.id,
             "name": self.name,
-            "category_id": self.name,
+            "category_id": self.category_id,
             "user_id": self.user_id
         }

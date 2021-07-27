@@ -17,9 +17,9 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 # Get all current user's recipes
-@recipe_routes.route("/user/:id")
+@recipe_routes.route("/user/<int:id>")
 def user_recipes(id):
     if id == current_user.id:
-        recipes = Recipe.query.filter_by(user_id=f"{current_user.id}").all()
+        recipes = Recipe.query.filter_by(user_id=f"{id}").all()
         return {"recipes": [recipe.to_dict() for recipe in recipes]}
     return {"errors": ["Unauthorized"]}
