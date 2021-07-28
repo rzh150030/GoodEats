@@ -15,6 +15,7 @@ const NavBar = ({loaded}) => {
     history.push("/sign-up")
   }
 
+
   let sessionButtons;
   if (sessionUser) {
     sessionButtons = (
@@ -28,6 +29,7 @@ const NavBar = ({loaded}) => {
       <>
         <button onClick={loginButton} className="session-button">Log In</button>
         <button onClick={signupButton} className="session-button">Sign Up</button>
+
       </>
     );
   }

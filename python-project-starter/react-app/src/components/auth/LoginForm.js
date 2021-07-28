@@ -58,6 +58,7 @@ const LoginForm = () => {
         />
         <button type='submit'>Login</button>
       </div>
+      <button>Demo</button>
     </form>
   );
 };
