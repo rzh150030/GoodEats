@@ -2,7 +2,7 @@ from flask import Blueprint, request
 from flask_login import login_required, current_user
 from flask_migrate import current
 from app.forms import RecipeForm
-from app.models import db, Recipe, Ingredient, Direction, ingredient
+from app.models import db, Recipe, Ingredient, Direction, User
 
 recipe_routes = Blueprint("recipes", __name__)
 
@@ -37,13 +37,12 @@ def recipe(id):
 @recipe_routes.route("/create", methods=["POST"])
 @login_required
 def create_recipe():
+    user_model = User.query.get(current_user.id)
     form = RecipeForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
     data = request.json
 
     if form.validate_on_submit():
-        x = form.data["directions"]
-        y = form.data["ingredients"]
         newRecipe = Recipe(name=form.data["name"], category_id=form.data["category"], user_id=current_user.id)
         db.session.add(newRecipe)
 
@@ -57,6 +56,6 @@ def create_recipe():
             db.session.add(newDirect)
 
         db.session.commit()
-        return {"recipe": newRecipe.id}
+        return {"id": newRecipe.id, "name": newRecipe.name, "user": newRecipe.user.username}
 
     return {"errors": validation_errors_to_error_messages(form.errors)}

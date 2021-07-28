@@ -43,10 +43,6 @@ export default function reducer(state = initialState, action) {
             newRecipeState.recipes[action.recipe.id] = action.recipe;
             newRecipeState.currentRecipe[action.recipe.id] = action.recipe;
             return newRecipeState;
-        case WIPE_ERROR:
-            let cleanErrorState = {...state};
-            cleanErrorState.errors = action.errors;
-            return cleanErrorState;
         default:
             return state;
     }
