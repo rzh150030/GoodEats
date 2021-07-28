@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 export default function CreateRecipe() {
     const history = useHistory();
     const dispatch = useDispatch();
-    const categories = useSelector(state => state.recipe.categories);
+    const categories = useSelector(state => Object.values(state.recipe.categories));
     const [category, setCategory] = useState("Ainu");
     const [name, setName] = useState("");
     const [ingredients, setIngredients] = useState([{ingredient: ""}]);
@@ -47,6 +47,7 @@ export default function CreateRecipe() {
         newArr.splice(i, 1);
         setDirections(newArr);
     };
+    const addCat = (e) => setCategory(e.target.value);
 
     //add new input for ingredient and direction
     const newIngredInput = (e) => {
@@ -86,6 +87,12 @@ export default function CreateRecipe() {
             </ul>
             <label>Name: </label>
             <input type="text" value={name} onChange={addName} required/>
+            <label>Category: </label>
+            <select value={category} onChange={addCat}>
+                {categories?.map(cat => (
+                    <option key={cat.id}>{cat.name}</option>
+                ))}
+            </select>
             <div>
                 <label>Ingredients: </label>
                 {ingredients.map((ingred, i) => (
