@@ -9,13 +9,14 @@ export default function CreateRecipe() {
     //const categories = useSelector(state => state.recipe.categories);
     //const [category, setCategory] = useState("Ainu");
     const stateErrors = useSelector(state => state.recipe.errors)
+    const checkChange = useSelector(state => state.recipe.currentRecipe)
     const [name, setName] = useState("");
     const [ingredients, setIngredients] = useState([{ingredient: ""}]);
     const [directions, setDirections] = useState([{step: ""}]);
 
-    //clear out any errors in store
+
     useEffect(() => {
-        dispatch(wipeErrors());
+
     }, []);
 
     //onChange event handlers
@@ -71,8 +72,9 @@ export default function CreateRecipe() {
             directions
         };
 
+        dispatch(wipeErrors());
         dispatch(postRecipe(data));
-        if (!stateErrors.length)
+        if (checkChange.id)
             history.push("/");
     }
 

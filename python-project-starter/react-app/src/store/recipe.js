@@ -23,11 +23,14 @@ const removeError = () => ({
 //thunk for creating a new recipe
 export const postRecipe = (data) => async dispatch => {
     const response = await fetch("/api/recipes/create", {
+        headers: {
+            "CONTENT-TYPE": "application/json"
+        },
         method: "POST",
         body: JSON.stringify(data)
     });
 
-    if (response.ok) {
+    /* if (response.ok) {
         const data = await response.json()
         dispatch(makeRecipe(data));
     }
@@ -35,10 +38,10 @@ export const postRecipe = (data) => async dispatch => {
         const data = await response.json();
         if (data.errors)
             dispatch(makeError(data.errors));
-    }
-    else {
+    } */
+    // else {
         dispatch(makeError(["An error occurred. Please try again later."]));
-    }
+    // }
 };
 
 //thunk to wipe errors
@@ -57,7 +60,6 @@ export default function reducer(state = initialState, action) {
             return newRecipeState;
         case HANDLE_ERROR:
             let newErrorsState = {...state};
-            newErrorsState.errors = []; //reset errors in array
             newErrorsState.errors = newErrorsState.errors.concat(action.errors)
             return newErrorsState;
         case WIPE_ERROR:
