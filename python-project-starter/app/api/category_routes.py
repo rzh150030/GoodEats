@@ -4,9 +4,9 @@ from app.models import db, Category
 
 category_routes = Blueprint("categories", __name__)
 
-# route for getting all categories
+# Route for getting all categories
 @category_routes.route("/all")
-@login_required
+# @login_required
 def all_categories():
     categories = Category.query.all()
-    return 
+    return {"categories": [cat.to_dict() for cat in categories]}

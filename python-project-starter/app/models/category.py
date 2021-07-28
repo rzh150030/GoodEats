@@ -9,4 +9,8 @@ class Category(db.Model):
 
     recipes = db.relationship("Recipe", back_populates="category")
 
-    
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name
+        }
