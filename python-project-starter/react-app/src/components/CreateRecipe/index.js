@@ -12,7 +12,6 @@ export default function CreateRecipe() {
     const [name, setName] = useState("");
     const [ingredients, setIngredients] = useState([{ingredient: ""}]);
     const [directions, setDirections] = useState([{step: ""}]);
-    const [errors, setErrors] = useState(stateErrors);
 
     //onChange event handlers
     const addName = (e) => setName(e.target.value);
@@ -67,19 +66,15 @@ export default function CreateRecipe() {
             directions
         };
 
-        try {
-            dispatch(postRecipe(data));
+        dispatch(postRecipe(data));
+        if (!stateErrors.length)
             history.push("/");
-        } catch (error) {
-            setErrors(error);
-        }
-
     }
 
     return (
         <form onSubmit={handleSubmit}>
             <ul>
-                {errors && errors.map((err, i) => <li key={i}>{err}</li>)}
+                {stateErrors.length && stateErrors.map((err, i) => <li key={i}>{err}</li>)}
             </ul>
             <label>Name: </label>
             <input type="text" value={name} onChange={addName} required/>
