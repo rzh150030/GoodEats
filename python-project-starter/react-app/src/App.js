@@ -28,21 +28,23 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
-      <Switch>
-        <Route path="/" exact={true}>
-          <Homepage />
-        </Route>
-        <Route path='/login' exact={true}>
-          <LoginForm />
-        </Route>
-        <Route path='/sign-up' exact={true}>
-          <SignUpForm />
-        </Route>
-        <ProtectedRoute path="/recipe/create" exact={true}>
-          <CreateRecipe />
-        </ProtectedRoute>
-      </Switch>
+      <NavBar loaded={loaded}/>
+      {loaded && (
+        <Switch>
+          <Route path="/" exact={true}>
+            <Homepage />
+          </Route>
+          <Route path='/login' exact={true}>
+            <LoginForm />
+          </Route>
+          <Route path='/sign-up' exact={true}>
+            <SignUpForm />
+          </Route>
+          <ProtectedRoute path="/recipe/create" exact={true}>
+            <CreateRecipe />
+          </ProtectedRoute>
+        </Switch>
+      )}
     </BrowserRouter>
   );
 }
