@@ -8,16 +8,10 @@ export default function CreateRecipe() {
     const dispatch = useDispatch();
     //const categories = useSelector(state => state.recipe.categories);
     //const [category, setCategory] = useState("Ainu");
-    const stateErrors = useSelector(state => state.recipe.errors)
-    const checkChange = useSelector(state => state.recipe.currentRecipe)
     const [name, setName] = useState("");
     const [ingredients, setIngredients] = useState([{ingredient: ""}]);
     const [directions, setDirections] = useState([{step: ""}]);
-
-
-    useEffect(() => {
-
-    }, []);
+    const [errors, setErrors] = useState([]);
 
     //onChange event handlers
     const addName = (e) => setName(e.target.value);
@@ -27,42 +21,42 @@ export default function CreateRecipe() {
         const newArr = [...ingredients];
         newArr.splice(i, 1, newIngred);
         setIngredients(newArr);
-    }
+    };
     const deleteIngred = (e, i) => {
         e.preventDefault();
 
         const newArr = [...ingredients];
         newArr.splice(i, 1);
         setIngredients(newArr);
-    }
+    };
     const addDirect = (e, i) => {
         let newDirect = directions[i];
         newDirect.step = e.target.value;
         const newArr = [...directions];
         newArr.splice(i, 1, newDirect);
         setDirections(newArr);
-    }
+    };
     const deleteDirect = (e, i) => {
         e.preventDefault();
 
         const newArr = [...directions];
         newArr.splice(i, 1);
         setDirections(newArr);
-    }
+    };
 
     //add new input for ingredient and direction
     const newIngredInput = (e) => {
         e.preventDefault();
 
         setIngredients([...ingredients, {ingredient: ""}]);
-    }
+    };
     const newDirectInput = (e) => {
         e.preventDefault();
 
         setDirections([...directions, {step: ""}]);
-    }
+    };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
         const data = {
@@ -72,16 +66,19 @@ export default function CreateRecipe() {
             directions
         };
 
-        dispatch(wipeErrors());
-        dispatch(postRecipe(data));
-        if (checkChange.id)
-            history.push("/");
-    }
+       const resultErr = await dispatch(postRecipe(data));
+       if (resultErr) {
+            setErrors(resultErr);
+       }
+       else{
+           history.push("/");
+       }
+    };
 
     return (
         <form onSubmit={handleSubmit}>
             <ul>
-                {stateErrors && stateErrors.map((err, i) => <li key={i}>{err}</li>)}
+                {errors && errors.map((err, i) => <li key={i}>{err}</li>)}
             </ul>
             <label>Name: </label>
             <input type="text" value={name} onChange={addName} required/>
