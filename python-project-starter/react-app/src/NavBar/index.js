@@ -1,22 +1,25 @@
 import React from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import LogoutButton from '../components/auth/LogoutButton';
 
 const NavBar = ({loaded}) => {
-  const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
 
-  const logOutUser = () => {
-    dispatch(logout());
+  const loginButton = () => {
+    history.push("/login")
+  }
+
+  const signupButton = () => {
+    history.push("/sign-up")
   }
 
   let sessionButtons;
   if (sessionUser) {
     sessionButtons = (
       <>
-        <button onClick={logOutUser} className="session-button">Log Out</button>
+        <LogoutButton />
       </>
     );
   }
@@ -34,7 +37,7 @@ const NavBar = ({loaded}) => {
       <NavLink exact to='/'>
         Good Eats
       </NavLink>
-      <NavLink to='/create' exact={true} activeClassName='active'>
+      <NavLink to='/recipe/create' exact={true} activeClassName='active'>
         Create a Recipe
       </NavLink>
       {loaded && sessionButtons}
