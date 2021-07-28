@@ -23,19 +23,30 @@ export default function CreateRecipe() {
         newArr.splice(i, 1, newIngred);
         setIngredients(newArr);
     }
-    const deleteIngred= (e, i) => {
-        e.preventDefault()
-
+    const deleteIngred = (e, i) => {
         const newArr = [...ingredients];
         newArr.splice(i, 1);
         setIngredients(newArr);
     }
+    const addDirect = (e, i) => {
+        let newDirect = directions[i];
+        newDirect.step = e.target.value;
+        const newArr = [...directions];
+        newArr.splice(i, 1, newDirect);
+        setDirections(newArr);
+    }
+    const deleteDirect = (e, i) => {
+        const newArr = [...directions];
+        newArr.splice(i, 1);
+        setDirections(newArr);
+    }
 
-    //add new input for ingredient
+    //add new input for ingredient and direction
     const newIngredInput = (e) => {
-        e.preventDefault()
-
         setIngredients([...ingredients, {ingredient: ""}]);
+    }
+    const newDirectInput = (e) => {
+        setDirections([...directions, {step: ""}]);
     }
 
     const handleSubmit = (e) => {
@@ -76,9 +87,19 @@ export default function CreateRecipe() {
             ))}
                 <button onClick={newIngredInput}>One More Ingredient</button>
             </div>
-
-
-
+            <div>
+                <label>Directions: </label>
+                {directions.map((direct, i) => (
+                <div key={i}>
+                    <input type="text" value={direct.step} onChange={(e) => addDirect(e, i)} required/>
+                    <div>
+                        <button onClick={(e) => deleteDirect(e, i)}>Delete</button>
+                    </div>
+                </div>
+                ))}
+                <button onClick={newDirectInput}>One More Step</button>
+            </div>
+            <button type="submit">Save Recipe</button>
         </form>
     )
 }
