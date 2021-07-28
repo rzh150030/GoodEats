@@ -36,10 +36,11 @@ export default function CreateRecipe() {
     }
 
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <ul>
                 {errors && errors.map((err, i) => <li key={i}>{err}</li>)}
             </ul>
+            <input type="text" value={name} onChange={addName} required/>
 
         </form>
     )
