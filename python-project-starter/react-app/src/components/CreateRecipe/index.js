@@ -24,6 +24,8 @@ export default function CreateRecipe() {
         setIngredients(newArr);
     }
     const deleteIngred = (e, i) => {
+        e.preventDefault();
+
         const newArr = [...ingredients];
         newArr.splice(i, 1);
         setIngredients(newArr);
@@ -36,6 +38,8 @@ export default function CreateRecipe() {
         setDirections(newArr);
     }
     const deleteDirect = (e, i) => {
+        e.preventDefault();
+
         const newArr = [...directions];
         newArr.splice(i, 1);
         setDirections(newArr);
@@ -43,9 +47,13 @@ export default function CreateRecipe() {
 
     //add new input for ingredient and direction
     const newIngredInput = (e) => {
+        e.preventDefault();
+
         setIngredients([...ingredients, {ingredient: ""}]);
     }
     const newDirectInput = (e) => {
+        e.preventDefault();
+
         setDirections([...directions, {step: ""}]);
     }
 
