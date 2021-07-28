@@ -64,8 +64,9 @@ export default function CreateRecipe() {
             </ul>
             <label>Name: </label>
             <input type="text" value={name} onChange={addName} required/>
-            <label>Ingredients: </label>
-            {ingredients.map((ingred, i) => (
+            <div>
+                <label>Ingredients: </label>
+                {ingredients.map((ingred, i) => (
                 <div key={i}>
                     <input type="text" value={ingred.ingredient} onChange={(e) => addIngred(e, i)} required/>
                     <div>
@@ -73,7 +74,11 @@ export default function CreateRecipe() {
                     </div>
                 </div>
             ))}
-            <button onClick={newIngredInput}>One More Ingredient</button>
+                <button onClick={newIngredInput}>One More Ingredient</button>
+            </div>
+
+
+
         </form>
     )
 }
