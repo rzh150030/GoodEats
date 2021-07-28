@@ -8,7 +8,7 @@ export default function CreateRecipe() {
     const dispatch = useDispatch();
     //const categories = useSelector(state => state.recipe.categories);
     //const [category, setCategory] = useState("Ainu");
-    const stateErrors = useSelector(state => state.recipes.errors)
+    const stateErrors = useSelector(state => state.recipe.errors)
     const [name, setName] = useState("");
     const [ingredients, setIngredients] = useState([{ingredient: ""}]);
     const [directions, setDirections] = useState([{step: ""}]);
@@ -67,7 +67,7 @@ export default function CreateRecipe() {
             <label>Ingredients: </label>
             {ingredients.map((ingred, i) => (
                 <div key={i}>
-                    <input type="text" value={ingred} onChange={(e) => addIngred(e, i)} required/>
+                    <input type="text" value={ingred.ingredient} onChange={(e) => addIngred(e, i)} required/>
                     <div>
                         <button onClick={(e) => deleteIngred(e, i)}>Delete</button>
                     </div>
