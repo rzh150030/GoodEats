@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SelectField
+from wtforms import StringField, SelectField, FieldList
 from wtforms.validators import DataRequired
 
 
@@ -12,3 +12,5 @@ class RecipeForm(FlaskForm):
     (28, "Jewish"), (29, "Korean"), (30, "Kurdish"), (31, "Laotian"), (32, "Malaysian"), (33, "Mexican"), (34, "Norwegian"),
     (35, "Polish"), (36, "Pakistani"), (37, "Persian"), (38, "Portuguese"), (39, "Romanian"), (40, "Russian"), (41, "Swedish"),
     (42, "Taiwanese"), (43, "Texan"), (44, "Turkish"), (45, "Thai"), (46, "Vietnamese"), (47, "Zambian")])
+    ingredients = FieldList("Ingredients", validators=[DataRequired()])
+    directions = FieldList("Directions", validators=[DataRequired()])
