@@ -1,6 +1,7 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
 from flask_migrate import current
+from app.forms import RecipeForm
 from app.models import db, Recipe, Ingredient, Direction, ingredient
 
 recipe_routes = Blueprint("recipes", __name__)
@@ -18,6 +19,7 @@ def validation_errors_to_error_messages(validation_errors):
 
 # Get all current user's recipes
 @recipe_routes.route("/user/<int:id>")
+@login_required
 def user_recipes(id):
     if id == current_user.id:
         recipes = Recipe.query.filter_by(user_id=f"{id}").all()
@@ -33,15 +35,24 @@ def recipe(id):
 
 # Create a new recipe with ingredients and steps
 @recipe_routes.route("/create", methods=["POST"])
+@login_required
 def create_recipe():
-    #form = RecipeForm()
-    #form["csrf_token"].data = request.cookies["csrf_token"]
-    data = request.json
+    form = RecipeForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
 
-    newRecipe = Recipe(name=data["name"], category_id=data["category"], user_id=1)
-    db.session.add(newRecipe)
+    if form.validate_on_submit():
+        newRecipe = Recipe(name=form.data["name"], category_id=form.data["category"], user_id=current_user.id)
+        db.session.add(newRecipe)
 
-    for ingred in data["ingredients"]:
-        newIngred = Ingredient(ingredient=ingred["ingredient"], recipe_id=newRecipe.id)
-        newRecipe.ingredients.append(newIngred)
-        db.session.add(newIngred)
+        for ingred in form.data["ingredients"]:
+            newIngred = Ingredient(ingredient=ingred["ingredient"], recipe_id=newRecipe.id)
+            newRecipe.ingredients.append(newIngred)
+            db.session.add(newIngred)
+        for direct in form.data["directions"]:
+            newDirect = Direction(direction=direct["step"], recipe_id=newRecipe.id)
+            db.session.add(newDirect)
+
+        db.session.commit()
+        return {"recipe": newRecipe.id}
+
+    return {"errors": validation_errors_to_error_messages(form.errors)}
