@@ -9,11 +9,19 @@ export default function CreateRecipe() {
     //const categories = useSelector(state => state.recipe.categories);
     //const [category, setCategory] = useState("Ainu");
     const [name, setName] = useState("");
-    const [ingredients, setIngredients] = useState([]);
-    const [directions, setDirections] = useState([]);
+    const [ingredients, setIngredients] = useState([{ingredient: ""}]);
+    const [directions, setDirections] = useState([{step: ""}]);
     const [errors, setErrors] = useState([]);
 
     //onChange event handlers
+    const addName = (e) => setName(e.target.value);
+    const addIngred = (e, i) => {
+        let newIngred = ingredients[i];
+        newIngred.ingredient = e.target.value;
+        const newArr = [...ingredients];
+        newArr.splice(i, 1, newIngred);
+        setIngredients(newArr);
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -40,8 +48,14 @@ export default function CreateRecipe() {
             <ul>
                 {errors && errors.map((err, i) => <li key={i}>{err}</li>)}
             </ul>
+            <label>Name: </label>
             <input type="text" value={name} onChange={addName} required/>
-
+            <label>Ingredients: </label>
+            {ingredients.map((ingred, i) => {
+                <div key={i}>
+                    <input type="text" value={ingred} onChange={(e) => addIngred(e, i)} required/>
+                </div>
+            })}
         </form>
     )
 }
