@@ -22,6 +22,20 @@ export default function CreateRecipe() {
         newArr.splice(i, 1, newIngred);
         setIngredients(newArr);
     }
+    const deleteIngred= (e, i) => {
+        e.preventDefault()
+
+        const newArr = [...ingredients];
+        newArr.splice(i, 1);
+        setIngredients(newArr);
+    }
+
+    //add new input for ingredient
+    const newIngredInput = (e) => {
+        e.preventDefault()
+
+        setIngredients([...ingredients, {ingredient: ""}]);
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -51,11 +65,15 @@ export default function CreateRecipe() {
             <label>Name: </label>
             <input type="text" value={name} onChange={addName} required/>
             <label>Ingredients: </label>
-            {ingredients.map((ingred, i) => {
+            {ingredients.map((ingred, i) => (
                 <div key={i}>
                     <input type="text" value={ingred} onChange={(e) => addIngred(e, i)} required/>
+                    <div>
+                        <button onClick={(e) => deleteIngred(e, i)}>Delete</button>
+                    </div>
                 </div>
-            })}
+            ))}
+            <button onClick={newIngredInput}>One More Ingredient</button>
         </form>
     )
 }
