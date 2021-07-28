@@ -39,24 +39,21 @@ def recipe(id):
 def create_recipe():
     form = RecipeForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
+    data = request.json
 
     if form.validate_on_submit():
         x = form.data["directions"]
         y = form.data["ingredients"]
         newRecipe = Recipe(name=form.data["name"], category_id=form.data["category"], user_id=current_user.id)
-        print(form.data)
-        print(request.json)
         db.session.add(newRecipe)
-        print(y)
-        for ingred in form.data["ingredients"]:
-            print(ingred)
+
+        for ingred in data["ingredients"]:
             newIngred = Ingredient(ingredient=ingred["ingredient"], recipe_id=newRecipe.id)
             newRecipe.ingredients.append(newIngred)
             db.session.add(newIngred)
-        for direct in form.data["directions"]:
-            newDirect = Direction(direction=direct["step"], recipe_id=newRecipe.id)
+        for direct in data["directions"]:
+            newDirect = Direction(step=direct["step"], recipe_id=newRecipe.id)
             newRecipe.directions.append(newDirect)
-            print("FOR Direc")
             db.session.add(newDirect)
 
         db.session.commit()
