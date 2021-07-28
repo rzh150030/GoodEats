@@ -1,8 +1,7 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
-from flask_migrate import current
 from app.forms import RecipeForm
-from app.models import db, Recipe, Ingredient, Direction, User
+from app.models import db, Recipe, Ingredient, Direction
 
 recipe_routes = Blueprint("recipes", __name__)
 
@@ -37,7 +36,6 @@ def recipe(id):
 @recipe_routes.route("/create", methods=["POST"])
 @login_required
 def create_recipe():
-    user_model = User.query.get(current_user.id)
     form = RecipeForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
     data = request.json

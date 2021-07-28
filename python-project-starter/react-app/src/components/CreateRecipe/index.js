@@ -6,8 +6,8 @@ import { useHistory } from "react-router-dom";
 export default function CreateRecipe() {
     const history = useHistory();
     const dispatch = useDispatch();
-    //const categories = useSelector(state => state.recipe.categories);
-    //const [category, setCategory] = useState("Ainu");
+    const categories = useSelector(state => state.recipe.categories);
+    const [category, setCategory] = useState("Ainu");
     const [name, setName] = useState("");
     const [ingredients, setIngredients] = useState([{ingredient: ""}]);
     const [directions, setDirections] = useState([{step: ""}]);

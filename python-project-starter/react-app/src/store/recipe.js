@@ -1,12 +1,17 @@
 const LOAD_RECIPE = "recipe/loadOneRecipe";
 const LOAD_ALL_RECIPES = "recipe/loadRecipes";
 const CREATE_RECIPE = "recipe/createRecipe";
-const WIPE_ERROR = "recipe/wipeError";
+const GET_CATEGORIES = "recipe/getCategories"
 
 const makeRecipe = (recipe) => ({
     type: CREATE_RECIPE,
     recipe
 });
+
+const getCategories = (categories) => ({
+    type: GET_CATEGORIES,
+    categories
+})
 
 
 //thunk for creating a new recipe
@@ -34,7 +39,17 @@ export const postRecipe = (data) => async dispatch => {
     }
 };
 
-const initialState = {recipes: {}, currentRecipe: {}}
+//thunk for getting all categories
+export const grabCategories = () => async dispatch => {
+    const response = await fetch("/api/categories/all");
+
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(getCategories(data));
+    }
+}
+
+const initialState = {recipes: {}, currentRecipe: {}, categories: {}}
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
@@ -43,6 +58,11 @@ export default function reducer(state = initialState, action) {
             newRecipeState.recipes[action.recipe.id] = action.recipe;
             newRecipeState.currentRecipe[action.recipe.id] = action.recipe;
             return newRecipeState;
+        case GET_CATEGORIES:
+            let stateWithCat = {...state};
+            action.categories.forEach(category => {
+                
+            })
         default:
             return state;
     }

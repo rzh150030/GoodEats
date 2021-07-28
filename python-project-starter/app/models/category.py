@@ -8,3 +8,5 @@ class Category(db.Model):
     name = db.Column(db.String(40), nullable=False, unique=True)
 
     recipes = db.relationship("Recipe", back_populates="category")
+
+    
