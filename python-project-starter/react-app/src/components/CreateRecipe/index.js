@@ -7,7 +7,8 @@ export default function CreateRecipe() {
     const history = useHistory();
     const dispatch = useDispatch();
     const categories = useSelector(state => Object.values(state.recipe.categories));
-    const [category, setCategory] = useState("Ainu");
+    const submitCat = useSelector(state => state.recipe.categories); //submit category id for backend
+    const [category, setCategory] = useState("Ainu"); //key into submitCat
     const [name, setName] = useState("");
     const [ingredients, setIngredients] = useState([{ingredient: ""}]);
     const [directions, setDirections] = useState([{step: ""}]);
@@ -15,6 +16,7 @@ export default function CreateRecipe() {
 
     useEffect(() => {
         dispatch(grabCategories());
+        console.log(submitCat)
     }, []);
 
     //onChange event handlers
@@ -62,11 +64,11 @@ export default function CreateRecipe() {
     };
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
 
         const data = {
             name,
-            category: 1,
+            category: submitCat[category].id,
             ingredients,
             directions
         };
