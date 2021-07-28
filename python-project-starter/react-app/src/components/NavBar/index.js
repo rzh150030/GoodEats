@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import LogoutButton from '../components/auth/LogoutButton';
+import LogoutButton from '../../components/auth/LogoutButton';
 
 const NavBar = ({loaded}) => {
   const history = useHistory();
