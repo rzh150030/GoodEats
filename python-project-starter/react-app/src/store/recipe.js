@@ -2,6 +2,7 @@ const LOAD_RECIPE = "recipe/loadOneRecipe";
 const LOAD_ALL_RECIPES = "recipe/loadRecipes";
 const CREATE_RECIPE = "recipe/createRecipe";
 const HANDLE_ERROR = "recipe/handleError";
+const WIPE_ERROR = "recipe/wipeError";
 
 const makeRecipe = (recipe) => ({
     type: CREATE_RECIPE,
@@ -11,6 +12,11 @@ const makeRecipe = (recipe) => ({
 const makeError = (errors) => ({
     type: HANDLE_ERROR,
     errors
+})
+
+const removeError = () => ({
+    type: WIPE_ERROR,
+    errors: []
 })
 
 
@@ -35,7 +41,10 @@ export const postRecipe = (data) => async dispatch => {
     }
 };
 
-
+//thunk to wipe errors
+export const wipeErrors = () => async dispatch => {
+    dispatch(removeError());
+}
 
 const initialState = {recipes: {}, currentRecipe: {}, errors: []}
 
@@ -49,8 +58,12 @@ export default function reducer(state = initialState, action) {
         case HANDLE_ERROR:
             let newErrorsState = {...state};
             newErrorsState.errors = []; //reset errors in array
-            newErrorsState.errors.concat(action.errors)
+            newErrorsState.errors = newErrorsState.errors.concat(action.errors)
             return newErrorsState;
+        case WIPE_ERROR:
+            let cleanErrorState = {...state};
+            cleanErrorState.errors = action.errors;
+            return cleanErrorState;
         default:
             return state;
     }

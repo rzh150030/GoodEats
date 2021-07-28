@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { postRecipe } from '../../store/recipe';
+import React, { useState, useEffect } from 'react';
+import { postRecipe, wipeErrors } from '../../store/recipe';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from "react-router-dom";
 
@@ -12,6 +12,11 @@ export default function CreateRecipe() {
     const [name, setName] = useState("");
     const [ingredients, setIngredients] = useState([{ingredient: ""}]);
     const [directions, setDirections] = useState([{step: ""}]);
+
+    //clear out any errors in store
+    useEffect(() => {
+        dispatch(wipeErrors());
+    }, []);
 
     //onChange event handlers
     const addName = (e) => setName(e.target.value);
@@ -74,7 +79,7 @@ export default function CreateRecipe() {
     return (
         <form onSubmit={handleSubmit}>
             <ul>
-                {stateErrors.length && stateErrors.map((err, i) => <li key={i}>{err}</li>)}
+                {stateErrors && stateErrors.map((err, i) => <li key={i}>{err}</li>)}
             </ul>
             <label>Name: </label>
             <input type="text" value={name} onChange={addName} required/>
