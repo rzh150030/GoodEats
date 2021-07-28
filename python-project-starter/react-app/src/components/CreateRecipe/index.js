@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { postRecipe, wipeErrors } from '../../store/recipe';
+import { postRecipe, grabCategories } from '../../store/recipe';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from "react-router-dom";
 
@@ -12,6 +12,10 @@ export default function CreateRecipe() {
     const [ingredients, setIngredients] = useState([{ingredient: ""}]);
     const [directions, setDirections] = useState([{step: ""}]);
     const [errors, setErrors] = useState([]);
+
+    useEffect(() => {
+        dispatch(grabCategories());
+    }, []);
 
     //onChange event handlers
     const addName = (e) => setName(e.target.value);

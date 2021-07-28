@@ -10,7 +10,7 @@ const makeRecipe = (recipe) => ({
 
 const getCategories = (categories) => ({
     type: GET_CATEGORIES,
-    categories
+    payload: categories
 })
 
 
@@ -60,9 +60,10 @@ export default function reducer(state = initialState, action) {
             return newRecipeState;
         case GET_CATEGORIES:
             let stateWithCat = {...state};
-            action.categories.forEach(category => {
-                
-            })
+            action.payload.categories.forEach(category => {
+                stateWithCat.categories[category.name] = category
+            });
+            return stateWithCat;
         default:
             return state;
     }
