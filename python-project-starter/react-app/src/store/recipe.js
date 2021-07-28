@@ -16,6 +16,29 @@ export const postRecipe = (data) => async dispatch => {
 
     if (response.ok) {
         const data = await response.json()
-        dispatch()
+        dispatch(makeRecipe(data));
+        return null;
+    }
+    else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors)
+            return data.errors;
+    }
+    else {
+        return ["An error occurred. Please try again later."]
     }
 };
+
+const initialState = {recipes: {}, currentRecipe: {}}
+
+export default function reducer(state = initialState, action) {
+    switch (action.type) {
+        case CREATE_RECIPE:
+            let newRecipeState = {...state};
+            newRecipeState.recipes[action.recipe.id] = action.recipe;
+            newRecipeState.currentRecipe[action.recipe.id] = action.recipe;
+            return newRecipeState;
+        default:
+            return state;
+    }
+}
