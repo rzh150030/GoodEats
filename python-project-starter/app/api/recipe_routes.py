@@ -124,3 +124,14 @@ def edit_recipe(id):
         return recipe.to_dict_with_details()
 
     return {"errors": validation_errors_to_error_messages(form.errors)}
+
+# delete recipe
+@recipe_routes.route("/<int:id>", methods=["DELETE"])
+@login_required
+def delete_recipe(id):
+    recipe = Recipe.query.get(id)
+    if int(recipe.user_id) == current_user.id:
+        db.session.delete(recipe)
+        db.session.commit()
+        return {"message": "deleted"}
+    return {"errors": ["Unauthorized"]}

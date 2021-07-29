@@ -109,6 +109,11 @@ export const grabCategories = () => async dispatch => {
     }
 }
 
+//thunk for deleting a recipe
+export const deleteRecipe = () => async dispatch => {
+    
+}
+
 
 const initialState = {recipes: [], currentRecipe: {}, categories: {}}
 
