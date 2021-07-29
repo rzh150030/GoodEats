@@ -33,6 +33,7 @@ def recipe(id):
     return recipe.to_dict_with_details()
 
 # Get all recipes in database
+# Note: to limit how many to return chop off a portion of the array
 @recipe_routes.route("/all")
 def all_recipes():
     recipes = Recipe.query.all()
@@ -63,3 +64,19 @@ def create_recipe():
         return {"id": newRecipe.id, "name": newRecipe.name, "user": newRecipe.user.username}
 
     return {"errors": validation_errors_to_error_messages(form.errors)}
+
+""" @recipe_routes.route("/edit/<int:id>", methods=["PATCH"])
+@login_required
+def edit_recipe(id):
+    form = RecipeForm()
+    recipe = Recipe.query.get(id)
+    form["csrf_token"].data = request.cookies["csrf_token"]
+    data = request.json
+
+    if form.validate_on_submit():
+        recipe["name"] = form.data["name"]
+        recipe["category_id"] = form.data["category"]
+
+        for ingred in data["ingredients"]:
+            if int(data["id"]) == 0:
+                ingredient = Ingredient(ingredient=ingred["ingredient"], recipe_id=) """

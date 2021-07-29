@@ -83,9 +83,13 @@ const initialState = {recipes: {}, currentRecipe: {}, categories: {}}
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case CREATE_RECIPE:
-            let newRecipeState = {...state};
-            newRecipeState.recipes[action.recipe.id] = action.recipe;
-            return newRecipeState;
+            return {
+                ...state,
+                recipes: {
+                  ...state.recipes,
+                  [action.recipe.id]: action.recipe
+                }
+              }
         case GET_CATEGORIES:
             let stateWithCat = {...state};
             action.payload.categories.forEach(category => {
@@ -93,11 +97,9 @@ export default function reducer(state = initialState, action) {
             });
             return stateWithCat;
         case LOAD_RECIPE:
-            state.currentRecipe = action.payload.recipe;
-            return state;
+            return {...state, currentRecipe: action.payload};
         case LOAD_ALL_RECIPES:
-            state.recipes = action.payload.recipes;
-            return state;
+            return {...state, recipes: action.payload.recipes};
         default:
             return state;
     }
