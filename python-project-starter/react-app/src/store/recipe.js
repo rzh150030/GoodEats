@@ -14,8 +14,13 @@ const getCategories = (categories) => ({
 })
 
 const loadRecipe = (recipe) => ({
-    tpye: LOAD_RECIPE,
+    type: LOAD_RECIPE,
     payload: recipe
+})
+
+const allRecipe = (recipes) => ({
+    type: LOAD_ALL_RECIPES,
+    payload: recipes
 })
 
 //thunk for get a recipe
@@ -26,6 +31,11 @@ export const getRecipe = (recipeId) => async dispatch => {
         const data = await response.json();
         dispatch(loadRecipe(data));
     }
+}
+
+//thunk for getting all recipes
+export const getAllRecipes = () => async dispatch => {
+    const response = await fetch("/api/recipes/")
 }
 
 //thunk for creating a new recipe
