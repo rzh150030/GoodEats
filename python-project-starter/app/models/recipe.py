@@ -22,7 +22,8 @@ class Recipe(db.Model):
             "id": self.id,
             "name": self.name,
             "category_id": self.category_id,
-            "user_id": self.user_id
+            "user_id": self.user_id,
+            "User": self.user.to_dict()
         }
 
     def to_dict_with_details(self):
@@ -32,5 +33,6 @@ class Recipe(db.Model):
             "ingredients": [ingred.to_dict() for ingred in self.ingredients],
             "directions": [direct.to_dict() for direct in self.directions],
             "category_id": self.category_id,
-            "user_id": self.user_id
+            "user_id": self.user_id,
+            "User": self.user.to_dict()
         }
