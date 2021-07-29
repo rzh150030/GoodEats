@@ -57,7 +57,7 @@ export const postRecipe = (data) => async dispatch => {
     if (response.ok) {
         const data = await response.json();
         dispatch(makeRecipe(data));
-        return null;
+        return data.id;
     }
     else if (response.status < 500) {
         const data = await response.json();
@@ -65,7 +65,7 @@ export const postRecipe = (data) => async dispatch => {
             return data.errors;
     }
     else {
-        return ["An error occurred. Please try again later."];
+        return {errors: ["An error occurred. Please try again later."]};
     }
 };
 

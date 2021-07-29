@@ -10,8 +10,8 @@ export default function CreateRecipe() {
     const submitCat = useSelector(state => state.recipe.categories); //submit category id for backend
     const [category, setCategory] = useState("Ainu"); //key into submitCat
     const [name, setName] = useState("");
-    const [ingredients, setIngredients] = useState([{ingredient: ""}]);
-    const [directions, setDirections] = useState([{step: ""}]);
+    const [ingredients, setIngredients] = useState([{id: 0, ingredient: ""}]);
+    const [directions, setDirections] = useState([{id: 0, step: ""}]);
     const [errors, setErrors] = useState([]);
 
     //onChange event handlers
@@ -50,12 +50,12 @@ export default function CreateRecipe() {
     const newIngredInput = (e) => {
         e.preventDefault();
 
-        setIngredients([...ingredients, {ingredient: ""}]);
+        setIngredients([...ingredients, {id: 0, ingredient: ""}]);
     };
     const newDirectInput = (e) => {
         e.preventDefault();
 
-        setDirections([...directions, {step: ""}]);
+        setDirections([...directions, {id: 0, step: ""}]);
     };
 
     const handleSubmit = async (e) => {
@@ -68,12 +68,12 @@ export default function CreateRecipe() {
             directions
         };
 
-       const resultErr = await dispatch(postRecipe(data));
-       if (resultErr) {
-            setErrors(resultErr);
+       const result = await dispatch(postRecipe(data));
+       if (result.errors) {
+            setErrors(result.errors);
        }
        else{
-           history.push("/");
+           history.push(`/recipe/detail/${result}`);
        }
     };
 
