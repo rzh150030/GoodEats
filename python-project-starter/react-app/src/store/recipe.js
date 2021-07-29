@@ -6,7 +6,7 @@ const UPDATE_RECIPE = "recipe/updateRecipe";
 
 const makeRecipe = (recipe) => ({
     type: CREATE_RECIPE,
-    recipe
+    payload: recipe
 });
 
 const getCategories = (categories) => ({
@@ -95,17 +95,17 @@ export const grabCategories = () => async dispatch => {
 }
 
 
-const initialState = {recipes: {}, currentRecipe: {}, categories: {}}
+const initialState = {recipes: [], currentRecipe: {}, categories: {}}
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case CREATE_RECIPE:
             return {
                 ...state,
-                recipes: {
+                recipes: [
                   ...state.recipes,
-                  [action.recipe.id]: action.recipe
-                }
+                    action.payload
+                ]
               }
         case GET_CATEGORIES:
             let stateWithCat = {...state};

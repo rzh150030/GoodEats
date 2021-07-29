@@ -61,7 +61,7 @@ def create_recipe():
             db.session.add(newDirect)
 
         db.session.commit()
-        return {"id": newRecipe.id, "name": newRecipe.name, "user": newRecipe.user.username}
+        return newRecipe.to_dict()
 
     return {"errors": validation_errors_to_error_messages(form.errors)}
 
