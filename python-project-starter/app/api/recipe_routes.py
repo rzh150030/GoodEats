@@ -65,11 +65,19 @@ def create_recipe():
 
     return {"errors": validation_errors_to_error_messages(form.errors)}
 
-""" @recipe_routes.route("/edit/<int:id>", methods=["PATCH"])
+# Edit recipe information
+# ingredient and direction table data is handled as follows:
+# - data from front end contains mixture of ids with 0 and numbers
+#  - data with id of 0 is new information that needs to be created
+#  - data with a number other 0 is edited
+# -
+@recipe_routes.route("/edit/<int:id>", methods=["PATCH"])
 @login_required
 def edit_recipe(id):
     form = RecipeForm()
     recipe = Recipe.query.get(id)
+    table_ingredients = recipe.to_dict_ingreds()
+    table_directions = recipe.to_dict_directs()
     form["csrf_token"].data = request.cookies["csrf_token"]
     data = request.json
 
@@ -79,4 +87,7 @@ def edit_recipe(id):
 
         for ingred in data["ingredients"]:
             if int(data["id"]) == 0:
-                ingredient = Ingredient(ingredient=ingred["ingredient"], recipe_id=) """
+                ingredient = Ingredient(ingredient=ingred["ingredient"], recipe_id=recipe.id)
+                recipe.ingredients.append(ingredient)
+                db.session.add(ingredient)
+            
