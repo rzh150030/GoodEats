@@ -5,8 +5,7 @@ import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/UsersList';
-import User from './components/User';
+import RecipePage from './components/RecipePage';
 import CreateRecipe from './components/CreateRecipe';
 import { authenticate } from './store/session';
 import Homepage from './components/Homepage';
@@ -20,6 +19,7 @@ function App() {
       await dispatch(authenticate());
       setLoaded(true);
     })();
+
   }, [dispatch]);
 
   if (!loaded) {
@@ -39,6 +39,9 @@ function App() {
           </Route>
           <Route path='/sign-up' exact={true}>
             <SignUpForm />
+          </Route>
+          <Route path="/recipe/:id">
+            <RecipePage />
           </Route>
           <ProtectedRoute path="/recipe/create" exact={true}>
             <CreateRecipe />
