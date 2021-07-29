@@ -67,10 +67,11 @@ def create_recipe():
 
 # Edit recipe information
 # ingredient and direction table data is handled as follows:
-# - data from front end contains mixture of ids with 0 and numbers
-#  - data with id of 0 is new information that needs to be created
-#  - data with a number other 0 is edited
-# - front end data is compared with backend
+# - data from front end contains mixture of items with ids of 0s and numbers
+#  - item with id of 0 is new information that needs to be created
+#  - item with a number other than 0 is edited
+# - front end data is compared with backend data
+# - delete items in data from backend after being found and updated
 # - remaining data fetched from backend is deleted from database
 @recipe_routes.route("/edit/<int:id>", methods=["PATCH"])
 @login_required
@@ -84,38 +85,40 @@ def edit_recipe(id):
 
     form["csrf_token"].data = request.cookies["csrf_token"]
     data = request.json
+    # del table_ingredients[1]
+    print(table_directions)
 
     if form.validate_on_submit():
-        recipe["name"] = form.data["name"]
-        recipe["category_id"] = form.data["category"]
+        recipe.name = form.data["name"]
+        recipe.category_id = form.data["category"]
 
         # update ingredients table
         for ingred in data["ingredients"]:
-            if int(data["id"]) == 0:
+            if int(ingred["id"]) == 0:
                 ingredient = Ingredient(ingredient=ingred["ingredient"], recipe_id=recipe.id)
                 recipe.ingredients.append(ingredient)
                 db.session.add(ingredient)
             elif table_ingredients[int(ingred["id"])]:
-                table_ingredients = Ingredient.query.get(int(ingred["id"]))
-                table_ingredients.ingredient = ingred["ingredient"]
+                ingredient_from_table = Ingredient.query.get(int(ingred["id"]))
+                ingredient_from_table.ingredient = ingred["ingredient"]
                 del table_ingredients[int(ingred["id"])]
 
         # update directions table
         for direct in data["directions"]:
-            if int(data["id"]) == 0:
+            if int(direct["id"]) == 0:
                 direction = Direction(step=direct["step"], recipe_id=recipe.id)
                 recipe.directions.append(direction)
                 db.session.add(direction)
             elif table_directions[int(direct["id"])]:
-                table_directions = Direction.query.get(int(direct["id"]))
-                table_directions.step = direct["step"]
-                del table_ingredients[int(direct["id"])]
+                direction_from_table = Direction.query.get(int(direct["id"]))
+                direction_from_table.step = direct["step"]
+                del table_directions[int(direct["id"])]
 
         # delete remaining data from backend
         for key in table_ingredients.keys():
             ingredient = Ingredient.query.get(key)
             db.session.delete(ingredient)
-        for key in table_directions.key():
+        for key in table_directions.keys():
             direction = Ingredient.query.get(key)
             db.session.delete(direction)
 
