@@ -5,7 +5,7 @@ import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import RecipePage from './components/RecipePage';
+import RecipeDetailPage from './components/RecipeDetailPage';
 import CreateRecipe from './components/CreateRecipe';
 import { authenticate } from './store/session';
 import { grabCategories, getAllRecipes } from './store/recipe';
@@ -45,7 +45,7 @@ function App() {
           </Route>
           {recipeList.map(recipe => (
             <Route path="/recipe/detail/:id" key={recipe.id}>
-              <RecipePage />
+              <RecipeDetailPage />
             </Route>
           ))}
           <ProtectedRoute path="/recipe/create" exact={true}>

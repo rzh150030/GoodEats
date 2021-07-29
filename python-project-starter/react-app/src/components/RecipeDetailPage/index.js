@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useParams, useHistory } from 'react-router-dom';
 import { getRecipe } from '../../store/recipe';
 
-export default function RecipePage() {
+export default function RecipeDetailPage() {
     const {id} = useParams();
     const history = useHistory();
     const dispatch = useDispatch();
