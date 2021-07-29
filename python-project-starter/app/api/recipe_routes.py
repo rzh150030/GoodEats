@@ -121,3 +121,5 @@ def edit_recipe(id):
 
         db.session.commit()
         return recipe.to_dict_with_details()
+
+    return {"errors": validation_errors_to_error_messages(form.errors)}

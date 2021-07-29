@@ -1,7 +1,8 @@
 const LOAD_RECIPE = "recipe/loadOneRecipe";
 const LOAD_ALL_RECIPES = "recipe/loadRecipes";
 const CREATE_RECIPE = "recipe/createRecipe";
-const GET_CATEGORIES = "recipe/getCategories"
+const GET_CATEGORIES = "recipe/getCategories";
+const UPDATE_RECIPE = "recipe/updateRecipe";
 
 const makeRecipe = (recipe) => ({
     type: CREATE_RECIPE,
@@ -68,6 +69,21 @@ export const postRecipe = (data) => async dispatch => {
     }
 };
 
+//thunk for updating a recipe
+export const updateRecipe = (data, recipeId) => async dispatch => {
+    const response = await fetch(`/api/recipes/edit/${recipeId}`, {
+        method: "PATCH",
+        headers: {
+            "CONTENT-TYPE": "application/json"
+        },
+        body: JSON.stringify(data)
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+    }
+}
+
 //thunk for getting all categories
 export const grabCategories = () => async dispatch => {
     const response = await fetch("/api/categories/all");
@@ -77,6 +93,7 @@ export const grabCategories = () => async dispatch => {
         dispatch(getCategories(data));
     }
 }
+
 
 const initialState = {recipes: {}, currentRecipe: {}, categories: {}}
 
