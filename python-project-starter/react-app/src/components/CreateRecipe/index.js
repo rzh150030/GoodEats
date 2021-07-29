@@ -14,10 +14,9 @@ export default function CreateRecipe() {
     const [directions, setDirections] = useState([{step: ""}]);
     const [errors, setErrors] = useState([]);
 
-    useEffect(() => {
-        dispatch(grabCategories());
-        console.log(submitCat)
-    }, []);
+    /* useEffect(() => {
+        dispatch(grabCategories())
+    }, []); */
 
     //onChange event handlers
     const addName = (e) => setName(e.target.value);

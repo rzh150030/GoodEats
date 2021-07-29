@@ -18,7 +18,7 @@ const loadRecipe = (recipe) => ({
     payload: recipe
 })
 
-const allRecipe = (recipes) => ({
+const loadAllRecipe = (recipes) => ({
     type: LOAD_ALL_RECIPES,
     payload: recipes
 })
@@ -35,7 +35,12 @@ export const getRecipe = (recipeId) => async dispatch => {
 
 //thunk for getting all recipes
 export const getAllRecipes = () => async dispatch => {
-    const response = await fetch("/api/recipes/")
+    const response = await fetch("/api/recipes/all");
+
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(loadAllRecipe(data));
+    }
 }
 
 //thunk for creating a new recipe
@@ -89,6 +94,9 @@ export default function reducer(state = initialState, action) {
             return stateWithCat;
         case LOAD_RECIPE:
             state.currentRecipe = action.payload.recipe;
+            return state;
+        case LOAD_ALL_RECIPES:
+            state.recipes = action.payload.recipes;
             return state;
         default:
             return state;

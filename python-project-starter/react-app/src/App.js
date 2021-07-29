@@ -8,6 +8,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import RecipePage from './components/RecipePage';
 import CreateRecipe from './components/CreateRecipe';
 import { authenticate } from './store/session';
+import { grabCategories, getAllRecipes } from './store/recipe';
 import Homepage from './components/Homepage';
 
 function App() {
@@ -19,7 +20,8 @@ function App() {
       await dispatch(authenticate());
       setLoaded(true);
     })();
-
+    dispatch(grabCategories());
+    dispatch(getAllRecipes());
   }, [dispatch]);
 
   if (!loaded) {
