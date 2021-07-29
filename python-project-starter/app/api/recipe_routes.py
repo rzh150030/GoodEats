@@ -32,6 +32,12 @@ def recipe(id):
 
     return recipe.to_dict_with_details()
 
+# Get all recipes in database
+@recipe_routes.route("/all")
+def all_recipes():
+    recipes = Recipe.query.all()
+    return {"recipes": [recipe.to_dict() for recipe in recipes]}
+
 # Create a new recipe with ingredients and steps
 @recipe_routes.route("/create", methods=["POST"])
 @login_required
