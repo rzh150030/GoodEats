@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { postRecipe, grabCategories } from '../../store/recipe';
+import React, { useState } from 'react';
+import { postRecipe } from '../../store/recipe';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from "react-router-dom";
 
