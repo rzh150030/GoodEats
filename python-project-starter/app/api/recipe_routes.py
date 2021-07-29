@@ -70,14 +70,18 @@ def create_recipe():
 # - data from front end contains mixture of ids with 0 and numbers
 #  - data with id of 0 is new information that needs to be created
 #  - data with a number other 0 is edited
-# -
+# - front end data is compared with backend
+# - remaining data fetched from backend is deleted from database
 @recipe_routes.route("/edit/<int:id>", methods=["PATCH"])
 @login_required
 def edit_recipe(id):
     form = RecipeForm()
     recipe = Recipe.query.get(id)
+
+    # data from backend
     table_ingredients = recipe.to_dict_ingreds()
     table_directions = recipe.to_dict_directs()
+
     form["csrf_token"].data = request.cookies["csrf_token"]
     data = request.json
 
@@ -85,9 +89,35 @@ def edit_recipe(id):
         recipe["name"] = form.data["name"]
         recipe["category_id"] = form.data["category"]
 
+        # update ingredients table
         for ingred in data["ingredients"]:
             if int(data["id"]) == 0:
                 ingredient = Ingredient(ingredient=ingred["ingredient"], recipe_id=recipe.id)
                 recipe.ingredients.append(ingredient)
                 db.session.add(ingredient)
-            
+            elif table_ingredients[int(ingred["id"])]:
+                table_ingredients = Ingredient.query.get(int(ingred["id"]))
+                table_ingredients.ingredient = ingred["ingredient"]
+                del table_ingredients[int(ingred["id"])]
+
+        # update directions table
+        for direct in data["directions"]:
+            if int(data["id"]) == 0:
+                direction = Direction(step=direct["step"], recipe_id=recipe.id)
+                recipe.directions.append(direction)
+                db.session.add(direction)
+            elif table_directions[int(direct["id"])]:
+                table_directions = Direction.query.get(int(direct["id"]))
+                table_directions.step = direct["step"]
+                del table_ingredients[int(direct["id"])]
+
+        # delete remaining data from backend
+        for key in table_ingredients.keys():
+            ingredient = Ingredient.query.get(key)
+            db.session.delete(ingredient)
+        for key in table_directions.key():
+            direction = Ingredient.query.get(key)
+            db.session.delete(direction)
+
+        db.session.commit()
+        return recipe.to_dict_with_details()
