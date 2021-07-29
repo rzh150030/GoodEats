@@ -40,13 +40,13 @@ export default function RecipeDetailPage() {
             <label>Ingredients: </label>
             <ul>
                 {currentRecipe.ingredients?.map(ingred => (
-                    <li>{ingred.ingredient}</li>
+                    <li key={ingred.id}>{ingred.ingredient}</li>
                 ))}
             </ul>
             <label>Directions: </label>
             <ol>
                 {currentRecipe.directions?.map(direct => (
-                    <li>{direct.step}</li>
+                    <li key={direct.id}>{direct.step}</li>
                 ))}
             </ol>
             <div>

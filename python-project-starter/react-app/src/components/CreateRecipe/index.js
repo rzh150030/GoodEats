@@ -5,7 +5,7 @@ export default function CreateRecipe() {
     const initIngredients = [{id: 0, ingredient: ""}];
     const initDirections = [{id: 0, step: ""}];
     const initName = "";
-    const checkWhichMethod = true;
+    const checkWhichMethod = true; //prop for form component
 
     return (
         <>
