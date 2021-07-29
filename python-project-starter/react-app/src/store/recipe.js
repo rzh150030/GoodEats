@@ -13,6 +13,20 @@ const getCategories = (categories) => ({
     payload: categories
 })
 
+const getRecipe = (recipe) => ({
+    tpye: GET_RECIPE,
+    payload: recipe
+})
+
+//thunk for get a recipe
+export const getRecipe = (recipeId) => async dispatch => {
+    const response = await fetch(`/api/recipes/${recipeId}`);
+
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(getRecipe(data));
+    }
+}
 
 //thunk for creating a new recipe
 export const postRecipe = (data) => async dispatch => {
@@ -25,7 +39,7 @@ export const postRecipe = (data) => async dispatch => {
     });
 
     if (response.ok) {
-        const data = await response.json()
+        const data = await response.json();
         dispatch(makeRecipe(data));
         return null;
     }
@@ -56,7 +70,6 @@ export default function reducer(state = initialState, action) {
         case CREATE_RECIPE:
             let newRecipeState = {...state};
             newRecipeState.recipes[action.recipe.id] = action.recipe;
-            newRecipeState.currentRecipe[action.recipe.id] = action.recipe;
             return newRecipeState;
         case GET_CATEGORIES:
             let stateWithCat = {...state};
@@ -64,6 +77,9 @@ export default function reducer(state = initialState, action) {
                 stateWithCat.categories[category.name] = category
             });
             return stateWithCat;
+        case GET_RECIPE:
+            state.currentRecipe = action.payload.recipe;
+            return state;
         default:
             return state;
     }
