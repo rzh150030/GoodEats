@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useParams, useHistory } from 'react-router-dom';
-import { getRecipe } from '../../store/recipe';
+import { getRecipe, deleteRecipe } from '../../store/recipe';
 
 export default function RecipeDetailPage() {
     const {id} = useParams();
@@ -18,10 +18,10 @@ export default function RecipeDetailPage() {
         history.push(`/recipe/edit/${currentRecipe.id}`);
     }
 
-    const deleteRecipe = async () => {
-        //let deleted = await dispatch(deleteRecipe(currentRecipe.id));
+    const deletion = async () => {
+        let deleted = await dispatch(deleteRecipe(currentRecipe.id));
 
-        //if (deleted) history.push("/");
+        if (deleted) history.push("/");
     }
 
     let editDeleteButton;
@@ -29,7 +29,7 @@ export default function RecipeDetailPage() {
         editDeleteButton = (
             <div>
                 <button onClick={editRecipe}>Edit</button>
-                <button onClick={deleteRecipe}>Delete</button>
+                <button onClick={deletion}>Delete</button>
             </div>
         );
     }
@@ -39,13 +39,13 @@ export default function RecipeDetailPage() {
             <h1>{currentRecipe.name}</h1>
             <label>Ingredients: </label>
             <ul>
-                {currentRecipe.ingredients?.map(ingred => (
+                {currentRecipe.ingredients?.sort(({id: a}, {id: b}) => a - b).map(ingred => (
                     <li key={ingred.id}>{ingred.ingredient}</li>
                 ))}
             </ul>
             <label>Directions: </label>
             <ol>
-                {currentRecipe.directions?.map(direct => (
+                {currentRecipe.directions?.sort(({id: a}, {id: b}) => a - b).map(direct => (
                     <li key={direct.id}>{direct.step}</li>
                 ))}
             </ol>

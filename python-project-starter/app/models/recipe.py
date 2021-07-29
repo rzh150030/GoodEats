@@ -43,6 +43,4 @@ class Recipe(db.Model):
 
 
     def to_dict_directs(self):
-        print("FFFFFFFFFFF")
-        print(self.directions)
         return {direct.id: direct.to_dict() for direct in self.directions}

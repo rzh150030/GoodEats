@@ -3,6 +3,7 @@ const LOAD_ALL_RECIPES = "recipe/loadRecipes";
 const CREATE_RECIPE = "recipe/createRecipe";
 const GET_CATEGORIES = "recipe/getCategories";
 const UPDATE_RECIPE = "recipe/updateRecipe";
+const DELETE_RECIPE = "recipe/deleteRecipe";
 
 const makeRecipe = (recipe) => ({
     type: CREATE_RECIPE,
@@ -12,21 +13,26 @@ const makeRecipe = (recipe) => ({
 const getCategories = (categories) => ({
     type: GET_CATEGORIES,
     payload: categories
-})
+});
 
 const loadRecipe = (recipe) => ({
     type: LOAD_RECIPE,
     payload: recipe
-})
+});
 
 const loadAllRecipe = (recipes) => ({
     type: LOAD_ALL_RECIPES,
     payload: recipes
-})
+});
 
 const patchRecipe = (newRecipe) => ({
     type: UPDATE_RECIPE,
     payload: newRecipe
+});
+
+const destroyRecipe = (deleteId) => ({
+    type:DELETE_RECIPE,
+    deleteId // finds which recipe to remove from state
 })
 
 //thunk for get a recipe
@@ -110,8 +116,16 @@ export const grabCategories = () => async dispatch => {
 }
 
 //thunk for deleting a recipe
-export const deleteRecipe = () => async dispatch => {
-    
+export const deleteRecipe = (recipeId) => async dispatch => {
+    const response = await fetch(`/api/recipes/${recipeId}`, {
+        method: "DELETE"
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(destroyRecipe(recipeId));
+        return data;
+    }
 }
 
 
@@ -139,6 +153,10 @@ export default function reducer(state = initialState, action) {
             return {...state, recipes: action.payload.recipes};
         case UPDATE_RECIPE:
             return {...state, currentRecipe: action.payload};
+        case DELETE_RECIPE:
+            let newDeleteState = {...state, currentRecipe: {}, recipes: [...state.recipes]}
+            delete newDeleteState.recipes[action.deleteId];
+            return newDeleteState;
         default:
             return state;
     }

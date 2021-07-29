@@ -134,4 +134,5 @@ def delete_recipe(id):
         db.session.delete(recipe)
         db.session.commit()
         return {"message": "deleted"}
+
     return {"errors": ["Unauthorized"]}
