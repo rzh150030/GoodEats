@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { postRecipe } from '../../store/recipe';
+import { postRecipe, updateRecipe } from '../../store/recipe';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 export default function RecipeForm(props) {
     const history = useHistory();
+    const {id} = useParams();
     const dispatch = useDispatch();
     const categories = useSelector(state => Object.values(state.recipe.categories));
     const submitCat = useSelector(state => state.recipe.categories); //submit category id for backend
@@ -13,6 +14,7 @@ export default function RecipeForm(props) {
     const [ingredients, setIngredients] = useState(props.initIngredients);
     const [directions, setDirections] = useState(props.initDirections);
     const [errors, setErrors] = useState([]);
+    let creatingRecipe = props.checkWhichMethod; //check if updating or creating recipe
 
     //onChange event handlers
     const addName = (e) => setName(e.target.value);
@@ -68,13 +70,20 @@ export default function RecipeForm(props) {
             directions
         };
 
-       const result = await dispatch(postRecipe(data));
-       if (result.errors) {
+        let result;
+        if (creatingRecipe) {
+            result = await dispatch(postRecipe(data));
+        }
+        else {
+            result = await dispatch(updateRecipe(data, id))
+        }
+        
+        if (result.errors) {
             setErrors(result.errors);
-       }
-       else{
-           history.push(`/recipe/detail/${result}`);
-       }
+        }
+        else {
+            history.push(`/recipe/detail/${result}`);
+        }
     };
 
     return (

@@ -24,6 +24,11 @@ const loadAllRecipe = (recipes) => ({
     payload: recipes
 })
 
+const patchRecipe = (newRecipe) => ({
+    type: UPDATE_RECIPE,
+    payload: newRecipe
+})
+
 //thunk for get a recipe
 export const getRecipe = (recipeId) => async dispatch => {
     const response = await fetch(`/api/recipes/${recipeId}`);
@@ -57,7 +62,7 @@ export const postRecipe = (data) => async dispatch => {
     if (response.ok) {
         const data = await response.json();
         dispatch(makeRecipe(data));
-        return data.id;
+        return data.id; //used to redirect to recipe detail page
     }
     else if (response.status < 500) {
         const data = await response.json();
@@ -81,6 +86,16 @@ export const updateRecipe = (data, recipeId) => async dispatch => {
 
     if (response.ok) {
         const data = await response.json();
+        dispatch(patchRecipe(data));
+        return data.id;
+    }
+    else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors)
+            return data.errors;
+    }
+    else {
+        return {errors: ["An error occurred. Please try again later."]};
     }
 }
 
@@ -117,6 +132,8 @@ export default function reducer(state = initialState, action) {
             return {...state, currentRecipe: action.payload};
         case LOAD_ALL_RECIPES:
             return {...state, recipes: action.payload.recipes};
+        case UPDATE_RECIPE:
+            return {...state, currentRecipe: action.payload};
         default:
             return state;
     }

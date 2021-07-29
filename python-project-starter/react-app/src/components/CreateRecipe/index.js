@@ -5,10 +5,16 @@ export default function CreateRecipe() {
     const initIngredients = [{id: 0, ingredient: ""}];
     const initDirections = [{id: 0, step: ""}];
     const initName = "";
+    const checkWhichMethod = true;
 
     return (
         <>
-            <RecipeForm initIngredients={initIngredients} initDirections={initDirections} initName ={initName}/>
+            <RecipeForm
+            initIngredients={initIngredients}
+            initDirections={initDirections}
+            initName={initName}
+            checkWhichMethod={checkWhichMethod}
+            />
         </>
     )
 }
