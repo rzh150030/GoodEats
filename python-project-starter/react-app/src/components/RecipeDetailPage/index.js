@@ -14,8 +14,28 @@ export default function RecipeDetailPage() {
         dispatch(getRecipe(id));
     }, [id, sessionUser]);
 
+    const editRecipe = () => {
+        history.push(`/recipe/edit/${currentRecipe.id}`);
+    }
+
+    const deleteRecipe = async () => {
+        //let deleted = await dispatch(deleteRecipe(currentRecipe.id));
+
+        //if (deleted) history.push("/");
+    }
+
+    let editDeleteButton;
+    if (sessionUser && sessionUser.id === currentRecipe.user_id) {
+        editDeleteButton = (
+            <div>
+                <button onClick={editRecipe}>Edit</button>
+                <button onClick={deleteRecipe}>Delete</button>
+            </div>
+        );
+    }
+
     return (
-        <div>
+        <article>
             <h1>{currentRecipe.name}</h1>
             <label>Ingredients: </label>
             <ul>
@@ -30,8 +50,9 @@ export default function RecipeDetailPage() {
                 ))}
             </ol>
             <div>
+                {editDeleteButton}
                 <h2>Category: {currentRecipe.category_name}</h2>
             </div>
-        </div>
+        </article>
     )
 }
