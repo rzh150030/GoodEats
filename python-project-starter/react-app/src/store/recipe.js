@@ -155,8 +155,12 @@ export default function reducer(state = initialState, action) {
             return {...state, currentRecipe: action.payload};
         case DELETE_RECIPE:
             let newDeleteState = {...state, currentRecipe: {}, recipes: [...state.recipes]}
-            delete newDeleteState.recipes[action.deleteId];
-            return newDeleteState;
+            for (let i = 0; i < newDeleteState.recipes.length; i++) { //hack solution to get rid of deleteId item from state.recipes
+                if (newDeleteState.recipes[i].id === action.deleteId) {
+                    newDeleteState.recipes.splice(i, 1);
+                    return newDeleteState;
+                }
+            }
         default:
             return state;
     }
