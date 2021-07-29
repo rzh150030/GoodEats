@@ -13,8 +13,8 @@ const getCategories = (categories) => ({
     payload: categories
 })
 
-const getRecipe = (recipe) => ({
-    tpye: GET_RECIPE,
+const loadRecipe = (recipe) => ({
+    tpye: LOAD_RECIPE,
     payload: recipe
 })
 
@@ -24,7 +24,7 @@ export const getRecipe = (recipeId) => async dispatch => {
 
     if (response.ok) {
         const data = await response.json();
-        dispatch(getRecipe(data));
+        dispatch(loadRecipe(data));
     }
 }
 
@@ -77,7 +77,7 @@ export default function reducer(state = initialState, action) {
                 stateWithCat.categories[category.name] = category
             });
             return stateWithCat;
-        case GET_RECIPE:
+        case LOAD_RECIPE:
             state.currentRecipe = action.payload.recipe;
             return state;
         default:
