@@ -13,7 +13,6 @@ export default function EditRecipe() {
     const checkWhichMethod = false; // prop for form component
 
     if (!currentRecipe.id) history.push(`/recipe/detail/${id}`);
-    console.log(currentRecipe)
 
     return (
         <>
