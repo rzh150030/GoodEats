@@ -34,5 +34,6 @@ class Recipe(db.Model):
             "directions": [direct.to_dict() for direct in self.directions],
             "category_id": self.category_id,
             "user_id": self.user_id,
-            "User": self.user.to_dict()
+            "User": self.user.to_dict(),
+            "category_name": self.category.name
         }
