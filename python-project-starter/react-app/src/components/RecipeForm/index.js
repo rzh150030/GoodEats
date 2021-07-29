@@ -28,9 +28,11 @@ export default function RecipeForm(props) {
     const deleteIngred = (e, i) => {
         e.preventDefault();
 
-        const newArr = [...ingredients];
-        newArr.splice(i, 1);
-        setIngredients(newArr);
+        if (ingredients.length > 1) {
+            const newArr = [...ingredients];
+            newArr.splice(i, 1);
+            setIngredients(newArr);
+        }
     };
     const addDirect = (e, i) => {
         let newDirect = directions[i];
@@ -42,9 +44,11 @@ export default function RecipeForm(props) {
     const deleteDirect = (e, i) => {
         e.preventDefault();
 
-        const newArr = [...directions];
-        newArr.splice(i, 1);
-        setDirections(newArr);
+        if (directions.length > 1) {
+            const newArr = [...directions];
+            newArr.splice(i, 1);
+            setDirections(newArr);
+        }
     };
     const addCat = (e) => setCategory(e.target.value);
 
