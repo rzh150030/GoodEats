@@ -85,8 +85,6 @@ def edit_recipe(id):
 
     form["csrf_token"].data = request.cookies["csrf_token"]
     data = request.json
-    # del table_ingredients[1]
-    print(table_directions)
 
     if form.validate_on_submit():
         recipe.name = form.data["name"]
@@ -119,7 +117,7 @@ def edit_recipe(id):
             ingredient = Ingredient.query.get(key)
             db.session.delete(ingredient)
         for key in table_directions.keys():
-            direction = Ingredient.query.get(key)
+            direction = Direction.query.get(key)
             db.session.delete(direction)
 
         db.session.commit()

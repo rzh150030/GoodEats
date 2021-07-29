@@ -77,7 +77,7 @@ export default function RecipeForm(props) {
         else {
             result = await dispatch(updateRecipe(data, id))
         }
-        
+
         if (result.errors) {
             setErrors(result.errors);
         }
@@ -101,7 +101,7 @@ export default function RecipeForm(props) {
             </select>
             <div>
                 <label>Ingredients: </label>
-                {ingredients.map((ingred, i) => (
+                {ingredients?.map((ingred, i) => (
                 <div key={i}>
                     <input type="text" value={ingred.ingredient} onChange={(e) => addIngred(e, i)} required/>
                     <div>
@@ -113,7 +113,7 @@ export default function RecipeForm(props) {
             </div>
             <div>
                 <label>Directions: </label>
-                {directions.map((direct, i) => (
+                {directions?.map((direct, i) => (
                 <div key={i}>
                     <input type="text" value={direct.step} onChange={(e) => addDirect(e, i)} required/>
                     <div>
