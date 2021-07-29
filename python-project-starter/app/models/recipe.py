@@ -39,11 +39,8 @@ class Recipe(db.Model):
         }
 
     def to_dict_ingreds(self):
-        return {
-            {ingred.id: ingred.to_dict() for ingred in self.ingredients}
-        }
+        return {ingred.id: ingred.to_dict() for ingred in self.ingredients}
+
 
     def to_dict_directs(self):
-        return {
-            {direct.id: direct.to_dict() for direct in self.directions}
-        }
+        return {direct.id: direct.to_dict() for direct in self.directions}

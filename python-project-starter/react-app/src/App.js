@@ -50,7 +50,7 @@ function App() {
             </Route>
           ))}
           {recipeList.map(recipe => (
-            <ProtectedRoute path="recipe/edit/:id" key={recipe.id}>
+            <ProtectedRoute path="/recipe/edit/:id" key={recipe.id}>
               <EditRecipe />
             </ProtectedRoute>
           ))}
