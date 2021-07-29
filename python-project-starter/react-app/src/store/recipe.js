@@ -161,6 +161,7 @@ export default function reducer(state = initialState, action) {
                     return newDeleteState;
                 }
             }
+            break;
         default:
             return state;
     }

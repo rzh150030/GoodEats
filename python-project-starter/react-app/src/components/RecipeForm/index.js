@@ -33,6 +33,9 @@ export default function RecipeForm(props) {
             newArr.splice(i, 1);
             setIngredients(newArr);
         }
+        else {
+            setErrors(["Must have at least 1 ingredient"]);
+        }
     };
     const addDirect = (e, i) => {
         let newDirect = directions[i];
@@ -48,6 +51,9 @@ export default function RecipeForm(props) {
             const newArr = [...directions];
             newArr.splice(i, 1);
             setDirections(newArr);
+        }
+        else {
+            setErrors(["Must have at least 1 step"]);
         }
     };
     const addCat = (e) => setCategory(e.target.value);

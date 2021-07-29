@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink, useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { getRecipe, deleteRecipe } from '../../store/recipe';
 
 export default function RecipeDetailPage() {
@@ -12,7 +12,7 @@ export default function RecipeDetailPage() {
 
     useEffect(() => { //fetch recipe from database
         dispatch(getRecipe(id));
-    }, [id, sessionUser]);
+    }, [dispatch, id, sessionUser]);
 
     const editRecipe = () => {
         history.push(`/recipe/edit/${currentRecipe.id}`);
