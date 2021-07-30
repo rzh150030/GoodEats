@@ -15,9 +15,11 @@
 .delete-input-button {
     background-color: red;
     color: white;
+    margin-left: 10px;
 }
 
 .add-input-button {
     background-color: green;
     color: white;
+    margin-top: 8px;
 }

@@ -112,7 +112,7 @@ export default function RecipeForm(props) {
                     <option key={cat.id}>{cat.name}</option>
                 ))}
             </select>
-            <div>
+            <div className="dynamic-input-containers">
                 <label className="recipe-form-labels">Ingredients: </label>
                 {ingredients?.map((ingred, i) => (
                 <div key={i}>
@@ -122,7 +122,7 @@ export default function RecipeForm(props) {
             ))}
                 <button onClick={newIngredInput} className="add-input-button">One More Ingredient</button>
             </div>
-            <div>
+            <div className="dynamic-input-containers">
                 <label className="recipe-form-labels">Directions: </label>
                 {directions?.map((direct, i) => (
                 <div key={i}>
