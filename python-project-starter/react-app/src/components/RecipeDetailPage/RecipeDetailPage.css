@@ -7,3 +7,26 @@
         "direct list2 other2";
 }
 
+.ingred-detail-label {
+    grid-area: ingred;
+}
+
+.ingred-detail-list {
+    grid-area: list1;
+}
+
+.direct-detail-label {
+    grid-area: direct;
+}
+
+.direct-detail-list {
+    grid-area: list2;
+}
+
+.recipe-detail-buttons {
+    grid-area: other1;
+}
+
+.recipe-detail-category {
+    grid-area: other2;
+}
