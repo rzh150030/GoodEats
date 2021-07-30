@@ -12,4 +12,12 @@
     margin-bottom: 5px;
 }
 
+.delete-input-button {
+    background-color: red;
+    color: white;
+}
 
+.add-input-button {
+    background-color: green;
+    color: white;
+}
