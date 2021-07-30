@@ -23,3 +23,10 @@
     color: white;
     margin-top: 8px;
 }
+
+.save-recipe-button {
+    background-color: blue;
+    color: white;
+    margin-top: 8px;
+    height: 50px;
+}
