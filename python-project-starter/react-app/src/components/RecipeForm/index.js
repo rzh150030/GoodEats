@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { postRecipe, updateRecipe } from '../../store/recipe';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from "react-router-dom";
+import "./RecipeForm.css";
 
 export default function RecipeForm(props) {
     const history = useHistory();
