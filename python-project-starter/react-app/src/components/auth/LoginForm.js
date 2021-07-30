@@ -54,19 +54,18 @@ const LoginForm = () => {
           placeholder='Email'
           value={email}
           onChange={updateEmail}
-          className="input"
+          className="input-login"
         />
       </div>
       <label htmlFor='password' className="login-labels">Password</label>
       <div>
-
         <input
           name='password'
           type='password'
           placeholder='Password'
           value={password}
           onChange={updatePassword}
-          className="input"
+          className="input-login"
         />
       </div>
       <button type='submit' className="submit-login">Login</button>

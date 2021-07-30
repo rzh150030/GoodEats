@@ -5,3 +5,19 @@
     justify-items: center;
 }
 
+.login-labels {
+    display: flex;
+    justify-content: left;
+    width: 247px;
+    margin-top: 10px;
+    margin-bottom: 2px;
+}
+
+.errors {
+    color: #CB200D;
+}
+
+.input-login {
+    width: 240px;
+    height: 30px;
+}
