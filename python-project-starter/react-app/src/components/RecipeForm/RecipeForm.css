@@ -1,8 +1,9 @@
 .recipe-form {
     display: grid;
-    grid-template-rows: 20px;
+    grid-template-rows: 40px;
     justify-content: center;
     row-gap: 10px;
     padding-bottom: 314px;
-    background: linear-gradient(#E3B11A, #EF6510)
+    background: linear-gradient(#E3B11A, #EF6510);
 }
+
