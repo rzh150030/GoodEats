@@ -1,10 +1,9 @@
 import React, {} from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { Redirect, useParams } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import RecipeForm from "../RecipeForm";
 
 export default function EditRecipe() {
-    const history = useHistory();
     const {id} = useParams();
     const currentRecipe = useSelector(state => state.recipe.currentRecipe);
     const initIngredients = currentRecipe.ingredients;
@@ -12,7 +11,7 @@ export default function EditRecipe() {
     const initName = currentRecipe.name;
     const checkWhichMethod = false; // prop for form component
 
-    if (!currentRecipe.id) history.push(`/recipe/detail/${id}`);
+    if (!currentRecipe.id) return <Redirect to={`/recipe/detail/${id}`} />
 
     return (
         <>
