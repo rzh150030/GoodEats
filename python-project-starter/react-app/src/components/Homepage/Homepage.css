@@ -38,3 +38,8 @@
     color: black;
     transition: box-shadow .5s;
 }
+
+.home-page {
+    background: linear-gradient(#F5E112, #F59412);
+    height: 639px;
+}
