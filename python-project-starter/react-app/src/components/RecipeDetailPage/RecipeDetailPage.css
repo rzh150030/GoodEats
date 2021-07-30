@@ -1,6 +1,6 @@
 .recipe-detail-page {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 400px 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     grid-template-areas:
         "ingred list1 other1"
@@ -9,6 +9,7 @@
 
 .ingred-detail-label {
     grid-area: ingred;
+    justify-content: right;
 }
 
 .ingred-detail-list {
