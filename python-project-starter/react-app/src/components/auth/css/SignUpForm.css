@@ -1,3 +1,15 @@
 .signup-form {
-    
+    display: grid;
+    background-color: #8EA68C;
+    grid-template-rows: 1fr auto;
+    justify-items: center;
+    padding-bottom: 314px;
+}
+
+.signup-labels {
+    display: flex;
+    justify-content: left;
+    width: 247px;
+    margin-top: 10px;
+    margin-bottom: 2px;
 }

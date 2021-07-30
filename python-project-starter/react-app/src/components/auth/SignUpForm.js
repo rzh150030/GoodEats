@@ -50,7 +50,7 @@ const SignUpForm = () => {
           <li key={ind}>{error}</li>
         ))}
       </ul>
-      <label>User Name</label>
+      <label className="signup-labels">User Name</label>
       <div>
         <input
           type='text'
@@ -59,7 +59,7 @@ const SignUpForm = () => {
           value={username}
         ></input>
       </div>
-      <label>Email</label>
+      <label className="signup-labels">Email</label>
       <div>
         <input
           type='text'
@@ -68,7 +68,7 @@ const SignUpForm = () => {
           value={email}
         ></input>
       </div>
-      <label>Password</label>
+      <label className="signup-labels">Password</label>
       <div>
         <input
           type='password'
@@ -77,7 +77,7 @@ const SignUpForm = () => {
           value={password}
         ></input>
       </div>
-      <label>Repeat Password</label>
+      <label className="signup-labels">Repeat Password</label>
       <div>
         <input
           type='password'
