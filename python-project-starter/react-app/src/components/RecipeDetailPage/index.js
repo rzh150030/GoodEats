@@ -42,18 +42,17 @@ export default function RecipeDetailPage() {
                 <label className="ingred-detail-label">Ingredients: </label>
                 <ul className="ingred-detail-list">
                     {currentRecipe.ingredients?.sort(({id: a}, {id: b}) => a - b).map(ingred => (
-                        <li key={ingred.id}>{ingred.ingredient}</li>
+                        <li key={ingred.id} className="ingredients">{ingred.ingredient}</li>
                     ))}
                 </ul>
                 <label className="direct-detail-label">Directions: </label>
                 <ol className="direct-detail-list">
                     {currentRecipe.directions?.sort(({id: a}, {id: b}) => a - b).map(direct => (
-                        <li key={direct.id}>{direct.step}</li>
+                        <li key={direct.id} className="steps">{direct.step}</li>
                     ))}
                 </ol>
                 {editDeleteButton}
                 <h2 className="recipe-detail-category">Category: {currentRecipe.category_name}</h2>
-
             </article>
         </>
     )
