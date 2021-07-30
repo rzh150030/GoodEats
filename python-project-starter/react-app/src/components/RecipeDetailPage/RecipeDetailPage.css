@@ -1,7 +1,8 @@
 .recipe-article {
     display: grid;
     grid-template-columns: 400px 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 50% 50%;
+    column-gap: 15px;
     grid-template-areas:
         "ingred list1 other1"
         "direct list2 other2";
