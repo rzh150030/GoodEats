@@ -39,26 +39,21 @@ export default function RecipeDetailPage() {
         <>
             <h1>{currentRecipe.name}</h1>
             <article className="recipe-detail-page">
-                <div>
-                    <label className="ingred-detail-label">Ingredients: </label>
-                    <ul className="ingred-detail-list">
-                        {currentRecipe.ingredients?.sort(({id: a}, {id: b}) => a - b).map(ingred => (
-                            <li key={ingred.id}>{ingred.ingredient}</li>
-                        ))}
-                    </ul>
-                </div>
-                <div>
-                    <label className="direct-detail-label">Directions: </label>
-                    <ol className="direct-detail-list">
-                        {currentRecipe.directions?.sort(({id: a}, {id: b}) => a - b).map(direct => (
-                            <li key={direct.id}>{direct.step}</li>
-                        ))}
-                    </ol>
-                </div>
-                <div>
-                    {editDeleteButton}
-                    <h2 className="recipe-detail-category">Category: {currentRecipe.category_name}</h2>
-                </div>
+                <label className="ingred-detail-label">Ingredients: </label>
+                <ul className="ingred-detail-list">
+                    {currentRecipe.ingredients?.sort(({id: a}, {id: b}) => a - b).map(ingred => (
+                        <li key={ingred.id}>{ingred.ingredient}</li>
+                    ))}
+                </ul>
+                <label className="direct-detail-label">Directions: </label>
+                <ol className="direct-detail-list">
+                    {currentRecipe.directions?.sort(({id: a}, {id: b}) => a - b).map(direct => (
+                        <li key={direct.id}>{direct.step}</li>
+                    ))}
+                </ol>
+                {editDeleteButton}
+                <h2 className="recipe-detail-category">Category: {currentRecipe.category_name}</h2>
+
             </article>
         </>
     )
