@@ -3,6 +3,7 @@
     background-color: #8EA68C;
     grid-template-rows: 1fr auto;
     justify-items: center;
+    padding-bottom: 314px;
 }
 
 .login-labels {
