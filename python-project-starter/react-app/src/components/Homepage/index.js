@@ -1,12 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import "./Homepage.css";
 
 export default function Homepage() {
     const recipeList = useSelector(state => Object.values(state.recipe.recipes));
 
     return (
-        <div>
+        <div className="home-page">
             <div>
                 <span>Recent Recipes</span>
             </div>
