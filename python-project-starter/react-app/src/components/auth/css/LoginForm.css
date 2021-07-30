@@ -21,3 +21,11 @@
     width: 240px;
     height: 30px;
 }
+
+.submit-login {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 249px;
+    height: 40px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
