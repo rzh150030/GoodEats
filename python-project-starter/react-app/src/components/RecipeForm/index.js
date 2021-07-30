@@ -18,6 +18,8 @@ export default function RecipeForm(props) {
     let creatingRecipe = props.checkWhichMethod; //check if updating or creating recipe
 
     //onChange event handlers
+    //ingredients and directions are array of objects
+    // - to update them extract object from array and change the value at the key and splice back into a new array
     const addName = (e) => setName(e.target.value);
     const addIngred = (e, i) => {
         let newIngred = ingredients[i];
