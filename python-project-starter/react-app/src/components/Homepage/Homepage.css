@@ -5,6 +5,17 @@
     margin-top: 20px;
     column-gap: 10px;
     row-gap: 10px;
+    margin-left: 80px;
+}
+
+.recipes-container {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+
+}
+
+.recipe-links:hover {
+    box-shadow: 0px 2px 2px 2px #8B89E5;
 }
 
 #recent-recipe-title {
@@ -16,4 +27,14 @@
     font-size: 40px;
     padding-top: 20px;
     padding-bottom: 10px;
+}
+
+.recipe-links {
+    font-family: 'Trebuchet MS', sans-serif, Times, serif;
+    font-weight: 300px;
+    font-size: 25px;
+    text-decoration: none;
+    margin-bottom: 25px;
+    color: black;
+    transition: box-shadow .5s;
 }
