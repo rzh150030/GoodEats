@@ -46,8 +46,8 @@ const LoginForm = () => {
           <li key={ind}>{error}</li>
         ))}
       </ul>
+      <label htmlFor='email' className="login-labels">Email</label>
       <div>
-        <label htmlFor='email' className="email">Email</label>
         <input
           name='email'
           type='text'
@@ -57,8 +57,9 @@ const LoginForm = () => {
           className="input"
         />
       </div>
+      <label htmlFor='password' className="login-labels">Password</label>
       <div>
-        <label htmlFor='password'>Password</label>
+
         <input
           name='password'
           type='password'
