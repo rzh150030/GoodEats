@@ -1,6 +1,6 @@
 from flask import Blueprint
 from flask_login import login_required
-from app.models import db, Category
+from app.models import db, Recipe
 
 favorite_routes = Blueprint('favorites', __name__)
 
@@ -9,4 +9,5 @@ favorite_routes = Blueprint('favorites', __name__)
 @favorite_routes.route("/favor/<int:id>", methods=["POST"])
 # @login_required
 def favor_recipe(id):
+    recipe = Recipe.query.get(id)
     
