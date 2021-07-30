@@ -8,10 +8,10 @@ export default function Homepage() {
 
     return (
         <div className="home-page">
-            <div>
+            <div id="recent-recipe-title">
                 <span>Recent Recipes</span>
             </div>
-            <div>
+            <div className="recent-recipes-container">
                 {recipeList.map(recipe => (
                     <div key={recipe.id}>
                         <NavLink to={`/recipe/detail/${recipe.id}`}>
