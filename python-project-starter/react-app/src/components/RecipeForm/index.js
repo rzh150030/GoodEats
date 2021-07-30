@@ -115,8 +115,8 @@ export default function RecipeForm(props) {
             <div className="dynamic-input-containers">
                 <label className="recipe-form-labels">Ingredients: </label>
                 {ingredients?.map((ingred, i) => (
-                <div key={i}>
-                    <input type="text" value={ingred.ingredient} onChange={(e) => addIngred(e, i)} className="input-ingred" required/>
+                <div key={i} className="input-containers">
+                    <input type="text" value={ingred.ingredient} onChange={(e) => addIngred(e, i)} className="input-recipe" required/>
                     <button onClick={(e) => deleteIngred(e, i)} className="delete-input-button">Delete</button>
                 </div>
             ))}
@@ -125,8 +125,8 @@ export default function RecipeForm(props) {
             <div className="dynamic-input-containers">
                 <label className="recipe-form-labels">Directions: </label>
                 {directions?.map((direct, i) => (
-                <div key={i}>
-                    <input type="text" value={direct.step} onChange={(e) => addDirect(e, i)} className="input-direct" required/>
+                <div key={i} className="input-containers">
+                    <input type="text" value={direct.step} onChange={(e) => addDirect(e, i)} className="input-recipe" required/>
                     <button onClick={(e) => deleteDirect(e, i)} className="delete-input-button">Delete</button>
                 </div>
                 ))}
