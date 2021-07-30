@@ -1,0 +1,32 @@
+.login-form {
+    display: grid;
+    background-color: #8EA68C;
+    grid-template-rows: 1fr auto;
+    justify-items: center;
+    padding-bottom: 314px;
+}
+
+.login-labels {
+    display: flex;
+    justify-content: left;
+    width: 247px;
+    margin-top: 10px;
+    margin-bottom: 2px;
+}
+
+.errors {
+    color: #CB200D;
+}
+
+.input-login {
+    width: 240px;
+    height: 30px;
+}
+
+.submit-login {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 249px;
+    height: 40px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

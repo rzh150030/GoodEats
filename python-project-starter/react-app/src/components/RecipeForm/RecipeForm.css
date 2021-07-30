@@ -1,6 +1,6 @@
 .recipe-form {
     display: grid;
-    grid-template-rows: auto;
+    grid-template-rows: 20px;
     justify-content: center;
     row-gap: 10px;
     padding-bottom: 314px;
