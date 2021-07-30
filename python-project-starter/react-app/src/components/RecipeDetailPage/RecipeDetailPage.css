@@ -9,22 +9,26 @@
 
 .ingred-detail-label {
     grid-area: ingred;
-    padding-left: 310px;
+    padding-left: 290px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
 }
 
 .ingred-detail-list {
     grid-area: list1;
+    font-family: Monaco, 'monospace', Arial, sans-serif;
 }
 
 .direct-detail-label {
     grid-area: direct;
-    padding-left: 310px;
+    padding-left: 290px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
 }
 
 .direct-detail-list {
     grid-area: list2;
+    font-family: Monaco, 'monospace', Arial, sans-serif;
 }
 
 .recipe-detail-buttons {
