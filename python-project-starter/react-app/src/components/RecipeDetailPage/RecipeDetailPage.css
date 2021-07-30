@@ -56,9 +56,15 @@
     height: 30px;
     width: 80px;
     margin-right: 40px;
+    border-radius: 12px;
+    background-color: blue;
+    color: white;
 }
 
 #delete-button {
     height: 30px;
     width: 80px;
+    border-radius: 12px;
+    background-color: red;
+    color: white;
 }
