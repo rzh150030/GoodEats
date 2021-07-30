@@ -9,7 +9,8 @@
 
 .ingred-detail-label {
     grid-area: ingred;
-    justify-content: right;
+    padding-left: 310px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .ingred-detail-list {
@@ -18,6 +19,8 @@
 
 .direct-detail-label {
     grid-area: direct;
+    padding-left: 310px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .direct-detail-list {
