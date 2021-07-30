@@ -29,3 +29,9 @@
     align-items: center;
     font-size: x-large;
 }
+
+.buttons-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
