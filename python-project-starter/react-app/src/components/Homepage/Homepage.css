@@ -11,7 +11,6 @@
 .recipes-container {
     display: grid;
     grid-template-rows: 1fr 1fr;
-
 }
 
 .recipe-links:hover {
@@ -41,5 +40,7 @@
 
 .home-page {
     background: linear-gradient(#F5E112, #F59412);
-    height: 639px;
+    height: auto;
+    padding-bottom: 320px;
+    margin-bottom: 0px;
 }
