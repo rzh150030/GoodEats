@@ -36,9 +36,9 @@ export default function RecipeDetailPage() {
     }
 
     return (
-        <>
+        <div id="recipe-detail-page">
             <h1 id="current-recipe-name">{currentRecipe.name}</h1>
-            <article className="recipe-detail-page">
+            <article className="recipe-article">
                 <label className="ingred-detail-label">Ingredients: </label>
                 <ul className="ingred-detail-list">
                     {currentRecipe.ingredients?.sort(({id: a}, {id: b}) => a - b).map(ingred => (
@@ -54,6 +54,6 @@ export default function RecipeDetailPage() {
                 {editDeleteButton}
                 <h2 className="recipe-detail-category">Category: {currentRecipe.category_name}</h2>
             </article>
-        </>
+        </div>
     )
 }
