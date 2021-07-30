@@ -39,7 +39,7 @@ const NavBar = ({loaded}) => {
       <NavLink exact to='/' className="home-link">
         Good Eats
       </NavLink>
-      <NavLink to='/recipe/create' exact={true} activeClassName='active'>
+      <NavLink to='/recipe/create' exact={true} activeClassName='create-link'>
         Create a Recipe
       </NavLink>
       {loaded && sessionButtons}

@@ -1,10 +1,7 @@
 .navbar {
     display: flex;
-    padding-top: 1em;
     border-bottom: solid;
-    padding-bottom: 1.2em;
-    justify-content: space-around;
-    background-color: #E08627;
+    justify-content: space-between;
 }
 
 .session-button {
@@ -15,6 +12,11 @@
 }
 
 .home-link {
-    display: block;
-    
+    display: inline;
+    background-image: url(../../images/good-eats-logo.png);
+    width: 353px;
+    height: 80px;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
 }
