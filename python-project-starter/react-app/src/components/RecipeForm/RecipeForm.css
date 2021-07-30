@@ -7,3 +7,9 @@
     background: linear-gradient(#E3B11A, #EF6510);
 }
 
+.recipe-form-labels {
+    display: block;
+    margin-bottom: 5px;
+}
+
+
