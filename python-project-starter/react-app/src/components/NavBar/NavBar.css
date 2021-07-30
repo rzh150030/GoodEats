@@ -2,6 +2,7 @@
     display: flex;
     border-bottom: solid;
     justify-content: space-between;
+    padding-bottom: 1em;
 }
 
 .session-button {
