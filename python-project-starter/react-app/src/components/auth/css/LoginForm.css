@@ -1,0 +1,6 @@
+.login-form {
+    display: grid;
+    background-color: #8EA68C;
+    grid-template-rows: 1fr auto;
+    justify-items: center;
+}
