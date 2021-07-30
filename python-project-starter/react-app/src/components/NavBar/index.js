@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import LogoutButton from '../../components/auth/LogoutButton';
+import "./NavBar.css";
 
 const NavBar = ({loaded}) => {
   const history = useHistory();
@@ -29,14 +30,13 @@ const NavBar = ({loaded}) => {
       <>
         <button onClick={loginButton} className="session-button">Log In</button>
         <button onClick={signupButton} className="session-button">Sign Up</button>
-
       </>
     );
   }
 
   return (
-    <nav>
-      <NavLink exact to='/'>
+    <nav className="navbar">
+      <NavLink exact to='/' className="home-link">
         Good Eats
       </NavLink>
       <NavLink to='/recipe/create' exact={true} activeClassName='active'>
