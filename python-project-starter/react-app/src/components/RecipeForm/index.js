@@ -113,7 +113,7 @@ export default function RecipeForm(props) {
                 ))}
             </select>
             <div>
-                <label>Ingredients: </label>
+                <label className="recipe-form-labels">Ingredients: </label>
                 {ingredients?.map((ingred, i) => (
                 <div key={i}>
                     <input type="text" value={ingred.ingredient} onChange={(e) => addIngred(e, i)} className="input-ingred" required/>
@@ -123,16 +123,16 @@ export default function RecipeForm(props) {
                 <button onClick={newIngredInput} className="add-ingred-button">One More Ingredient</button>
             </div>
             <div>
-                <label>Directions: </label>
+                <label className="recipe-form-labels">Directions: </label>
                 {directions?.map((direct, i) => (
                 <div key={i}>
                     <input type="text" value={direct.step} onChange={(e) => addDirect(e, i)} className="input-direct" required/>
                     <button onClick={(e) => deleteDirect(e, i)} className="delete-direct-button">Delete</button>
                 </div>
                 ))}
-                <button onClick={newDirectInput}>One More Step</button>
+                <button onClick={newDirectInput} className="add-direct-button">One More Step</button>
             </div>
-            <button type="submit">Save Recipe</button>
+            <button type="submit" className="save-recipe-button">Save Recipe</button>
         </form>
     )
 }
