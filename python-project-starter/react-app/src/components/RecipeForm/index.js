@@ -107,7 +107,7 @@ export default function RecipeForm(props) {
             <label className="recipe-form-labels">Name: </label>
             <input type="text" value={name} onChange={addName} required/>
             <label className="recipe-form-labels">Category: </label>
-            <select value={category} onChange={addCat}>
+            <select value={category} onChange={addCat} className="category-select">
                 {categories?.map(cat => (
                     <option key={cat.id}>{cat.name}</option>
                 ))}
@@ -116,22 +116,18 @@ export default function RecipeForm(props) {
                 <label>Ingredients: </label>
                 {ingredients?.map((ingred, i) => (
                 <div key={i}>
-                    <input type="text" value={ingred.ingredient} onChange={(e) => addIngred(e, i)} required/>
-                    <div>
-                        <button onClick={(e) => deleteIngred(e, i)}>Delete</button>
-                    </div>
+                    <input type="text" value={ingred.ingredient} onChange={(e) => addIngred(e, i)} className="input-ingred" required/>
+                    <button onClick={(e) => deleteIngred(e, i)} className="delete-ingred-button">Delete</button>
                 </div>
             ))}
-                <button onClick={newIngredInput}>One More Ingredient</button>
+                <button onClick={newIngredInput} className="add-ingred-button">One More Ingredient</button>
             </div>
             <div>
                 <label>Directions: </label>
                 {directions?.map((direct, i) => (
                 <div key={i}>
-                    <input type="text" value={direct.step} onChange={(e) => addDirect(e, i)} required/>
-                    <div>
-                        <button onClick={(e) => deleteDirect(e, i)}>Delete</button>
-                    </div>
+                    <input type="text" value={direct.step} onChange={(e) => addDirect(e, i)} className="input-direct" required/>
+                    <button onClick={(e) => deleteDirect(e, i)} className="delete-direct-button">Delete</button>
                 </div>
                 ))}
                 <button onClick={newDirectInput}>One More Step</button>
