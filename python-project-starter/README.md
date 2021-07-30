@@ -23,7 +23,7 @@ This is the starter for the Flask React project.
 5. Get into your pipenv, migrate your database, seed your database, and run your flask app
 
    ```bash
-   pipenv shell
+   pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
    ```
 
    ```bash

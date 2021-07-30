@@ -1,0 +1,36 @@
+.recipe-form {
+    display: grid;
+    grid-template-rows: 40px;
+    justify-content: center;
+    row-gap: 10px;
+    padding-bottom: 314px;
+    background: linear-gradient(#E3B11A, #EF6510);
+}
+
+.recipe-form-labels {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.delete-input-button {
+    background-color: red;
+    color: white;
+    margin-left: 10px;
+}
+
+.add-input-button {
+    background-color: green;
+    color: white;
+    margin-top: 8px;
+}
+
+.save-recipe-button {
+    background-color: blue;
+    color: white;
+    margin-top: 8px;
+    height: 50px;
+}
+
+.input-recipe {
+    margin-top: 10px;
+}

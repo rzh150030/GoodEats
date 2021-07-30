@@ -1,0 +1,40 @@
+.navbar {
+    display: flex;
+    border-bottom: solid;
+    justify-content: space-between;
+    padding-bottom: 1em;
+}
+
+.session-button {
+    box-sizing: content-box;
+    width: 100px;
+    height: 20px;
+    border-radius: 12px;
+    background-color: #F59E12;
+}
+
+.home-link {
+    display: inline;
+    background-image: url(../../images/good-eats-logo.png);
+    width: 353px;
+    height: 80px;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.create-link {
+    display: flex;
+    text-decoration: none;
+    font-family: Impact, sans-serif, Times, serif;
+    align-items: center;
+    font-size: x-large;
+    color: #1AA30A;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 400px;
+}

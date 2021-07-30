@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
+import "./css/LoginForm.css";
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -26,38 +27,49 @@ const LoginForm = () => {
     setPassword(e.target.value);
   };
 
+  const demoLogin = async (e) => {
+    e.preventDefault();
+    const data = await dispatch(login("demo@aa.io", "password"));
+    if (data) {
+      setErrors(data);
+    }
+  }
+
   if (user) {
     return <Redirect to='/' />;
   }
 
   return (
-    <form onSubmit={onLogin}>
-      <div>
+    <form onSubmit={onLogin} className="login-form">
+      <ul className='errors'>
         {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
+          <li key={ind}>{error}</li>
         ))}
-      </div>
+      </ul>
+      <label htmlFor='email' className="login-labels">Email</label>
       <div>
-        <label htmlFor='email'>Email</label>
         <input
           name='email'
           type='text'
           placeholder='Email'
           value={email}
           onChange={updateEmail}
+          className="input-login"
         />
       </div>
+      <label htmlFor='password' className="login-labels">Password</label>
       <div>
-        <label htmlFor='password'>Password</label>
         <input
           name='password'
           type='password'
           placeholder='Password'
           value={password}
           onChange={updatePassword}
+          className="input-login"
         />
-        <button type='submit'>Login</button>
       </div>
+      <button type='submit' className="submit-login">Login</button>
+      <button type="submit" onClick={demoLogin} className="submit-login">Demo</button>
     </form>
   );
 };

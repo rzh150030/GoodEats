@@ -1,0 +1,80 @@
+.recipe-article {
+    display: grid;
+    grid-template-columns: 400px 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+        "ingred list1 other1"
+        "direct list2 other2";
+}
+
+#recipe-detail-page {
+    background: linear-gradient(#0FF499, #94D00D);
+    height: 700px
+}
+
+.ingred-detail-label {
+    grid-area: ingred;
+    padding-left: 290px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
+}
+
+.ingred-detail-list {
+    grid-area: list1;
+    font-family: Monaco, 'monospace', Arial, sans-serif;
+}
+
+.direct-detail-label {
+    grid-area: direct;
+    padding-left: 290px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
+}
+
+.direct-detail-list {
+    grid-area: list2;
+    font-family: Monaco, 'monospace', Arial, sans-serif;
+}
+
+.recipe-detail-buttons {
+    grid-area: other1;
+}
+
+.recipe-detail-category {
+    grid-area: other2;
+}
+
+#current-recipe-name {
+    display: flex;
+    justify-content: center;
+}
+
+.ingredients {
+    margin: 12px 0px;
+}
+
+.steps {
+    margin: 12px 0px;
+}
+
+#edit-button {
+    height: 30px;
+    width: 80px;
+    margin-right: 40px;
+    border-radius: 12px;
+    background-color: #EF6510;
+    color: white;
+}
+
+#delete-button {
+    height: 30px;
+    width: 80px;
+    border-radius: 12px;
+    background-color: red;
+    color: white;
+}
+
+#current-recipe-name {
+    margin-top: 0px;
+    padding-top: 15px;
+}
