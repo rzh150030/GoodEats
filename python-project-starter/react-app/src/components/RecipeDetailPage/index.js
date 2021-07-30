@@ -37,7 +37,7 @@ export default function RecipeDetailPage() {
 
     return (
         <>
-            <h1>{currentRecipe.name}</h1>
+            <h1 id="current-recipe-name">{currentRecipe.name}</h1>
             <article className="recipe-detail-page">
                 <label className="ingred-detail-label">Ingredients: </label>
                 <ul className="ingred-detail-list">

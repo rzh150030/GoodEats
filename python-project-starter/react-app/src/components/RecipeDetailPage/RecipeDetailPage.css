@@ -30,3 +30,8 @@
 .recipe-detail-category {
     grid-area: other2;
 }
+
+#current-recipe-name {
+    display: flex;
+    justify-content: center;
+}
