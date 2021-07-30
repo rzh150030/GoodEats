@@ -98,13 +98,13 @@ export default function RecipeForm(props) {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <ul>
+        <form onSubmit={handleSubmit} className="recipe-form">
+            <ul className="errors">
                 {errors && errors.map((err, i) => <li key={i}>{err}</li>)}
             </ul>
-            <label>Name: </label>
+            <label className="recipe-form-labels">Name: </label>
             <input type="text" value={name} onChange={addName} required/>
-            <label>Category: </label>
+            <label className="recipe-form-labels">Category: </label>
             <select value={category} onChange={addCat}>
                 {categories?.map(cat => (
                     <option key={cat.id}>{cat.name}</option>
