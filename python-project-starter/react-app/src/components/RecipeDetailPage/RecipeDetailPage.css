@@ -1,7 +1,7 @@
 .recipe-article {
     display: grid;
     grid-template-columns: 400px 1fr 1fr;
-    grid-template-rows: 50% 50%;
+    grid-template-rows: auto auto;
     column-gap: 15px;
     grid-template-areas:
         "ingred list1 other1"
@@ -10,7 +10,7 @@
 
 #recipe-detail-page {
     background: linear-gradient(#0FF499, #94D00D);
-    height: 700px
+    height: 700px;
 }
 
 .ingred-detail-label {
