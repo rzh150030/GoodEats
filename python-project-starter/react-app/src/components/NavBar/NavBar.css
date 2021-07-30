@@ -21,3 +21,11 @@
     white-space: nowrap;
     overflow: hidden;
 }
+
+.create-link {
+    display: flex;
+    text-decoration: none;
+    font-family: Impact, sans-serif, Times, serif;
+    align-items: center;
+    font-size: x-large;
+}
