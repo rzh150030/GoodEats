@@ -29,8 +29,8 @@ export default function RecipeDetailPage() {
     if (sessionUser && sessionUser.id === currentRecipe.user_id) {
         editDeleteButton = (
             <div className="recipe-detail-buttons">
-                <button onClick={editRecipe}>Edit</button>
-                <button onClick={deletion}>Delete</button>
+                <button onClick={editRecipe} id="edit-button">Edit</button>
+                <button onClick={deletion} id="delete-button">Delete</button>
             </div>
         );
     }
