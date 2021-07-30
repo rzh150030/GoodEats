@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { getRecipe, deleteRecipe } from '../../store/recipe';
+import "./RecipeDetailPage.css";
 
 export default function RecipeDetailPage() {
     const {id} = useParams();
@@ -35,7 +36,7 @@ export default function RecipeDetailPage() {
     }
 
     return (
-        <article>
+        <article className="recipe-detail-page">
             <h1>{currentRecipe.name}</h1>
             <label>Ingredients: </label>
             <ul>
