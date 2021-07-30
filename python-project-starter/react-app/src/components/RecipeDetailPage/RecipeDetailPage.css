@@ -10,7 +10,7 @@
 
 #recipe-detail-page {
     background: linear-gradient(#0FF499, #94D00D);
-    height: auto;
+    padding-bottom: 290px;
 }
 
 .ingred-detail-label {
