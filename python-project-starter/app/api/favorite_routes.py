@@ -32,3 +32,4 @@ def favor_recipe(id):
 # @login_required
 def unfavor_recipe(id):
     user = User.query.get(2) # change 2 to currentuser.id when going frontend
+    recipe = Recipe.query.get(id)
