@@ -69,7 +69,7 @@ def create_recipe():
 # ingredient and direction table data is handled as follows:
 # - data from front end contains mixture of items with ids of 0s and numbers
 #  - item with id of 0 is new information that needs to be created
-#  - item with a number other than 0 is edited
+#  - item with an id number other than 0 is edited
 # - front end data is compared with backend data
 # - delete items in data from backend after being found and updated
 # - remaining data fetched from backend is deleted from database

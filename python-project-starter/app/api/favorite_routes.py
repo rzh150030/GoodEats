@@ -11,14 +11,19 @@ favorite_routes = Blueprint('favorites', __name__)
 # @login_required
 def all_user_favorites(id):
     user = User.query.get(id)
+    print(user.to_dict_with_favors())
     return user.to_dict_with_favors()
 
 # Favor a recipe
 @favorite_routes.route("/favor/<int:id>", methods=["POST"])
 # @login_required
 def favor_recipe(id):
+    user = User.query.get(2) # change 2 to currentuser.id when going frontend
     recipe = Recipe.query.get(id)
-    if not recipe.userfavs:
-        return {"message": "yes"}
+    if not recipe.userfavs and recipe.user_id != user.id:
+        recipe.userfavs.append(user)
+        db.session.add(recipe)
+        db.session.commit()
+        return user.to_dict_with_favors()
 
     return {"errors": ["Something went wrong, please try again later."]}
