@@ -33,3 +33,10 @@ def favor_recipe(id):
 def unfavor_recipe(id):
     user = User.query.get(2) # change 2 to currentuser.id when going frontend
     recipe = Recipe.query.get(id)
+    if user in recipe.userfavs and recipe.user_id != user.id:
+        recipe.userfavs.remove(user)
+        db.session.add(recipe)
+        db.session.commit()
+        return user.to_dict_with_favors()
+
+    return {"errors": ["Something went wrong, please try again later."]}
