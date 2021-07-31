@@ -18,7 +18,7 @@ def all_user_favorites(id):
 # @login_required
 def favor_recipe(id):
     recipe = Recipe.query.get(id)
-    if recipe.userfavs:
+    if not recipe.userfavs:
         return {"message": "yes"}
 
-    return {"message": "in route, not pass condition"}
+    return {"errors": ["Something went wrong, please try again later."]}
