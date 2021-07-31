@@ -26,3 +26,9 @@ def favor_recipe(id):
         return user.to_dict_with_favors()
 
     return {"errors": ["Something went wrong, please try again later."]}
+
+# Unfavor a recipe
+@favorite_routes.route("/unfavor/<int:id>", methods=["DELETE"])
+# @login_required
+def unfavor_recipe(id):
+    
