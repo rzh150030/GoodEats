@@ -15,9 +15,9 @@ def all_user_favorites(id):
 
 # Favor a recipe
 @favorite_routes.route("/favor/<int:id>", methods=["POST"])
-# @login_required
+@login_required
 def favor_recipe(id):
-    user = User.query.get(3) # change 2 to currentuser.id when going frontend
+    user = User.query.get(current_user.id)
     recipe = Recipe.query.get(id)
     if user not in recipe.userfavs and recipe.user_id != user.id:
         recipe.userfavs.append(user)
@@ -29,9 +29,9 @@ def favor_recipe(id):
 
 # Unfavor a recipe
 @favorite_routes.route("/unfavor/<int:id>", methods=["DELETE"])
-# @login_required
+@login_required
 def unfavor_recipe(id):
-    user = User.query.get(2) # change 2 to currentuser.id when going frontend
+    user = User.query.get(current_user.id)
     recipe = Recipe.query.get(id)
     if user in recipe.userfavs and recipe.user_id != user.id:
         recipe.userfavs.remove(user)
