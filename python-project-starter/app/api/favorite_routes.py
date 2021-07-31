@@ -11,7 +11,6 @@ favorite_routes = Blueprint('favorites', __name__)
 # @login_required
 def all_user_favorites(id):
     user = User.query.get(id)
-    print(user.to_dict_with_favors())
     return user.to_dict_with_favors()
 
 # Favor a recipe
