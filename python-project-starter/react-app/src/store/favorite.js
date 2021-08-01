@@ -2,9 +2,14 @@ const LOAD_FAVORITES = "favorite/loadFavorites";
 const FAVOR_RECIPE = "favorite/favorRecipe";
 const UNFAVOR_RECIPE = "favorite/unfavorRecipe";
 
-const makeFavor = (favorRecipe) => ({
+const makeFavor = (updatedFavors) => ({
     type: FAVOR_RECIPE,
-    favorRecipe
+    updatedFavors
+});
+
+const deleteFavor = (updatedFavors) => ({
+    type: UNFAVOR_RECIPE,
+    updatedFavors
 });
 
 const initialState = {favorites: {}};
