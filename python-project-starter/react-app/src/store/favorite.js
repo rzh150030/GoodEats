@@ -12,6 +12,17 @@ const deleteFavor = (updatedFavors) => ({
     updatedFavors
 });
 
+//thunk for favoriting a recipe
+export const favorRecipe = (recipeId) => async dispatch => {
+    const response = await fetch(`/api/favorites/favor/${recipeId}`, {
+        method: "POST"
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+    }
+};
+
 const initialState = {favorites: {}};
 
 export default function favoriteReducer(state = initialState, action) {

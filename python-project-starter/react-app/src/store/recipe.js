@@ -53,6 +53,9 @@ export const getAllRecipes = () => async dispatch => {
         const data = await response.json();
         dispatch(loadAllRecipe(data));
     }
+    else {
+        
+    }
 }
 
 //thunk for creating a new recipe
