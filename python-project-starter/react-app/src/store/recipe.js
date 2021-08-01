@@ -128,6 +128,14 @@ export const deleteRecipe = (recipeId) => async dispatch => {
     }
 }
 
+//thunk for getting user's recipes
+export const userRecipes = (userId) => async dispatch => {
+    const response = await fetch(`/api/recipes/user/${userId}`);
+
+    if (response.ok) {
+        const data = await response.json();
+    }
+}
 
 const initialState = {recipes: [], currentRecipe: {}, categories: {}}
 
