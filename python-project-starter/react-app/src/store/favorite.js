@@ -49,10 +49,14 @@ export const getFavoredRecipes = (userId) => async dispatch => {
     }
 };
 
+//thunk for unfavoriting a recipe
+
 const initialState = {favorites: {}};
 
 export default function favoriteReducer(state = initialState, action) {
     switch(action.type) {
+        case FAVOR_RECIPE:
+            return {...state, favorites: action.payload.favorites};
         case LOAD_FAVORITES:
             return {...state, favorites: action.payload.favorites};
         default:
