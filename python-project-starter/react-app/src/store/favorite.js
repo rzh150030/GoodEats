@@ -45,7 +45,7 @@ export const getFavoredRecipes = (userId) => async dispatch => {
 
     if (response.ok) {
         const data = await response.json();
-        dispatch()
+        dispatch(loadFavorites(data));
     }
 };
 
@@ -53,6 +53,8 @@ const initialState = {favorites: {}};
 
 export default function favoriteReducer(state = initialState, action) {
     switch(action.type) {
+        case LOAD_FAVORITES:
+            return {...state, favorites: action.payload.favorites};
         default:
             return state;
     }
