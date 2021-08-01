@@ -20,6 +20,17 @@ export const favorRecipe = (recipeId) => async dispatch => {
 
     if (response.ok) {
         const data = await response.json();
+        dispatch(makeFavor(data));
+        return null;
+    }
+    else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    }
+    else {
+        return ['An error occurred. Please try again later.'];
     }
 };
 
