@@ -4,13 +4,18 @@ const UNFAVOR_RECIPE = "favorite/unfavorRecipe";
 
 const makeFavor = (updatedFavors) => ({
     type: FAVOR_RECIPE,
-    updatedFavors
+    payload: updatedFavors
 });
 
 const deleteFavor = (updatedFavors) => ({
     type: UNFAVOR_RECIPE,
-    updatedFavors
+    payload: updatedFavors
 });
+
+const loadFavorites = (favorites) => ({
+    type: LOAD_FAVORITES,
+    payload: favorites
+})
 
 //thunk for favoriting a recipe
 export const favorRecipe = (recipeId) => async dispatch => {
@@ -36,7 +41,12 @@ export const favorRecipe = (recipeId) => async dispatch => {
 
 //thunk for getting user's favorite recipes
 export const getFavoredRecipes = (userId) => async dispatch => {
-    
+    const response = await fetch(`/api/favorites/${userId}`);
+
+    if (response.ok) {
+        const data = await response.json();
+        dispatch()
+    }
 };
 
 const initialState = {favorites: {}};
