@@ -34,6 +34,11 @@ export const favorRecipe = (recipeId) => async dispatch => {
     }
 };
 
+//thunk for getting user's favorite recipes
+export const getFavoredRecipes = (userId) => async dispatch => {
+    
+};
+
 const initialState = {favorites: {}};
 
 export default function favoriteReducer(state = initialState, action) {
