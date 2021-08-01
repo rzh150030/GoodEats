@@ -4,6 +4,7 @@ const CREATE_RECIPE = "recipe/createRecipe";
 const GET_CATEGORIES = "recipe/getCategories";
 const UPDATE_RECIPE = "recipe/updateRecipe";
 const DELETE_RECIPE = "recipe/deleteRecipe";
+const USER_RECIPES = "recipe/loadUserRecipes";
 
 const makeRecipe = (recipe) => ({
     type: CREATE_RECIPE,
@@ -31,9 +32,14 @@ const patchRecipe = (newRecipe) => ({
 });
 
 const destroyRecipe = (deleteId) => ({
-    type:DELETE_RECIPE,
+    type: DELETE_RECIPE,
     deleteId // finds which recipe to remove from state
-})
+});
+
+const loadUserRecipes = (userRecipes) => ({
+    type: USER_RECIPES,
+    payload: userRecipes
+});
 
 //thunk for get a recipe
 export const getRecipe = (recipeId) => async dispatch => {
@@ -134,10 +140,11 @@ export const userRecipes = (userId) => async dispatch => {
 
     if (response.ok) {
         const data = await response.json();
+        dispatch(loadUserRecipes(data));
     }
 }
 
-const initialState = {recipes: [], currentRecipe: {}, categories: {}}
+const initialState = {recipes: [], currentRecipe: {}, categories: {}, userRecipes: {}};
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
@@ -170,6 +177,9 @@ export default function reducer(state = initialState, action) {
                 }
             }
             break;
+        case USER_RECIPES:
+            let userRecipesState = {...state};
+
         default:
             return state;
     }
