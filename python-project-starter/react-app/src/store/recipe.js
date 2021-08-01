@@ -36,9 +36,9 @@ const destroyRecipe = (deleteId) => ({
     deleteId // finds which recipe to remove from state
 });
 
-const loadUserRecipes = (userRecipes) => ({
+const loadUserRecipes = (userRecipesData) => ({
     type: USER_RECIPES,
-    payload: userRecipes
+    payload: userRecipesData
 });
 
 //thunk for get a recipe
@@ -179,7 +179,10 @@ export default function reducer(state = initialState, action) {
             break;
         case USER_RECIPES:
             let userRecipesState = {...state};
-
+            action.payload.recipes.forEach(recipe => {
+                userRecipesState.userRecipes[recipe.id] = recipe;
+            });
+            return userRecipesState;
         default:
             return state;
     }
