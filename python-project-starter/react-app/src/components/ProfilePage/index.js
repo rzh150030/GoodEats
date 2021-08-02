@@ -14,7 +14,7 @@ export default function ProfilePage() {
     useEffect(() => {
         dispatch(userRecipes(sessionUser.id));
         dispatch(getFavoredRecipes(sessionUser.id));
-    }, [dispatch]);
+    }, [dispatch, sessionUser.id]);
 
     return (
         <div className="user-profile-page">
