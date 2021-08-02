@@ -5,16 +5,10 @@
 }
 
 .profile-recipes-container {
-    grid-template-columns: 1fr;
-    row-gap: 10px;
-    margin-left: 30px;
-}
+    display: flex;
+    flex-direction: column;
 
-.user-recipe-containers {
-    margin-top: 10px;
-    display: grid;
-    grid-template-rows: 1fr;
-    row-gap: 10px;
+    margin-left: 50px;
 }
 
 #profile-labels {
