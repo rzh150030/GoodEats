@@ -39,13 +39,12 @@ export default function FavoriteButton(props) {
         favorButton = <button onClick={unfavor}>Unfavorite</button>
     }
 
-
     return (
-        <>
+        <div className="recipe-detail-buttons">
             <ul className="errors">
                     {errors && errors.map((err, i) => <li key={i}>{err}</li>)}
             </ul>
             {favorButton}
-        </>
+        </div>
     )
 }
