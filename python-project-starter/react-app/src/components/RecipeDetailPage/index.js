@@ -11,6 +11,7 @@ export default function RecipeDetailPage() {
     const dispatch = useDispatch();
     const currentRecipe = useSelector(state => state.recipe.currentRecipe);
     const sessionUser = useSelector(state => state.session.user);
+    const userFavorites = useSelector(state => state.favoriteRecipe.favorites);
 
     useEffect(() => { //fetch recipe from database
         dispatch(getRecipe(id));
