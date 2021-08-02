@@ -1,0 +1,20 @@
+.profile-items {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    column-gap: 25px;
+}
+
+.profile-recipes-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 10px;
+    margin-left: 30px;
+}
+
+#profile-labels {
+    display: flex;
+    justify-content: space-around;
+    color: #b34700;
+    font-weight: bold;
+    font-size: 24px;
+}

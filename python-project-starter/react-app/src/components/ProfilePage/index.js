@@ -14,11 +14,11 @@ export default function ProfilePage() {
     useEffect(() => {
         dispatch(userRecipes(sessionUser.id));
         dispatch(getFavoredRecipes(sessionUser.id));
-    }, [dispatch])
+    }, [dispatch]);
 
     return (
         <div className="user-profile-page">
-            <div>
+            <div id="profile-labels">
                 <span>Your Recipes</span>
                 <span>Favorite Recipes</span>
             </div>
