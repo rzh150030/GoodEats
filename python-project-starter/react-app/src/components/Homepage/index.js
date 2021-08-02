@@ -1,10 +1,16 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, {useEffect} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { getAllRecipes } from '../../store/recipe';
 import "./Homepage.css";
 
 export default function Homepage() {
+    const dispatch = useDispatch();
     const recipeList = useSelector(state => Object.values(state.recipe.recipes));
+
+    useEffect(() => {
+        dispatch(getAllRecipes());
+    }, [dispatch]);
 
     return (
         <div className="home-page">

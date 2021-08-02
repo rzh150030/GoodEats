@@ -10,7 +10,7 @@ import CreateRecipe from './components/CreateRecipe';
 import EditRecipe from "./components/EditRecipe";
 import ProfilePage from './components/ProfilePage';
 import { authenticate } from './store/session';
-import { grabCategories, getAllRecipes } from './store/recipe';
+import { grabCategories } from './store/recipe';
 import Homepage from './components/Homepage';
 
 function App() {
@@ -24,7 +24,6 @@ function App() {
       setLoaded(true);
     })();
     dispatch(grabCategories());
-    dispatch(getAllRecipes());
   }, [dispatch]);
 
   if (!loaded) {
