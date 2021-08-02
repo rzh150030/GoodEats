@@ -1,3 +1,16 @@
 #favor-button {
+    height: 40px;
+    width: 90px;
+    border-radius: 12px;
     background-color: #0CD80C;
+    font-weight: bold;
+}
+
+#unfavor-button {
+    height: 40px;
+    width: 90px;
+    border-radius: 12px;
+    background-color: red;
+    color: white;
+    font-weight: bold;
 }
