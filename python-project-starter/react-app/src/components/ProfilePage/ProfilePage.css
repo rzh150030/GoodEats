@@ -11,6 +11,13 @@
     margin-left: 30px;
 }
 
+.user-recipe-containers {
+    margin-top: 10px;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 10px;
+}
+
 #profile-labels {
     display: flex;
     justify-content: space-around;

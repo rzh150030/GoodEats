@@ -26,7 +26,7 @@ export default function ProfilePage() {
                 <div className="profile-recipes-container">
                     {userOwnRecipes && userOwnRecipes.map(recipe => (
                         <div className="user-recipe-containers" key={recipe.id}>
-                            <NavLink to={`/recipe/detail/${recipe.id}`}>
+                            <NavLink to={`/recipe/detail/${recipe.id}`} className="recipe-links">
                                 {recipe.name}
                             </NavLink>
                         </div>
@@ -35,7 +35,7 @@ export default function ProfilePage() {
                 <div className="profile-recipes-container">
                     {userFavorites && userFavorites.map(recipe => (
                         <div className="user-recipe-containers" key={recipe.id}>
-                            <NavLink to={`/recipe/detail/${recipe.id}`}>
+                            <NavLink to={`/recipe/detail/${recipe.id}`} className="recipe-links">
                                 {recipe.name}
                             </NavLink>
                         </div>
