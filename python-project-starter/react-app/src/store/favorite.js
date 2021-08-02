@@ -39,6 +39,17 @@ export const favorRecipe = (recipeId) => async dispatch => {
     }
 };
 
+//thunk for unfavoriting a recipe
+export const unfavorRecipe = (recipeId) => async dispatch => {
+    const response = await fetch(`/api/favorites/unfavor/${recipeId}`, {
+        method: "DELETE"
+    });
+
+    if (response.ok) {
+        const data = await response.json()
+    }
+}
+
 //thunk for getting user's favorite recipes
 export const getFavoredRecipes = (userId) => async dispatch => {
     const response = await fetch(`/api/favorites/${userId}`);
@@ -49,7 +60,6 @@ export const getFavoredRecipes = (userId) => async dispatch => {
     }
 };
 
-//thunk for unfavoriting a recipe
 
 const initialState = {favorites: {}};
 
