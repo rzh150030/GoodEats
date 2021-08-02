@@ -15,7 +15,7 @@ const deleteFavor = (updatedFavors) => ({
 const loadFavorites = (favorites) => ({
     type: LOAD_FAVORITES,
     payload: favorites
-})
+});
 
 //thunk for favoriting a recipe
 export const favorRecipe = (recipeId) => async dispatch => {
@@ -59,7 +59,7 @@ export const unfavorRecipe = (recipeId) => async dispatch => {
     else {
         return ['An error occurred. Please try again later.'];
     }
-}
+};
 
 //thunk for getting user's favorite recipes
 export const getFavoredRecipes = (userId) => async dispatch => {

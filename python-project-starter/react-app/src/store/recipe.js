@@ -5,6 +5,7 @@ const GET_CATEGORIES = "recipe/getCategories";
 const UPDATE_RECIPE = "recipe/updateRecipe";
 const DELETE_RECIPE = "recipe/deleteRecipe";
 const USER_RECIPES = "recipe/loadUserRecipes";
+const WIPE_USER_RECIPES = "recipe/wipeUserRecipes";
 
 const makeRecipe = (recipe) => ({
     type: CREATE_RECIPE,
@@ -41,6 +42,10 @@ const loadUserRecipes = (userRecipesData) => ({
     payload: userRecipesData
 });
 
+const clearUserRecipes = () => ({
+    type: WIPE_USER_RECIPES,
+})
+
 //thunk for get a recipe
 export const getRecipe = (recipeId) => async dispatch => {
     const response = await fetch(`/api/recipes/${recipeId}`);
@@ -49,7 +54,7 @@ export const getRecipe = (recipeId) => async dispatch => {
         const data = await response.json();
         dispatch(loadRecipe(data));
     }
-}
+};
 
 //thunk for getting all recipes
 export const getAllRecipes = () => async dispatch => {
@@ -59,7 +64,7 @@ export const getAllRecipes = () => async dispatch => {
         const data = await response.json();
         dispatch(loadAllRecipe(data));
     }
-}
+};
 
 //thunk for creating a new recipe
 export const postRecipe = (data) => async dispatch => {
@@ -109,7 +114,7 @@ export const updateRecipe = (data, recipeId) => async dispatch => {
     else {
         return {errors: ["An error occurred. Please try again later."]};
     }
-}
+};
 
 //thunk for getting all categories
 export const grabCategories = () => async dispatch => {
@@ -119,7 +124,7 @@ export const grabCategories = () => async dispatch => {
         const data = await response.json();
         dispatch(getCategories(data));
     }
-}
+};
 
 //thunk for deleting a recipe
 export const deleteRecipe = (recipeId) => async dispatch => {
@@ -132,7 +137,7 @@ export const deleteRecipe = (recipeId) => async dispatch => {
         dispatch(destroyRecipe(recipeId));
         return data;
     }
-}
+};
 
 //thunk for getting user's recipes
 export const userRecipes = (userId) => async dispatch => {
@@ -142,7 +147,7 @@ export const userRecipes = (userId) => async dispatch => {
         const data = await response.json();
         dispatch(loadUserRecipes(data));
     }
-}
+};
 
 const initialState = {recipes: [], currentRecipe: {}, categories: {}, userRecipes: {}};
 
@@ -178,7 +183,7 @@ export default function reducer(state = initialState, action) {
             }
             break;
         case USER_RECIPES:
-            let userRecipesState = {...state};
+            let userRecipesState = {...state, userRecipes: {}};
             action.payload.recipes.forEach(recipe => {
                 userRecipesState.userRecipes[recipe.id] = recipe;
             });
