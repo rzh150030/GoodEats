@@ -4,5 +4,14 @@ import { userRecipes } from '../../store/recipe';
 import { getFavoredRecipes } from '../../store/favorite';
 
 export default function ProfilePage() {
+
     
+    return (
+        <div>
+            <div>
+                <span>Your Recipes</span>
+                <span>Favorite Recipes</span>
+            </div>
+        </div>
+    )
 }
