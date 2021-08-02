@@ -24,10 +24,11 @@ export default function ProfilePage() {
             <div>
                 <div>
                     {userOwnRecipes && userOwnRecipes.map(recipe => (
-                        
-                        <NavLink>
-                            {recipe.name}
-                        </NavLink>
+                        <div>
+                            <NavLink to={`/recipe/detail/${recipe.id}`}>
+                                {recipe.name}
+                            </NavLink>
+                        </div>
                     ))}
                 </div>
             </div>
