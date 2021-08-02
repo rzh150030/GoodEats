@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { getRecipe, deleteRecipe } from '../../store/recipe';
+import { favorRecipe, unfavorRecipe, getFavoredRecipes } from '../../store/favorite';
 import "./RecipeDetailPage.css";
 
 export default function RecipeDetailPage() {
