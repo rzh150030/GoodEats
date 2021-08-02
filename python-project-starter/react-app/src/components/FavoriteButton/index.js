@@ -22,7 +22,6 @@ export default function FavoriteButton() {
 
         let resultErrors = await dispatch(favorRecipe(currentRecipe.id));
 
-        
     };
 
     return (

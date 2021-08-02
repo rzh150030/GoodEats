@@ -9,7 +9,7 @@ export default function EditRecipe() {
     const initIngredients = currentRecipe.ingredients;
     const initDirections = currentRecipe.directions;
     const initName = currentRecipe.name;
-    const checkWhichMethod = false; // prop for form component
+    const checkWhichMethod = false; // prop for form component to use update recipe thunk
 
     if (!currentRecipe.id) return <Redirect to={`/recipe/detail/${id}`} />
 
