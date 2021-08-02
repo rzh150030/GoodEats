@@ -72,7 +72,7 @@ export const getFavoredRecipes = (userId) => async dispatch => {
 };
 
 
-const initialState = {favorites: {}};
+const initialState = {favorites: []};
 
 export default function favoriteReducer(state = initialState, action) {
     switch(action.type) {

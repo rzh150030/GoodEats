@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { getRecipe, deleteRecipe } from '../../store/recipe';
+import { getFavoredRecipes } from '../../store/favorite';
 import FavoriteButton from '../FavoriteButton';
 import "./RecipeDetailPage.css";
 
@@ -11,9 +12,15 @@ export default function RecipeDetailPage() {
     const dispatch = useDispatch();
     const currentRecipe = useSelector(state => state.recipe.currentRecipe);
     const sessionUser = useSelector(state => state.session.user);
+    const userFavorites = useSelector(state => state.favoriteRecipe.favorites);
+    let favorited;
+    if (sessionUser) { //check if user already favorited current recipe
+        favorited = userFavorites.find(recipe => recipe.id === currentRecipe.id);
+    }
 
     useEffect(() => { //fetch recipe from database
         dispatch(getRecipe(id));
+        if (sessionUser) dispatch(getFavoredRecipes(sessionUser.id)); //get logged user's favorites to determine which button to show
     }, [dispatch, id, sessionUser]);
 
     const editRecipe = () => {
@@ -53,7 +60,7 @@ export default function RecipeDetailPage() {
                     ))}
                 </ol>
                 {editDeleteButton}
-                <FavoriteButton />
+                <FavoriteButton favorited={favorited} currentRecipe={currentRecipe} sessionUser={sessionUser}/>
                 <h2 className="recipe-detail-category">Category: {currentRecipe.category_name}</h2>
             </article>
         </div>

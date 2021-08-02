@@ -1,21 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { favorRecipe, unfavorRecipe, getFavoredRecipes } from '../../store/favorite';
+import { favorRecipe, unfavorRecipe } from '../../store/favorite';
 
-export default function FavoriteButton() {
+
+export default function FavoriteButton(props) {
     const dispatch = useDispatch();
-    const currentRecipe = useSelector(state => state.recipe.currentRecipe);
-    const sessionUser = useSelector(state => state.session.user);
-    const userFavorites = useSelector(state => state.favoriteRecipe.favorites);
+    const currentRecipe = props.currentRecipe;
+    const sessionUser = props.sessionUser;
+    const favorited = props.favorited;
     const [errors, setErrors] = useState([]);
-    let favorited;
-    if (sessionUser) { //check if user already favorited current recipe
-        favorited = userFavorites.find(recipe => recipe.id === currentRecipe.id);
-    }
-
-    useEffect(() => {
-        if (sessionUser) dispatch(getFavoredRecipes(sessionUser.id)); //get logged user's favorites to determine which button to show
-    }, [dispatch, sessionUser]);
 
     //Onclick event handlers
     const favor = async (e) => {
@@ -39,10 +32,10 @@ export default function FavoriteButton() {
     }
 
     let favorButton;
-    if (sessionUser && !favorited && sessionUser.id === currentRecipe.user_id) {
+    if (sessionUser && !favorited && sessionUser.id !== currentRecipe.user_id) {
         favorButton = <button onClick={favor}>Favorite</button>
     }
-    else if (sessionUser && favorited && sessionUser.id === currentRecipe.user_id) {
+    else if (sessionUser && favorited && sessionUser.id !== currentRecipe.user_id) {
         favorButton = <button onClick={unfavor}>Unfavorite</button>
     }
 
