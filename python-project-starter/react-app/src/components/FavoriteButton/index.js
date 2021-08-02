@@ -34,10 +34,10 @@ export default function FavoriteButton(props) {
 
     let favorButton;
     if (sessionUser && !favorited && sessionUser.id !== currentRecipe.user_id) {
-        favorButton = <button onClick={favor}>Favorite</button>
+        favorButton = <button onClick={favor} id="favor-button">Favorite</button>
     }
     else if (sessionUser && favorited && sessionUser.id !== currentRecipe.user_id) {
-        favorButton = <button onClick={unfavor}>Unfavorite</button>
+        favorButton = <button onClick={unfavor} id="unfavor-button">Unfavorite</button>
     }
 
     return (
