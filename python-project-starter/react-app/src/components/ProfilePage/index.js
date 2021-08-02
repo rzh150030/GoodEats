@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { userRecipes } from '../../store/recipe';
 import { getFavoredRecipes } from '../../store/favorite';
+import "./ProfilePage.css";
 
 export default function ProfilePage() {
     const dispatch = useDispatch();
