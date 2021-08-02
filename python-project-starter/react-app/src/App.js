@@ -63,11 +63,11 @@ function App() {
           </ProtectedRoute>
         </Switch>
       )}
-      <footer id="about-links">
+      <footer id="about-links-footer">
         About:
-        <a href="https://www.linkedin.com/in/richard-huang-0a6658207/">LinkedIn</a>
-        <a href="https://github.com/rzh150030">Github</a>
-        <a href="https://github.com/rzh150030/GoodEats">Repo</a>
+        <a className="footer-links" href="https://www.linkedin.com/in/richard-huang-0a6658207/">LinkedIn</a>
+        <a className="footer-links" href="https://github.com/rzh150030">Github</a>
+        <a className="footer-links" href="https://github.com/rzh150030/GoodEats">Repo</a>
       </footer>
     </BrowserRouter>
   );
