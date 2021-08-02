@@ -7,8 +7,11 @@
 .profile-recipes-container {
     display: flex;
     flex-direction: column;
-
     margin-left: 50px;
+}
+
+.user-recipe-containers {
+    margin-top: 20px;
 }
 
 #profile-labels {
