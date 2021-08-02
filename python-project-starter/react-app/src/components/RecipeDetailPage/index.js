@@ -10,16 +10,9 @@ export default function RecipeDetailPage() {
     const dispatch = useDispatch();
     const currentRecipe = useSelector(state => state.recipe.currentRecipe);
     const sessionUser = useSelector(state => state.session.user);
-    // const userFavorites = useSelector(state => state.favoriteRecipe.favorites);
-    /* const [errors, setErrors] = useState([]);
-    let favorited;
-    if (sessionUser) { //check if user already favorited current recipe
-        favorited = userFavorites.find(recipe => recipe.id === currentRecipe.id);
-    } */
 
     useEffect(() => { //fetch recipe from database
         dispatch(getRecipe(id));
-        // if (sessionUser) dispatch(getFavoredRecipes(sessionUser.id)); //get logged user's favorites to determine which button to show
     }, [dispatch, id, sessionUser]);
 
     const editRecipe = () => {
@@ -41,14 +34,6 @@ export default function RecipeDetailPage() {
             </div>
         );
     }
-
-/*     const favor = async (e) => {
-        e.preventDefault();
-
-        let resultErrors = await dispatch(favorRecipe(currentRecipe.id));
-
-        if (errors)
-    } */
 
     return (
         <div id="recipe-detail-page">
