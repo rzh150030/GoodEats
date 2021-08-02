@@ -10,7 +10,7 @@ import CreateRecipe from './components/CreateRecipe';
 import EditRecipe from "./components/EditRecipe";
 import ProfilePage from './components/ProfilePage';
 import { authenticate } from './store/session';
-import { grabCategories } from './store/recipe';
+import { grabCategories, getAllRecipes } from './store/recipe';
 import Homepage from './components/Homepage';
 
 function App() {
@@ -24,6 +24,7 @@ function App() {
       setLoaded(true);
     })();
     dispatch(grabCategories());
+    dispatch(getAllRecipes())
   }, [dispatch]);
 
   if (!loaded) {
@@ -62,6 +63,12 @@ function App() {
           </ProtectedRoute>
         </Switch>
       )}
+      <footer>
+        About:
+        <a href="https://www.linkedin.com/in/richard-huang-0a6658207/">LinkedIn</a>
+        <a href="https://github.com/rzh150030">Github</a>
+        <a href="https://github.com/rzh150030/GoodEats">Repo</a>
+      </footer>
     </BrowserRouter>
   );
 }
