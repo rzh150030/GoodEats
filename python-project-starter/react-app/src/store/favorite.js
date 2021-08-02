@@ -46,7 +46,18 @@ export const unfavorRecipe = (recipeId) => async dispatch => {
     });
 
     if (response.ok) {
-        const data = await response.json()
+        const data = await response.json();
+        dispatch(deleteFavor(data));
+        return null;
+    }
+    else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    }
+    else {
+        return ['An error occurred. Please try again later.'];
     }
 }
 
