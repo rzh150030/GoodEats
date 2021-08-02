@@ -12,6 +12,10 @@ export default function RecipeDetailPage() {
     const currentRecipe = useSelector(state => state.recipe.currentRecipe);
     const sessionUser = useSelector(state => state.session.user);
     const userFavorites = useSelector(state => state.favoriteRecipe.favorites);
+    let favorited;
+    if (sessionUser) { //check if user already favorited current recipe
+        favorited = userFavorites.find(recipe => recipe.id === currentRecipe.id);
+    }
 
     useEffect(() => { //fetch recipe from database
         dispatch(getRecipe(id));
