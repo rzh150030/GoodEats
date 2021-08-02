@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { getRecipe, deleteRecipe } from '../../store/recipe';
+import FavoriteButton from '../FavoriteButton';
 import "./RecipeDetailPage.css";
 
 export default function RecipeDetailPage() {
@@ -52,6 +53,7 @@ export default function RecipeDetailPage() {
                     ))}
                 </ol>
                 {editDeleteButton}
+                <FavoriteButton />
                 <h2 className="recipe-detail-category">Category: {currentRecipe.category_name}</h2>
             </article>
         </div>
