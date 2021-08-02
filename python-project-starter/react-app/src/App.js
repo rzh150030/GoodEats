@@ -63,7 +63,7 @@ function App() {
           </ProtectedRoute>
         </Switch>
       )}
-      <footer>
+      <footer id="about-links">
         About:
         <a href="https://www.linkedin.com/in/richard-huang-0a6658207/">LinkedIn</a>
         <a href="https://github.com/rzh150030">Github</a>
