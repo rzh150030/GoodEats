@@ -80,6 +80,8 @@ export default function favoriteReducer(state = initialState, action) {
             return {...state, favorites: action.payload.favorites};
         case LOAD_FAVORITES:
             return {...state, favorites: action.payload.favorites};
+        case UNFAVOR_RECIPE:
+            return {...state, favorites: action.payload.favorites};
         default:
             return state;
     }

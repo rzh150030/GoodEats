@@ -42,6 +42,10 @@ export default function RecipeDetailPage() {
         );
     }
 
+    const favor = async (e) => {
+        
+    }
+
     return (
         <div id="recipe-detail-page">
             <h1 id="current-recipe-name">{currentRecipe.name}</h1>
