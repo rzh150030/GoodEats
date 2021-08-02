@@ -4,8 +4,8 @@ import { userRecipes } from '../../store/recipe';
 import { getFavoredRecipes } from '../../store/favorite';
 
 export default function ProfilePage() {
+    const dispatch = useDispatch();
 
-    
     return (
         <div>
             <div>
