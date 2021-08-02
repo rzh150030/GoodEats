@@ -5,7 +5,6 @@ const GET_CATEGORIES = "recipe/getCategories";
 const UPDATE_RECIPE = "recipe/updateRecipe";
 const DELETE_RECIPE = "recipe/deleteRecipe";
 const USER_RECIPES = "recipe/loadUserRecipes";
-const WIPE_USER_RECIPES = "recipe/wipeUserRecipes";
 
 const makeRecipe = (recipe) => ({
     type: CREATE_RECIPE,
@@ -41,10 +40,6 @@ const loadUserRecipes = (userRecipesData) => ({
     type: USER_RECIPES,
     payload: userRecipesData
 });
-
-const clearUserRecipes = () => ({
-    type: WIPE_USER_RECIPES,
-})
 
 //thunk for get a recipe
 export const getRecipe = (recipeId) => async dispatch => {
