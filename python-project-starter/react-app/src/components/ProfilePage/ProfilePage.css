@@ -14,11 +14,16 @@
     margin-top: 20px;
 }
 
+.user-profile-page {
+    background: linear-gradient(#F5E112, #F59412);
+    padding-bottom: 600px;
+}
+
 #profile-labels {
     display: flex;
     justify-content: space-around;
     color: #b34700;
     font-weight: bold;
     font-size: 33px;
-    margin-top: 20px;
+    padding-top: 20px;
 }
