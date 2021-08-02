@@ -38,6 +38,7 @@ export default function ProfilePage() {
                             <NavLink to={`/recipe/detail/${recipe.id}`} className="recipe-links">
                                 {recipe.name}
                             </NavLink>
+                            <span id="recipe-owner-name">{`By: ${recipe.User.username}`}</span>
                         </div>
                     ))}
                 </div>
