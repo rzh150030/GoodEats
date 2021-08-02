@@ -14,6 +14,7 @@ export default function RecipeDetailPage() {
 
     useEffect(() => { //fetch recipe from database
         dispatch(getRecipe(id));
+        if (sessionUser) dispatch(getFavoredRecipes(sessionUser.id)); //get logged user's favorites to determine which button to show
     }, [dispatch, id, sessionUser]);
 
     const editRecipe = () => {
