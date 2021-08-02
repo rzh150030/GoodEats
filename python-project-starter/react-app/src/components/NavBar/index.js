@@ -21,7 +21,7 @@ const NavBar = ({loaded}) => {
   if (sessionUser) {
     sessionButtons = (
       <>
-        <NavLink exact to="/profile">
+        <NavLink exact to="/profile" className="profile-link">
           Your Recipes
         </NavLink>
         <LogoutButton />

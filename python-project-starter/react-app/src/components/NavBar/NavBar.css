@@ -38,3 +38,9 @@
     align-items: center;
     width: 400px;
 }
+
+.profile-link {
+    text-decoration: none;
+    font-family: Impact, sans-serif, Times, serif;
+    font-size: x-large;
+}
