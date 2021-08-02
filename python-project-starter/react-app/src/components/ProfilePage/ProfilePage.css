@@ -1,0 +1,32 @@
+.profile-items {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.profile-recipes-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 100px;
+}
+
+.user-recipe-containers {
+    margin-top: 20px;
+}
+
+.user-profile-page {
+    background: linear-gradient(#F5E112, #F59412);
+    padding-bottom: 600px;
+}
+
+#profile-labels {
+    display: flex;
+    justify-content: space-around;
+    color: #b34700;
+    font-weight: bold;
+    font-size: 33px;
+    padding-top: 20px;
+}
+
+#recipe-owner-name {
+    margin-left: 50px;
+}

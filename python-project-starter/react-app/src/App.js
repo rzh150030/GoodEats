@@ -8,6 +8,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import RecipeDetailPage from './components/RecipeDetailPage';
 import CreateRecipe from './components/CreateRecipe';
 import EditRecipe from "./components/EditRecipe";
+import ProfilePage from './components/ProfilePage';
 import { authenticate } from './store/session';
 import { grabCategories, getAllRecipes } from './store/recipe';
 import Homepage from './components/Homepage';
@@ -23,7 +24,7 @@ function App() {
       setLoaded(true);
     })();
     dispatch(grabCategories());
-    dispatch(getAllRecipes());
+    dispatch(getAllRecipes())
   }, [dispatch]);
 
   if (!loaded) {
@@ -44,6 +45,9 @@ function App() {
           <Route path='/sign-up' exact={true}>
             <SignUpForm />
           </Route>
+          <ProtectedRoute path="/profile" exact={true}>
+            <ProfilePage />
+          </ProtectedRoute>
           {recipeList.map(recipe => (
             <Route path="/recipe/detail/:id" key={recipe.id}>
               <RecipeDetailPage />
@@ -59,6 +63,12 @@ function App() {
           </ProtectedRoute>
         </Switch>
       )}
+      <footer id="about-links-footer">
+        About:
+        <a className="footer-links" href="https://www.linkedin.com/in/richard-huang-0a6658207/">LinkedIn</a>
+        <a className="footer-links" href="https://github.com/rzh150030">Github</a>
+        <a className="footer-links" href="https://github.com/rzh150030/GoodEats">Repo</a>
+      </footer>
     </BrowserRouter>
   );
 }

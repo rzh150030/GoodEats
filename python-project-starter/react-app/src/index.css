@@ -1,1 +1,10 @@
-/* TODO Add site wide styles */
+#about-links-footer {
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer-links {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}

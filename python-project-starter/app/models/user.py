@@ -35,4 +35,10 @@ class User(db.Model, UserMixin):
             'email': self.email
         }
 
-    
+    def to_dict_with_favors(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'email': self.email,
+            'favorites': [recipe.to_dict() for recipe in self.recipefavs]
+        }
