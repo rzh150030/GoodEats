@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { favorRecipe, unfavorRecipe } from '../../store/favorite';
+import "./FavoriteButton.css";
 
 
 export default function FavoriteButton(props) {
