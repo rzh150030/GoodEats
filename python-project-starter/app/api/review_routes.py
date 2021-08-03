@@ -1,7 +1,7 @@
 from flask import Blueprint, request
-from app.models import Review, Recipe
+from app.models import db, Review, Recipe
 from app.forms import ReviewForm
-from flask_login import login_required
+from flask_login import login_required, current_user
 
 review_routes = Blueprint("reviews", __name__)
 
@@ -26,14 +26,20 @@ def recipe_reviews(id):
 @login_required
 def create_review(id):
     form = ReviewForm()
-    recipe = Recipe.query.get(id)
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        review = Review(review=form.data["review"], recipe_id=form.data["recipe_id"], user_id=form.data["user_id"])
+        review = Review(review=form.data["review"], recipe_id=id, user_id=current_user.id)
+        db.session.add(review)
+        db.session.commit()
+        return review.to_dict()
 
+    return {"errors": validation_errors_to_error_messages(form.errors)}
 
-# Update a review for a specific recipe
+# Update a specific review
+@review_routes.route("/update/<int:id>")
+@login_required
+def update_review(id):
+    form = ReviewForm()
 
-
-# Delete a reciew for a specific recipe
+# Delete a specific review
