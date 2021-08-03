@@ -4,6 +4,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import { getRecipe, deleteRecipe } from '../../store/recipe';
 import { getFavoredRecipes } from '../../store/favorite';
 import FavoriteButton from '../FavoriteButton';
+import CommentFormModal from '../CommentFormModal';
 import "./RecipeDetailPage.css";
 
 export default function RecipeDetailPage() {
@@ -63,6 +64,8 @@ export default function RecipeDetailPage() {
                 <FavoriteButton favorited={favorited} currentRecipe={currentRecipe} sessionUser={sessionUser}/>
                 <h2 className="recipe-detail-category">Category: {currentRecipe.category_name}</h2>
             </article>
+            <h2>Reviews</h2>
+            <CommentFormModal />
         </div>
     )
 }

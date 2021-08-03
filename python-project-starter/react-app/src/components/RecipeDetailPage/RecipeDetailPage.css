@@ -8,11 +8,6 @@
         "direct list2 category";
 }
 
-#recipe-detail-page {
-    background: linear-gradient(#0FF499, #94D00D);
-    padding-bottom: 427px;
-}
-
 .ingred-detail-label {
     grid-area: ingred;
     padding-left: 290px;
@@ -45,11 +40,6 @@
     grid-area: category;
 }
 
-#current-recipe-name {
-    display: flex;
-    justify-content: center;
-}
-
 .ingredients {
     margin: 12px 0px;
 }
@@ -67,6 +57,11 @@
     color: white;
 }
 
+#current-recipe-name {
+    display: flex;
+    justify-content: center;
+}
+
 #delete-button {
     height: 30px;
     width: 80px;
@@ -78,4 +73,9 @@
 #current-recipe-name {
     margin-top: 0px;
     padding-top: 15px;
+}
+
+#recipe-detail-page {
+    background: linear-gradient(#0FF499, #94D00D);
+    padding-bottom: 427px;
 }
