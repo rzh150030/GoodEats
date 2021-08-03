@@ -25,7 +25,7 @@ export default function ReviewSection() {
             {recipeReviews?.sort(({id: a}, {id: b}) => a - b).map(rev => (
                 <article key={rev.id}>
                     <div>{rev.review}</div>
-                    {/* {sessionUser && sessionUser.id === rev.user_id && editDeleteReview} */}
+                    {sessionUser && sessionUser.id === rev.user_id && editDeleteReview}
                 </article>
             ))}
         </div>
