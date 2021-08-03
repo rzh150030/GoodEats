@@ -3,4 +3,8 @@ const LOAD_REVIEWS = "review/loadReviews";
 const UPDATE_REVIEW = "review/updateReview";
 const DELETE_REVIEW = "review/deleteReview";
 
+const initialState = {reviews: {}};
 
+export default function reducer(state = initalState, action) {
+    
+}
