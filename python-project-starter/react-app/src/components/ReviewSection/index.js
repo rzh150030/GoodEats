@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { loadReviews, deleteReview } from '../../store/review';
-import CommentFormModal from '../CommentFormModal';
+import ReviewFormModal from '../ReviewFormModal';
 
 export default function ReviewSection() {
     const dispatch = useDispatch();
@@ -21,7 +21,7 @@ export default function ReviewSection() {
     return (
         <div>
             <h2>Reviews</h2>
-            {sessionUser && sessionUser.id !== currentRecipe.user_id && <CommentFormModal />}
+            {sessionUser && sessionUser.id !== currentRecipe.user_id && <ReviewFormModal />}
             {recipeReviews?.sort(({id: a}, {id: b}) => a - b).map(rev => (
                 <article key={rev.id}>
                     <div>{rev.review}</div>

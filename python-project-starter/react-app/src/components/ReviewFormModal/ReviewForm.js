@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { createReview, updateReview } from "../../store/review";
 import { useDispatch, useSelector } from "react-redux";
 
-export default function CommentForm() {
+export default function ReviewForm() {
     const dispatch = useDispatch();
     const [comment, setComment] = useState("");
     const [errors, setErrors] = useState([]);
@@ -13,7 +13,7 @@ export default function CommentForm() {
     };
 
     let commentInput;
-    
+
 
     return (
         <form onSubmit={handleSubmit}>
