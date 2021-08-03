@@ -4,8 +4,8 @@
     grid-template-rows: auto auto;
     column-gap: 15px;
     grid-template-areas:
-        "ingred list1 other1"
-        "direct list2 other2";
+        "ingred list1 buttons"
+        "direct list2 category";
 }
 
 #recipe-detail-page {
@@ -38,11 +38,11 @@
 }
 
 .recipe-detail-buttons {
-    grid-area: other1;
+    grid-area: buttons;
 }
 
 .recipe-detail-category {
-    grid-area: other2;
+    grid-area: category;
 }
 
 #current-recipe-name {

@@ -25,13 +25,13 @@ export default function RecipeDetailPage() {
 
     const editRecipe = () => {
         history.push(`/recipe/edit/${currentRecipe.id}`);
-    }
+    };
 
     const deletion = async () => {
         let deleted = await dispatch(deleteRecipe(currentRecipe.id));
 
         if (deleted) history.push("/");
-    }
+    };
 
     let editDeleteButton;
     if (sessionUser && sessionUser.id === currentRecipe.user_id) {
