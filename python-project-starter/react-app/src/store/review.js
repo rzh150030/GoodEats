@@ -86,10 +86,30 @@ export const updateReview = (updatedReview, reviewId) => async dispatch => {
 };
 
 //thunk for deleting a review
+export const deleteReview = (reviewId) => async dispatch => {
+    const response = await fetch(`/api/reviews/delete/${reviewId}`, {
+        methods: "DELETE"
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(deleteRecipeReview(reviewId));
+        return null;
+    }
+    else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    }
+    else {
+        return ['An error occurred. Please try again later.'];
+    }
+};
 
 const initialState = {reviews: {}};
 
-export default function reducer(state = initalState, action) {
+export default function reducer(state = initialState, action) {
     switch (action.type) {
         case CREATE_REVIEW:
             let newReviewState = {...state};
