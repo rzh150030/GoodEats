@@ -24,6 +24,29 @@ const deleteRecipeReview = (reviewId) => ({
 });
 
 //thunk for creating review
+export const createReview = (review, recipeId) => async dispatch => {
+    const response = await fetch(`/api/reviews/create/${recipeId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(review)
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(makeReview(data));
+    }
+    else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    }
+    else {
+        return ['An error occurred. Please try again.'];
+    }
+};
 
 //thunk for getting all recipe's reviews
 

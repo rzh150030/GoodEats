@@ -31,7 +31,7 @@ def create_review(id):
 
     for review in recipe_reviews:
         if review.user_id == current_user.id:
-            return {"errors": "You have already reviewed this recipe."}
+            return {"errors": ["You have already reviewed this recipe."]}
 
     if form.validate_on_submit():
         new_review = Review(review=form.data["review"], recipe_id=id, user_id=current_user.id)
