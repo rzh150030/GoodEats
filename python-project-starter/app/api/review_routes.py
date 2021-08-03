@@ -61,3 +61,5 @@ def delete_review(id):
         db.session.delete(review)
         db.session.commit()
         return {"message": "deleted"}
+
+    return {"errors": ["Unauthorized"]}
