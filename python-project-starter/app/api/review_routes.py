@@ -50,4 +50,6 @@ def update_review(id):
         db.session.commit()
         return review.to_dict()
 
+    return {"errors": validation_errors_to_error_messages(form.errors)}
+
 # Delete a specific review
