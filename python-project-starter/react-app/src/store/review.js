@@ -49,8 +49,25 @@ export const createReview = (review, recipeId) => async dispatch => {
 };
 
 //thunk for getting all recipe's reviews
+export const loadReviews = (recipeId) => async dispatch => {
+    const response = await fetch(`/api/reviews/${recipeId}`)
+
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(loadRecipeReviews(data));
+    }
+};
 
 //thunk for updating a review
+export const updateReview = (updatedReview, reviewId) => async dispatch => {
+    const response = await fetch(`/api/reviews/update/${reviewId}`, {
+        methods: "PUT",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(updatedReview)
+    });
+}
 
 //thunk for deleting a review
 

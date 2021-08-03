@@ -22,7 +22,7 @@ def recipe_reviews(id):
     return {"reviews": {review.id:review.to_dict() for review in reviews}}
 
 # Create a review for a specific recipe only if user hasn't already reviewed
-@review_routes.route("/create/<int:id>")
+@review_routes.route("/create/<int:id>", methods=["POST"])
 @login_required
 def create_review(id):
     form = ReviewForm()
@@ -42,7 +42,7 @@ def create_review(id):
     return {"errors": validation_errors_to_error_messages(form.errors)}
 
 # Update a specific review
-@review_routes.route("/update/<int:id>")
+@review_routes.route("/update/<int:id>", methods=["PUT"])
 @login_required
 def update_review(id):
     form = ReviewForm()
@@ -58,7 +58,7 @@ def update_review(id):
     return {"errors": validation_errors_to_error_messages(form.errors)}
 
 # Delete a specific review
-@review_routes.route("/delete/<int:id>")
+@review_routes.route("/delete/<int:id>", methods=["DELETE"])
 @login_required
 def delete_review(id):
     review = Review.query.get(id)
