@@ -21,16 +21,21 @@ def recipe_reviews(id):
     reviews = Recipe.query.get(id).reviews
     return {"reviews": {review.id:review.to_dict() for review in reviews}}
 
-# Create a review for a specific recipe
+# Create a review for a specific recipe only if user hasn't already reviewed
 @review_routes.route("/create/<int:id>")
 @login_required
 def create_review(id):
     form = ReviewForm()
+    recipe_reviews = Recipe.query.get(id).reviews
     form['csrf_token'].data = request.cookies['csrf_token']
 
+    for review in recipe_reviews:
+        if review.user_id == current_user.id:
+            return {"errors": "You have already reviewed this recipe."}
+
     if form.validate_on_submit():
-        review = Review(review=form.data["review"], recipe_id=id, user_id=current_user.id)
-        db.session.add(review)
+        new_review = Review(review=form.data["review"], recipe_id=id, user_id=current_user.id)
+        db.session.add(new_review)
         db.session.commit()
         return review.to_dict()
 
