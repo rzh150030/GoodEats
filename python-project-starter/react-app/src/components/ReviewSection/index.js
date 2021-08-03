@@ -21,7 +21,7 @@ export default function ReviewSection() {
     return (
         <div>
             <h2>Reviews</h2>
-            <CommentFormModal />
+            {sessionUser && sessionUser.id !== currentRecipe.user_id && <CommentFormModal />}
             {recipeReviews?.sort(({id: a}, {id: b}) => a - b).map(rev => (
                 <article key={rev.id}>
                     <div>{rev.review}</div>
