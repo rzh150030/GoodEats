@@ -5,7 +5,7 @@ import { getRecipe, deleteRecipe } from '../../store/recipe';
 import { getFavoredRecipes } from '../../store/favorite';
 import { loadReviews, deleteReview } from '../../store/review';
 import FavoriteButton from '../FavoriteButton';
-import CommentFormModal from '../CommentFormModal';
+import ReviewSection from '../ReviewSection';
 import "./RecipeDetailPage.css";
 
 export default function RecipeDetailPage() {
@@ -47,10 +47,12 @@ export default function RecipeDetailPage() {
         );
     }
 
-    let editDeleteReview;
-    if (sessionUser && sessionUser.id !== currentRecipe.user_id) {
-
-    }
+    const editDeleteReview = (
+        <div>
+            <button>Edit</button>
+            <button>Delete</button>
+        </div>
+    )
 
     return (
         <div id="recipe-detail-page">
@@ -72,15 +74,7 @@ export default function RecipeDetailPage() {
                 <FavoriteButton favorited={favorited} currentRecipe={currentRecipe} sessionUser={sessionUser}/>
                 <h2 className="recipe-detail-category">Category: {currentRecipe.category_name}</h2>
             </article>
-            <h2>Reviews</h2>
-            {sessionUser && sessionUser.id !== currentRecipe.user_id && <CommentFormModal />}
-            {recipeReviews?.sort(({id: a}, {id: b}) => a - b).map(rev => (
-                <article key={rev.id}>
-                    <div>{rev.review}</div>
-                    {}
-                </article>
-
-            ))}
+            <ReviewSection />
         </div>
     )
 }
