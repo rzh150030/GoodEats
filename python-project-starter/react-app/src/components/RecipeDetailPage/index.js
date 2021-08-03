@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { getRecipe, deleteRecipe } from '../../store/recipe';
 import { getFavoredRecipes } from '../../store/favorite';
-import { loadReviews } from '../../store/review';
+import { loadReviews, deleteReview } from '../../store/review';
 import FavoriteButton from '../FavoriteButton';
 import CommentFormModal from '../CommentFormModal';
 import "./RecipeDetailPage.css";
@@ -47,6 +47,11 @@ export default function RecipeDetailPage() {
         );
     }
 
+    let editDeleteReview;
+    if (sessionUser && sessionUser.id !== currentRecipe.user_id) {
+
+    }
+
     return (
         <div id="recipe-detail-page">
             <h1 id="current-recipe-name">{currentRecipe.name}</h1>
@@ -68,9 +73,13 @@ export default function RecipeDetailPage() {
                 <h2 className="recipe-detail-category">Category: {currentRecipe.category_name}</h2>
             </article>
             <h2>Reviews</h2>
-            {sessionUser.id !== currentRecipe.user_id && <CommentFormModal />}
+            {sessionUser && sessionUser.id !== currentRecipe.user_id && <CommentFormModal />}
             {recipeReviews?.sort(({id: a}, {id: b}) => a - b).map(rev => (
-                <article key={rev.id}>{rev.review}</article>
+                <article key={rev.id}>
+                    <div>{rev.review}</div>
+                    {}
+                </article>
+
             ))}
         </div>
     )
