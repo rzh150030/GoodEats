@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { getRecipe, deleteRecipe } from '../../store/recipe';
 import { getFavoredRecipes } from '../../store/favorite';
+import { loadReviews } from '../../store/review';
 import FavoriteButton from '../FavoriteButton';
 import CommentFormModal from '../CommentFormModal';
 import "./RecipeDetailPage.css";
@@ -14,6 +15,7 @@ export default function RecipeDetailPage() {
     const currentRecipe = useSelector(state => state.recipe.currentRecipe);
     const sessionUser = useSelector(state => state.session.user);
     const userFavorites = useSelector(state => state.favoriteRecipe.favorites);
+    const recipeReviews = useSelector(state => Object.values(state.recipeReviews.reviews));
     let favorited;
     if (sessionUser) { //check if user already favorited current recipe
         favorited = userFavorites.find(recipe => recipe.id === currentRecipe.id);
@@ -21,6 +23,7 @@ export default function RecipeDetailPage() {
 
     useEffect(() => { //fetch recipe from database
         dispatch(getRecipe(id));
+        dispatch(loadReviews(id));
         if (sessionUser) dispatch(getFavoredRecipes(sessionUser.id)); //get logged user's favorites to determine which button to show
     }, [dispatch, id, sessionUser]);
 
@@ -66,6 +69,9 @@ export default function RecipeDetailPage() {
             </article>
             <h2>Reviews</h2>
             <CommentFormModal />
+            {recipeReviews?.sort(({id: a}, {id: b}) => a - b).map(rev => (
+                <article key={rev.id}>{rev.review}</article>
+            ))}
         </div>
     )
 }
