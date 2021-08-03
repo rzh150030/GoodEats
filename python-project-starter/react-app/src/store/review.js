@@ -36,6 +36,7 @@ export const createReview = (review, recipeId) => async dispatch => {
     if (response.ok) {
         const data = await response.json();
         dispatch(makeReview(data));
+        return null;
     }
     else if (response.status < 500) {
         const data = await response.json();
@@ -44,7 +45,7 @@ export const createReview = (review, recipeId) => async dispatch => {
         }
     }
     else {
-        return ['An error occurred. Please try again.'];
+        return ['An error occurred. Please try again later.'];
     }
 };
 
@@ -67,7 +68,22 @@ export const updateReview = (updatedReview, reviewId) => async dispatch => {
         },
         body: JSON.stringify(updatedReview)
     });
-}
+
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(updateRecipeReview(data));
+        return null;
+    }
+    else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    }
+    else {
+        return ['An error occurred. Please try again later.'];
+    }
+};
 
 //thunk for deleting a review
 
@@ -84,6 +100,7 @@ export default function reducer(state = initalState, action) {
         case UPDATE_REVIEW:
             let updateReviewState = {...state};
             updateReviewState.reviews[action.review.id] = action.review;
+            return updateReviewState;
         case DELETE_REVIEW:
             let deleteReviewState = {...state};
             delete deleteReviewState.reviews[action.reviewId]
