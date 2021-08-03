@@ -68,7 +68,7 @@ export default function RecipeDetailPage() {
                 <h2 className="recipe-detail-category">Category: {currentRecipe.category_name}</h2>
             </article>
             <h2>Reviews</h2>
-            <CommentFormModal />
+            {sessionUser.id !== currentRecipe.user_id && <CommentFormModal />}
             {recipeReviews?.sort(({id: a}, {id: b}) => a - b).map(rev => (
                 <article key={rev.id}>{rev.review}</article>
             ))}
