@@ -23,6 +23,14 @@ const deleteRecipeReview = (reviewId) => ({
     reviewId
 });
 
+//thunk for creating review
+
+//thunk for getting all recipe's reviews
+
+//thunk for updating a review
+
+//thunk for deleting a review
+
 const initialState = {reviews: {}};
 
 export default function reducer(state = initalState, action) {
@@ -31,6 +39,15 @@ export default function reducer(state = initalState, action) {
             let newReviewState = {...state};
             newReviewState.reviews[action.review.id] = action.review;
             return newReviewState;
+        case LOAD_REVIEWS:
+            return {reviews: action.payload.reviews};
+        case UPDATE_REVIEW:
+            let updateReviewState = {...state};
+            updateReviewState.reviews[action.review.id] = action.review;
+        case DELETE_REVIEW:
+            let deleteReviewState = {...state};
+            delete deleteReviewState.reviews[action.reviewId]
+            return deleteReviewState;
         default:
             return state;
     }
