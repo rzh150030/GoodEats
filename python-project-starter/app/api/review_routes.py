@@ -41,5 +41,13 @@ def create_review(id):
 @login_required
 def update_review(id):
     form = ReviewForm()
+    review = Review.query.get(id)
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        review.review = form.data["review"]
+        db.session.add(review)
+        db.session.commit()
+        return review.to_dict()
 
 # Delete a specific review
