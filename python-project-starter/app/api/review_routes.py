@@ -17,3 +17,6 @@ def validation_errors_to_error_messages(validation_errors):
 @review_routes.route("/recipe/<int:id>")
 def recipe_reviews(id):
     reviews = Review.query.filter_by(recipe_id=f"{id}").all()
+    return {"reviews": [review.to_dict() for review in reviews]}
+
+#
