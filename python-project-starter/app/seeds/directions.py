@@ -10,6 +10,7 @@ def seed_directions():
     Direction(step="???", recipe_id=3), Direction(step="Profit", recipe_id=3)]
     r4directions = [Direction(step="Make pizza", recipe_id=4), Direction(step="Bake pizza", recipe_id=4),
     Direction(step="???", recipe_id=4), Direction(step="Eat", recipe_id=4)]
+    r5directions = [Direction(step="Make Corned Beef and Cabbage", recipe_id=5)]
 
     for dir1 in r1directions:
         db.session.add(dir1)
@@ -19,6 +20,8 @@ def seed_directions():
         db.session.add(dir3)
     for dir4 in r4directions:
         db.session.add(dir4)
+    for dir5 in r5directions:
+        db.session.add(dir5)
 
     db.session.commit()
 
