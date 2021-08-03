@@ -19,7 +19,7 @@ def validation_errors_to_error_messages(validation_errors):
 @review_routes.route("/<int:id>")
 def recipe_reviews(id):
     reviews = Recipe.query.get(id).reviews
-    return {"reviews": [review.to_dict() for review in reviews]}
+    return {"reviews": {review.id:review.to_dict() for review in reviews}}
 
 # Create a review for a specific recipe
 @review_routes.route("/create/<int:id>")
@@ -53,3 +53,11 @@ def update_review(id):
     return {"errors": validation_errors_to_error_messages(form.errors)}
 
 # Delete a specific review
+@review_routes.route("/delete/<int:id>")
+@login_required
+def delete_review(id):
+    review = Review.query.get(id)
+    if int(review.user_id) == current_user.id:
+        db.session.delete(review)
+        db.session.commit()
+        return {"message": "deleted"}
