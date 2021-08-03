@@ -15,7 +15,6 @@ export default function RecipeDetailPage() {
     const currentRecipe = useSelector(state => state.recipe.currentRecipe);
     const sessionUser = useSelector(state => state.session.user);
     const userFavorites = useSelector(state => state.favoriteRecipe.favorites);
-    const recipeReviews = useSelector(state => Object.values(state.recipeReviews.reviews));
     let favorited;
     if (sessionUser) { //check if user already favorited current recipe
         favorited = userFavorites.find(recipe => recipe.id === currentRecipe.id);
@@ -46,13 +45,6 @@ export default function RecipeDetailPage() {
             </div>
         );
     }
-
-    const editDeleteReview = (
-        <div>
-            <button>Edit</button>
-            <button>Delete</button>
-        </div>
-    )
 
     return (
         <div id="recipe-detail-page">
