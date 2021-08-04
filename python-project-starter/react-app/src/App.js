@@ -62,7 +62,7 @@ function App() {
           <ProtectedRoute path="/recipe/create" exact={true}>
             <CreateRecipe />
           </ProtectedRoute>
-          <Route path="/">
+          <Route >
             <FourOFourPage />
           </Route>
         </Switch>
