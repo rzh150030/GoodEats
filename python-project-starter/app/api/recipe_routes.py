@@ -48,6 +48,7 @@ def create_recipe():
     data = request.json
 
     if form.validate_on_submit():
+        print(form.data)
         newRecipe = Recipe(name=form.data["name"], category_id=form.data["category"], user_id=current_user.id)
         db.session.add(newRecipe)
 
@@ -63,7 +64,7 @@ def create_recipe():
         db.session.commit()
         return newRecipe.to_dict()
 
-    return {"errors": validation_errors_to_error_messages(form.errors)}
+    return {"errors": validation_errors_to_error_messages(form.errors)}, 400
 
 # Edit recipe information
 # ingredient and direction table data is handled as follows:
@@ -89,6 +90,12 @@ def edit_recipe(id):
     if form.validate_on_submit():
         recipe.name = form.data["name"]
         recipe.category_id = form.data["category"]
+
+        # check if ingredients or directions list has empty values
+        for ingred in data["ingredients"]:
+            missing_ingred= []
+            if not ingred["ingredient"]:
+                missing_ingred.append(ingred)
 
         # update ingredients table
         for ingred in data["ingredients"]:

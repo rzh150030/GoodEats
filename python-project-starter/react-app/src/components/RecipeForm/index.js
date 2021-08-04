@@ -92,9 +92,12 @@ export default function RecipeForm(props) {
         }
 
         if (result.errors) {
+            console.log("result.errors YES")
             setErrors(result.errors);
         }
         else {
+            console.log("What are you DOING?!?!")
+            console.log(result)
             history.push(`/recipe/detail/${result}`);
         }
     };

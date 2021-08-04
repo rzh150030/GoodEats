@@ -73,13 +73,16 @@ export const postRecipe = (data) => async dispatch => {
 
     if (response.ok) {
         const data = await response.json();
+        console.log("NOT OKAYFFFFFFF")
         dispatch(makeRecipe(data));
         return data.id; //used to redirect to recipe detail page
     }
     else if (response.status < 500) {
         const data = await response.json();
+        console.log("RESPONSE ERRORS < 500")
+        console.log(data)
         if (data.errors)
-            return data.errors;
+            return data;
     }
     else {
         return {errors: ["An error occurred. Please try again later."]};
