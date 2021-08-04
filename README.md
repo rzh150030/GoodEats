@@ -7,7 +7,7 @@
 - [Application Architecture & Technologies](https://github.com/rzh150030/GoodEats#application-architecture-&-technologies)
 - [Frontend Technologies](https://github.com/rzh150030/GoodEats#frontend-technologies)
 - [Backend Technologies](https://github.com/rzh150030/GoodEats#backend-technologies)
-- [Other Information](https://github.com/rzh150030/GoodEats#other-information)
+- [Future Developments](https://github.com/rzh150030/GoodEats#future-developments)
 
 ## Overview
 GoodEats is a fullstack React Flask-SQLAlchemy app that allows users to create, edit, and favor recipes from all over the world.
@@ -41,5 +41,5 @@ WTForms allows for validation of form inputs when dealing with data on the backe
 ### Alembic
 Used to migrate and seed the database. Alembic's ability to notice changes and create new versions of a migration helps simplify the process of updating tables in the database. Compared with sequelize, you would need to unseed and unmigrate a table before remigrating it to make changes on tables in the database. Seeding in alembic required creation of a custom seed command unlike with Sequelize.
 
-## Other Information
+## Future Developments
 There will be other features that would be included in the future. Being able to review a recipe is currently being worked on. Other features to be implemented later include rating, search by categories and searching. Some upcoming challenge with the features is being able to create a search functionality on the frontend as well as styling the components properly.
