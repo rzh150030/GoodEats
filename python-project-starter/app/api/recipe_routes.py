@@ -49,6 +49,14 @@ def create_recipe():
     print("FFFFFF")
     print(form.data)
 
+    # check if ingredients or directions list has empty values
+    for ingred in data["ingredients"]:
+        if not ingred["ingredient"] or ingred["ingredient"].isspace():
+            return {"errors": ["Please fill in missing ingredient fields"]}, 400
+    for direct in data["directions"]:
+        if not direct["step"] or direct["step"].isspace():
+            return {"errors": ["Please fill in missing direction fields"]}, 400
+
     if form.validate_on_submit():
         newRecipe = Recipe(name=form.data["name"], category_id=form.data["category"], user_id=current_user.id)
         db.session.add(newRecipe)
