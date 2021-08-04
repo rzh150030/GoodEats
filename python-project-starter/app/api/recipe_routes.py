@@ -100,12 +100,6 @@ def edit_recipe(id):
         recipe.name = form.data["name"]
         recipe.category_id = form.data["category"]
 
-        # check if ingredients or directions list has empty values
-        """ for ingred in data["ingredients"]:
-            missing_ingred= []
-            if not ingred["ingredient"]:
-                missing_ingred.append(ingred) """
-
         # update ingredients table
         for ingred in data["ingredients"]:
             if int(ingred["id"]) == 0:
@@ -152,6 +146,7 @@ def delete_recipe(id):
         return {"message": "deleted"}
 
     return {"errors": ["Unauthorized"]}, 401
+
 
 # validate ingredients and directions data
 def validate_ingreds_directs(ingredients, directions):
