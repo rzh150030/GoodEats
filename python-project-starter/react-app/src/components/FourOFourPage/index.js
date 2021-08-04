@@ -6,10 +6,10 @@ import "./FourOFourPage.css";
 export default function FourOFourPage() {
     return (
         <div id="not-found-page">
-            <img src={altonBrown} alt="Alton Brown"/>
+            <img src={altonBrown} alt="Alton Brown" id="alton-brown"/>
             <div id="not-found-page-content">
                 <span id="page-message">Page not found</span>
-                <NavLink to="/" id="">Click here to return to home</NavLink>
+                <NavLink to="/" id="return-link">Click here to return to home</NavLink>
             </div>
         </div>
     )
