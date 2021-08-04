@@ -1,6 +1,9 @@
 #about-links-footer {
     display: flex;
     justify-content: space-around;
+    align-items: center;
+    background-color: #DEC3F7;
+    height: 50px;
 }
 
 .footer-links {
