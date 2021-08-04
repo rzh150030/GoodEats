@@ -1,16 +1,19 @@
 .recent-recipes-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 20%);
+    grid-template-columns: repeat(5, 0.4fr);
     grid-template-rows: auto;
     margin-top: 20px;
+    padding-bottom: 200px;
     column-gap: 10px;
     row-gap: 10px;
     margin-left: 100px;
+    margin-right: 100px;
 }
 
 .recipe-containers {
     display: grid;
     grid-template-rows: 1fr 1fr;
+    transition: box-shadow .5s;
 }
 
 .recipe-links {
@@ -19,7 +22,7 @@
     text-decoration: none;
     margin-bottom: 25px;
     color: black;
-    transition: box-shadow .5s;
+
 }
 
 .home-page {
@@ -29,7 +32,7 @@
     margin-bottom: 0px;
 }
 
-.recipe-links:hover {
+.recipe-containers:hover {
     box-shadow: 0px 2px 2px 2px #8B89E5;
 }
 
