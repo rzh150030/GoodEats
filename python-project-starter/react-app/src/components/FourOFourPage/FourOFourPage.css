@@ -1,0 +1,9 @@
+#not-found-page {
+    display: flex;
+    justify-content: space-around;
+}
+
+#not-found-page-content {
+    display: flex;
+    flex-direction: column;
+}
