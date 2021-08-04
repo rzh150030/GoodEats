@@ -23,7 +23,7 @@ def user_recipes(id):
     if id == current_user.id:
         recipes = Recipe.query.filter_by(user_id=f"{id}").all()
         return {"recipes": [recipe.to_dict() for recipe in recipes]}
-    return {"errors": ["Unauthorized"]}
+    return {"errors": ["Unauthorized"]}, 401
 
 # Get a specific recipe and its ingredients and directions
 @recipe_routes.route("/<int:id>")
@@ -46,9 +46,10 @@ def create_recipe():
     form = RecipeForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
     data = request.json
+    print("FFFFFF")
+    print(form.data)
 
     if form.validate_on_submit():
-        print(form.data)
         newRecipe = Recipe(name=form.data["name"], category_id=form.data["category"], user_id=current_user.id)
         db.session.add(newRecipe)
 
@@ -92,10 +93,10 @@ def edit_recipe(id):
         recipe.category_id = form.data["category"]
 
         # check if ingredients or directions list has empty values
-        for ingred in data["ingredients"]:
+        """ for ingred in data["ingredients"]:
             missing_ingred= []
             if not ingred["ingredient"]:
-                missing_ingred.append(ingred)
+                missing_ingred.append(ingred) """
 
         # update ingredients table
         for ingred in data["ingredients"]:
@@ -130,7 +131,7 @@ def edit_recipe(id):
         db.session.commit()
         return recipe.to_dict_with_details()
 
-    return {"errors": validation_errors_to_error_messages(form.errors)}
+    return {"errors": validation_errors_to_error_messages(form.errors)}, 400
 
 # delete recipe
 @recipe_routes.route("/<int:id>", methods=["DELETE"])
@@ -142,4 +143,4 @@ def delete_recipe(id):
         db.session.commit()
         return {"message": "deleted"}
 
-    return {"errors": ["Unauthorized"]}
+    return {"errors": ["Unauthorized"]}, 401
