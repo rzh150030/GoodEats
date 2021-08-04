@@ -1,6 +1,7 @@
 #not-found-page {
     display: flex;
     justify-content: center;
+    background-color: #eff0f1;
 }
 
 #not-found-page-content {
