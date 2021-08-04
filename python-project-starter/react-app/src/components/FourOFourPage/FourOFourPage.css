@@ -2,6 +2,8 @@
     display: flex;
     justify-content: center;
     background-color: #eff0f1;
+    padding-top: 20px;
+    padding-bottom: 180px;
 }
 
 #not-found-page-content {
