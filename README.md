@@ -3,7 +3,7 @@
 *By Richard Huang*
 
 ### Table of Contents
-- Overview
+- [Overview](https://github.com/rzh150030/GoodEats#Overview)
 - Application Architecture & Technologies
 - Frontend Technologies
 - Backend Technologies
