@@ -3,11 +3,11 @@
 *By Richard Huang*
 
 ### Table of Contents
-- [Overview](https://github.com/rzh150030/GoodEats#Overview)
-- Application Architecture & Technologies
-- Frontend Technologies
-- Backend Technologies
-- Other Information
+- [Overview](https://github.com/rzh150030/GoodEats#overview)
+- [Application Architecture & Technologies](https://github.com/rzh150030/GoodEats#application-architecture-&-technologies)
+- [Frontend Technologies](https://github.com/rzh150030/GoodEats#frontend-technologies)
+- [Backend Technologies](https://github.com/rzh150030/GoodEats#backend-technologies)
+- [Other Information](https://github.com/rzh150030/GoodEats#other-information)
 
 ## Overview
 GoodEats is a fullstack React Flask-SQLAlchemy app that allows users to create, edit, and favor recipes from all over the world.
