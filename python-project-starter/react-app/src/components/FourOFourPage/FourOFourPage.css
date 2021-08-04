@@ -13,3 +13,13 @@
 #alton-brown {
     margin-right: 100px;
 }
+
+#return-link {
+    margin-top: 20px;
+    text-decoration: none;
+    font-family: Monaco, 'monospace', Arial, sans-serif;
+}
+
+#page-message {
+    font-family: 'Trebuchet MS', sans-serif, Times, serif;
+}
