@@ -23,7 +23,7 @@ def user_recipes(id):
     if id == current_user.id:
         recipes = Recipe.query.filter_by(user_id=f"{id}").all()
         return {"recipes": [recipe.to_dict() for recipe in recipes]}
-    return {"errors": ["Unauthorized"]}
+    return {"errors": ["Unauthorized"]}, 401
 
 # Get a specific recipe and its ingredients and directions
 @recipe_routes.route("/<int:id>")
@@ -47,6 +47,11 @@ def create_recipe():
     form["csrf_token"].data = request.cookies["csrf_token"]
     data = request.json
 
+    # check if ingredients or directions list has empty values
+    errors = validate_ingreds_directs(data["ingredients"], data["directions"])
+    if errors:
+        return errors
+
     if form.validate_on_submit():
         newRecipe = Recipe(name=form.data["name"], category_id=form.data["category"], user_id=current_user.id)
         db.session.add(newRecipe)
@@ -63,7 +68,7 @@ def create_recipe():
         db.session.commit()
         return newRecipe.to_dict()
 
-    return {"errors": validation_errors_to_error_messages(form.errors)}
+    return {"errors": validation_errors_to_error_messages(form.errors)}, 400
 
 # Edit recipe information
 # ingredient and direction table data is handled as follows:
@@ -85,6 +90,11 @@ def edit_recipe(id):
 
     form["csrf_token"].data = request.cookies["csrf_token"]
     data = request.json
+
+    # check if ingredients or directions list has empty values
+    errors = validate_ingreds_directs(data["ingredients"], data["directions"])
+    if errors:
+        return errors
 
     if form.validate_on_submit():
         recipe.name = form.data["name"]
@@ -123,7 +133,7 @@ def edit_recipe(id):
         db.session.commit()
         return recipe.to_dict_with_details()
 
-    return {"errors": validation_errors_to_error_messages(form.errors)}
+    return {"errors": validation_errors_to_error_messages(form.errors)}, 400
 
 # delete recipe
 @recipe_routes.route("/<int:id>", methods=["DELETE"])
@@ -135,4 +145,15 @@ def delete_recipe(id):
         db.session.commit()
         return {"message": "deleted"}
 
-    return {"errors": ["Unauthorized"]}
+    return {"errors": ["Unauthorized"]}, 401
+
+
+# validate ingredients and directions data
+def validate_ingreds_directs(ingredients, directions):
+    for ingred in ingredients:
+        if not ingred["ingredient"] or ingred["ingredient"].isspace():
+            return {"errors": ["Please fill in missing ingredient fields"]}, 400
+    for direct in directions:
+        if not direct["step"] or direct["step"].isspace():
+            return {"errors": ["Please fill in missing direction fields"]}, 400
+    return None
