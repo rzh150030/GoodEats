@@ -9,6 +9,7 @@ import RecipeDetailPage from './components/RecipeDetailPage';
 import CreateRecipe from './components/CreateRecipe';
 import EditRecipe from "./components/EditRecipe";
 import ProfilePage from './components/ProfilePage';
+import FourOFourPage from './components/FourOFourPage';
 import { authenticate } from './store/session';
 import { grabCategories, getAllRecipes } from './store/recipe';
 import Homepage from './components/Homepage';
@@ -54,13 +55,16 @@ function App() {
             </Route>
           ))}
           {recipeList.map(recipe => (
-            <ProtectedRoute path="/recipe/edit/:id" key={recipe.id}>
+            <ProtectedRoute path="/recipe/edit/:id" key={recipe.id} exact={true}>
               <EditRecipe />
             </ProtectedRoute>
           ))}
           <ProtectedRoute path="/recipe/create" exact={true}>
             <CreateRecipe />
           </ProtectedRoute>
+          <Route path="/">
+            <FourOFourPage />
+          </Route>
         </Switch>
       )}
       <footer id="about-links-footer">
