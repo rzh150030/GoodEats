@@ -1,6 +1,7 @@
 .recipe-form {
     display: grid;
     grid-template-rows: 40px;
+    grid-template-columns: 400px;
     justify-content: center;
     row-gap: 10px;
     padding-bottom: 314px;
@@ -33,4 +34,6 @@
 
 .input-recipe {
     margin-top: 10px;
+    width: 329px;
+    font-size: .8rem;
 }

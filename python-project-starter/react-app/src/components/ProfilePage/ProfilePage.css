@@ -22,11 +22,12 @@
     display: flex;
     justify-content: space-around;
     color: #b34700;
-    font-weight: bold;
-    font-size: 33px;
+    font-size: 40px;
     padding-top: 20px;
+    font-family: 'Trebuchet MS', sans-serif, Times, serif;
 }
 
 #recipe-owner-name {
     margin-left: 50px;
+    font-family: Monaco, 'monospace', Arial, sans-serif;
 }

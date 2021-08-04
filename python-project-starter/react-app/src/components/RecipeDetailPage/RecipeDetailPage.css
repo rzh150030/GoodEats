@@ -16,7 +16,7 @@
 .ingred-detail-label {
     grid-area: ingred;
     padding-left: 290px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Trebuchet MS', sans-serif, Times, serif;
     font-size: x-large;
 }
 
@@ -28,7 +28,7 @@
 .direct-detail-label {
     grid-area: direct;
     padding-left: 290px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Trebuchet MS', sans-serif, Times, serif;
     font-size: x-large;
 }
 
@@ -43,11 +43,14 @@
 
 .recipe-detail-category {
     grid-area: other2;
+    font-family: 'Trebuchet MS', sans-serif, Times, serif;
 }
 
 #current-recipe-name {
     display: flex;
     justify-content: center;
+    font-family: 'Trebuchet MS', sans-serif, Times, serif;
+    font-size: 40px;
 }
 
 .ingredients {
