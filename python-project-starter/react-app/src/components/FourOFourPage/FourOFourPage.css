@@ -2,8 +2,8 @@
     display: flex;
     justify-content: center;
     background-color: #eff0f1;
-    padding-top: 20px;
-    padding-bottom: 180px;
+    padding-top: 70px;
+    padding-bottom: 130px;
 }
 
 #not-found-page-content {
@@ -21,8 +21,10 @@
     margin-top: 20px;
     text-decoration: none;
     font-family: Monaco, 'monospace', Arial, sans-serif;
+    color: #0077cc
 }
 
 #page-message {
+    font-size: 25px;
     font-family: 'Trebuchet MS', sans-serif, Times, serif;
 }
