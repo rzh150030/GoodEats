@@ -23,7 +23,7 @@ export default function Homepage() {
                         <NavLink to={`/recipe/detail/${recipe.id}`} className="recipe-links">
                             {recipe.name}
                         </NavLink>
-                        <span>{"By: " + recipe.User?.username}</span>
+                        <span id="home-owner-username">{"By: " + recipe.User?.username}</span>
                     </div>
                 ))}
             </div>
