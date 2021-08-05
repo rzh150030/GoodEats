@@ -144,7 +144,7 @@ export const userRecipes = (userId) => async dispatch => {
     }
 };
 
-const initialState = {recipes: [], currentRecipe: {}, categories: {}, userRecipes: {}};
+const initialState = {recipes: [], currentRecipe: {}, categories: {}, userRecipes: {}, loaded: false};
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
@@ -154,7 +154,8 @@ export default function reducer(state = initialState, action) {
                 recipes: [
                   ...state.recipes,
                     action.payload
-                ]
+                ],
+                loaded: true
               }
         case GET_CATEGORIES:
             let stateWithCat = {...state};
