@@ -8,11 +8,14 @@ export default function ReviewForm() {
     const [errors, setErrors] = useState([]);
     let updating = false;
 
+    //onChange handler
+    const updateComment = (e) => setComment(e.target.value);
+
     const handleSubmit = (e) => {
+        e.preventDefault();
 
+        
     };
-
-    let commentInput;
 
 
     return (
@@ -20,7 +23,10 @@ export default function ReviewForm() {
             <ul>
                 {errors && errors.map((err, i) => <li key={i}>{err}</li>)}
             </ul>
-            <label>Comment:</label>
+            <label>Review: </label>
+            <div>
+                <textarea rows="20" cols="80" value={comment} onChange={updateComment}/>
+            </div>
             <button type="submit">Submit</button>
         </form>
     )
