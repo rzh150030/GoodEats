@@ -88,15 +88,16 @@ export const updateReview = (updatedReview, reviewId) => async dispatch => {
 //thunk for deleting a review
 export const deleteReview = (reviewId) => async dispatch => {
     const response = await fetch(`/api/reviews/delete/${reviewId}`, {
-        methods: "DELETE"
+        method: "DELETE"
     });
 
     if (response.ok) {
-        const data = await response.json();
+        console.log("AAAAAAAA")
         dispatch(deleteRecipeReview(reviewId));
         return null;
     }
     else if (response.status < 500) {
+        console.log("alksdjalkd")
         const data = await response.json();
         if (data.errors) {
             return data.errors;
