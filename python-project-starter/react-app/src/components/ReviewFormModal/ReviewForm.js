@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { createReview, updateReview } from "../../store/review";
 import { useDispatch, useSelector } from "react-redux";
 
-export default function ReviewForm({setShowModal}) {
+export default function ReviewForm() {
     const dispatch = useDispatch();
     const currentRecipe = useSelector(state => state.recipe.currentRecipe);
     const [review, setReview] = useState("");
@@ -10,7 +10,7 @@ export default function ReviewForm({setShowModal}) {
     let updating = false;
 
     //onChange handler
-    const updateReview = (e) => setReview(e.target.value);
+    const updateInputReview = (e) => setReview(e.target.value);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -26,9 +26,6 @@ export default function ReviewForm({setShowModal}) {
         if (result) {
             setErrors(result);
         }
-        else {
-            setShowModal(false);
-        }
     };
 
 
@@ -39,7 +36,7 @@ export default function ReviewForm({setShowModal}) {
             </ul>
             <label>Review: </label>
             <div>
-                <textarea rows="20" cols="80" value={review} onChange={updateReview}/>
+                <textarea rows="20" cols="80" value={review} onChange={updateInputReview}/>
             </div>
             <button type="submit">Submit</button>
         </form>
