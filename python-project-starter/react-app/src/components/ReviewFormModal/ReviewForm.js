@@ -2,19 +2,33 @@ import React, { useState } from 'react';
 import { createReview, updateReview } from "../../store/review";
 import { useDispatch, useSelector } from "react-redux";
 
-export default function ReviewForm() {
+export default function ReviewForm({setShowModal}) {
     const dispatch = useDispatch();
-    const [comment, setComment] = useState("");
+    const [review, setReview] = useState("");
     const [errors, setErrors] = useState([]);
     let updating = false;
 
     //onChange handler
-    const updateComment = (e) => setComment(e.target.value);
+    const updateReview = (e) => setReview(e.target.value);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        
+        let result;
+
+        if (updating) {
+            result = await dispatch(updateReview(review));
+        }
+        else {
+            result = await dispatch(createReview(review));
+        }
+
+        if (result.errors) {
+            setErrors(result.errors);
+        }
+        else {
+            setShowModal(false);
+        }
     };
 
 
@@ -25,7 +39,7 @@ export default function ReviewForm() {
             </ul>
             <label>Review: </label>
             <div>
-                <textarea rows="20" cols="80" value={comment} onChange={updateComment}/>
+                <textarea rows="20" cols="80" value={review} onChange={updateReview}/>
             </div>
             <button type="submit">Submit</button>
         </form>

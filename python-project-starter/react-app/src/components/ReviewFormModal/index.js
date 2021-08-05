@@ -4,14 +4,14 @@ import ReviewForm from './ReviewForm';
 
 export default function CommentFormModal() {
     const [showModal, setShowModal] = useState(false);
-    
+
 
     return (
         <>
             <button onClick={() => setShowModal(true)}>Write a review</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <ReviewForm />
+                    <ReviewForm setShowModal={setShowModal}/>
                 </Modal>
             )}
         </>
