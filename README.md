@@ -1,6 +1,7 @@
 # GoodEats
 
 *By Richard Huang*
+[Live Link](https://good-eats-capstone-project.herokuapp.com/)
 
 ### Table of Contents
 - [Overview](https://github.com/rzh150030/GoodEats#overview)
@@ -12,7 +13,9 @@
 ## Overview
 GoodEats is a fullstack React Flask-SQLAlchemy app that allows users to create, edit, and favor recipes from all over the world.
 Users can see all the recipes that are made on the website and go to them in order to see what ingredients are needed and what steps are needed to make a delicious meal. 
-Users can also make their own recipes and have them displayed for everyone else to see. Users can also favor other people's recipes and see them on their own profile page to be able to easily find them again in the future. This project utilizes Flask-SQLAlchemy, PostgreSQL and Alembic to handle backend operations. For the frontend, React along with Redux is used to make RESTful data requests to the backend.
+Users can also make their own recipes and have them displayed for everyone else to see. When creating a recipe, users can add as many steps and ingredients as they want; the form will dynamically adjust to accommodate all the information they provide. Editing a recipe is just as easy since the form will contain all the information they've already posted allowing them to make minor adjustments if needed as well as accepting new information such as more ingredients or extra directions. If the user decides to cancel any changes they've made on the edit page, they can cancel the form and go back to the recipe page without any of the changes made showing up. Should the user decide they don't like the recipe they made they can always delete the recipe.
+
+Users can also favor other people's recipes and see them on their own profile page to be able to easily find them again in the future. If they no longer favor the recipe the option of unfavoring is always available. This project utilizes Flask-SQLAlchemy, PostgreSQL and Alembic to handle backend operations. For the frontend, React along with Redux is used to make RESTful data requests to the backend.
 
 ## Application Architecture & Technologies
 As stated above, GoodEats is fullstack React Flask-SQLAlchemy application. The logic for handling most of the data is done in the backend. The frontend utilizes data returned from the backend in order to determine which parts of the user interface should be shown. The frontend also handles data input from the user and packages the data properly before sending to the backend so that the backend logic can properly determine which data should be updated, deleted, or created. The technologies used include React, Redux, Flask-SQLAlchemy, Alembic, WTForms and Python core. 
@@ -35,7 +38,7 @@ Redux store also allows for better organization of needed information. Recipe re
 ### Flask-SQLAlchemy
 The use of Flask-SQLAlchemy helped simplify creating associations and tables that would have been required with the application. Using a few model files and setting the right table column variables as well as relationship variables I could have the all the setup necessary for my database to work. Compared to something like Sequelize which would require some preliminary set up before being able to establish relationships as well as being very specific with syntax, Flask-SQLAlchemy was easier to use.
 ### PostgreSQL
-Use of PostgreSQL was at the behest of App Academy.
+PostgreSQL was used for database storage of information since it allows storage of many types of different data and constraints. It works well with Flask-SQLAlchemy to create a database that can store the required information and relationships
 ### WTForms
 WTForms allows for validation of form inputs when dealing with data on the backend. It validates the name and category of the form data sent by the frontend. Unfortunately, it could not handle data for ingredients and directions so it was not used for validating those data. Instead a custom validation method was used to validate ingredient and directions data.
 ### Alembic
