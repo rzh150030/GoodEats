@@ -4,10 +4,13 @@ import { loadReviews, deleteReview } from '../../store/review';
 import ReviewFormModal from '../ReviewFormModal';
 
 export default function ReviewSection() {
-    const dispatch = useDispatch();
+
     const currentRecipe = useSelector(state => state.recipe.currentRecipe);
     const sessionUser = useSelector(state => state.session.user);
     const recipeReviews = useSelector(state => Object.values(state.recipeReviews.reviews));
+    const user_idReviews = recipeReviews.map(review => review.user_id);
+    const alreadyReviewed = user_idReviews.includes(sessionUser.id);
+
 
     //Onclick event handlers
 
@@ -21,7 +24,7 @@ export default function ReviewSection() {
     return (
         <div>
             <h2>Reviews</h2>
-            {sessionUser && sessionUser.id !== currentRecipe.user_id && <ReviewFormModal />}
+            {sessionUser && sessionUser.id !== currentRecipe.user_id && !alreadyReviewed && <ReviewFormModal />}
             {recipeReviews?.sort(({id: a}, {id: b}) => a - b).map(rev => (
                 <article key={rev.id}>
                     <div>{rev.review}</div>
