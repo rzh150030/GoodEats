@@ -99,6 +99,13 @@ export default function RecipeForm(props) {
         }
     };
 
+    //Cancel the form information
+    const cancelForm = (e) => {
+        e.preventDefault();
+
+        history.goBack();
+    }
+
     return (
         <form onSubmit={handleSubmit} className="recipe-form">
             <ul className="errors">
@@ -133,6 +140,7 @@ export default function RecipeForm(props) {
                 <button onClick={newDirectInput} className="add-input-button">One More Step</button>
             </div>
             <button type="submit" className="save-recipe-button">Save Recipe</button>
+            <button onClick={cancelForm} className="cancel-button">Cancel</button>
         </form>
     )
 }

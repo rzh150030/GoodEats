@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
@@ -17,7 +17,6 @@ import Homepage from './components/Homepage';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
-  const recipeList = useSelector(state => Object.values(state.recipe.recipes));
 
   useEffect(() => {
     (async() => {
@@ -49,26 +48,22 @@ function App() {
           <ProtectedRoute path="/profile" exact={true}>
             <ProfilePage />
           </ProtectedRoute>
-          {recipeList.map(recipe => (
-            <Route path="/recipe/detail/:id" key={recipe.id}>
-              <RecipeDetailPage />
-            </Route>
-          ))}
-          {recipeList.map(recipe => (
-            <ProtectedRoute path="/recipe/edit/:id" key={recipe.id} exact={true}>
-              <EditRecipe />
-            </ProtectedRoute>
-          ))}
+          <Route path="/recipe/detail/:id" exact={true}>
+            <RecipeDetailPage />
+          </Route>
+          <ProtectedRoute path="/recipe/edit/:id" exact={true}>
+            <EditRecipe />
+          </ProtectedRoute>
           <ProtectedRoute path="/recipe/create" exact={true}>
             <CreateRecipe />
           </ProtectedRoute>
-          <Route path="/">
+          <Route>
             <FourOFourPage />
           </Route>
         </Switch>
       )}
       <footer id="about-links-footer">
-        Created by: Richard Huang
+        Developed by: Richard Huang
         <a className="footer-links" href="https://www.linkedin.com/in/richard-huang-0a6658207/">LinkedIn</a>
         <a className="footer-links" href="https://github.com/rzh150030">Github</a>
         <a className="footer-links" href="https://github.com/rzh150030/GoodEats">Repo</a>

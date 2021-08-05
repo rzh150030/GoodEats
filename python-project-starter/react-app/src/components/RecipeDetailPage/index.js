@@ -4,6 +4,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import { getRecipe, deleteRecipe } from '../../store/recipe';
 import { getFavoredRecipes } from '../../store/favorite';
 import FavoriteButton from '../FavoriteButton';
+import FourOFourPage from '../FourOFourPage';
 import "./RecipeDetailPage.css";
 
 export default function RecipeDetailPage() {
@@ -43,7 +44,7 @@ export default function RecipeDetailPage() {
         );
     }
 
-    return (
+    return (currentRecipe.id ?
         <div id="recipe-detail-page">
             <h1 id="current-recipe-name">{currentRecipe.name}</h1>
             <article className="recipe-article">
@@ -63,6 +64,7 @@ export default function RecipeDetailPage() {
                 <FavoriteButton favorited={favorited} currentRecipe={currentRecipe} sessionUser={sessionUser}/>
                 <h2 className="recipe-detail-category">Category: {currentRecipe.category_name}</h2>
             </article>
-        </div>
+        </div> :
+        <FourOFourPage />
     )
 }
