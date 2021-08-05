@@ -37,7 +37,7 @@
 }
 
 .recipe-detail-category {
-    grid-area: other2;
+    grid-area: category;
     font-family: 'Trebuchet MS', sans-serif, Times, serif;
 }
 

@@ -5,7 +5,6 @@ import ReviewForm from './ReviewForm';
 export default function CommentFormModal() {
     const [showModal, setShowModal] = useState(false);
 
-   
 
     return (
         <>
