@@ -5,6 +5,7 @@ const GET_CATEGORIES = "recipe/getCategories";
 const UPDATE_RECIPE = "recipe/updateRecipe";
 const DELETE_RECIPE = "recipe/deleteRecipe";
 const USER_RECIPES = "recipe/loadUserRecipes";
+const RESET_LOAD_STATUS = "recipe/loadStatus";
 
 const makeRecipe = (recipe) => ({
     type: CREATE_RECIPE,
@@ -41,8 +42,13 @@ const loadUserRecipes = (userRecipesData) => ({
     payload: userRecipesData
 });
 
+const resetLoadedStat = () => ({
+    type: RESET_LOAD_STATUS
+});
+
 //thunk for get a recipe
 export const getRecipe = (recipeId) => async dispatch => {
+    dispatch(resetLoadedStat());
     const response = await fetch(`/api/recipes/${recipeId}`);
 
     if (response.ok) {
@@ -148,14 +154,15 @@ const initialState = {recipes: [], currentRecipe: {}, categories: {}, userRecipe
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
+        case RESET_LOAD_STATUS:
+            return {...state, loaded: false}
         case CREATE_RECIPE:
             return {
                 ...state,
                 recipes: [
                   ...state.recipes,
                     action.payload
-                ],
-                loaded: true
+                ]
               }
         case GET_CATEGORIES:
             let stateWithCat = {...state};
@@ -164,7 +171,7 @@ export default function reducer(state = initialState, action) {
             });
             return stateWithCat;
         case LOAD_RECIPE:
-            return {...state, currentRecipe: action.payload};
+            return {...state, currentRecipe: action.payload, loaded: true};
         case LOAD_ALL_RECIPES:
             return {...state, recipes: action.payload.recipes};
         case UPDATE_RECIPE:
