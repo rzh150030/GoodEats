@@ -37,7 +37,7 @@ def create_review(id):
         new_review = Review(review=form.data["review"], recipe_id=id, user_id=current_user.id)
         db.session.add(new_review)
         db.session.commit()
-        return review.to_dict()
+        return new_review.to_dict()
 
     return {"errors": validation_errors_to_error_messages(form.errors)}, 400
 
