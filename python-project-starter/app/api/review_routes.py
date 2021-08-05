@@ -31,7 +31,7 @@ def create_review(id):
 
     for review in recipe_reviews:
         if review.user_id == current_user.id:
-            return {"errors": ["You have already reviewed this recipe."]}
+            return {"errors": ["You have already reviewed this recipe."]}, 400
 
     if form.validate_on_submit():
         new_review = Review(review=form.data["review"], recipe_id=id, user_id=current_user.id)
@@ -39,7 +39,7 @@ def create_review(id):
         db.session.commit()
         return review.to_dict()
 
-    return {"errors": validation_errors_to_error_messages(form.errors)}
+    return {"errors": validation_errors_to_error_messages(form.errors)}, 400
 
 # Update a specific review
 @review_routes.route("/update/<int:id>", methods=["PUT"])
@@ -55,7 +55,7 @@ def update_review(id):
         db.session.commit()
         return review.to_dict()
 
-    return {"errors": validation_errors_to_error_messages(form.errors)}
+    return {"errors": validation_errors_to_error_messages(form.errors)}, 400
 
 # Delete a specific review
 @review_routes.route("/delete/<int:id>", methods=["DELETE"])
@@ -67,4 +67,4 @@ def delete_review(id):
         db.session.commit()
         return {"message": "deleted"}
 
-    return {"errors": ["Unauthorized"]}
+    return {"errors": ["Unauthorized"]}, 401
