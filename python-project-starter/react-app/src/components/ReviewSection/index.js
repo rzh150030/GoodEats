@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { loadReviews, deleteReview } from '../../store/review';
+import { deleteReview } from '../../store/review';
 import ReviewFormModal from '../ReviewFormModal';
 
 export default function ReviewSection() {
@@ -8,13 +8,18 @@ export default function ReviewSection() {
     const currentRecipe = useSelector(state => state.recipe.currentRecipe);
     const sessionUser = useSelector(state => state.session.user);
     const recipeReviews = useSelector(state => Object.values(state.recipeReviews.reviews));
+    const [errors, setErrors] = useState([]);
     const userReview = recipeReviews.find(review => sessionUser.id === review.user_id);
 
     //Onclick event handlers
-    const deleteUserReview = (e) => {
+    const deleteUserReview = async (e) => {
         e.preventDefault();
 
-        dispatch(deleteReview(userReview.id));
+        const result = await dispatch(deleteReview(userReview.id));
+
+        if (result) {
+            setErrors(result);
+        }
     }
 
     const editDeleteReview = (
@@ -27,6 +32,9 @@ export default function ReviewSection() {
 
     return (
         <div>
+            <ul className="errors">
+                {errors && errors.map((err, i) => <li key={i}>{err}</li>)}
+            </ul>
             <h2>Reviews</h2>
             {sessionUser && sessionUser.id !== currentRecipe.user_id && !userReview && <ReviewFormModal />}
             {recipeReviews?.sort(({id: a}, {id: b}) => a - b).map(rev => (

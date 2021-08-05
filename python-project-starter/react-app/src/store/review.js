@@ -77,7 +77,7 @@ export const updateReview = (updatedReview, reviewId) => async dispatch => {
     else if (response.status < 500) {
         const data = await response.json();
         if (data.errors) {
-            return data;
+            return data.errors;
         }
     }
     else {

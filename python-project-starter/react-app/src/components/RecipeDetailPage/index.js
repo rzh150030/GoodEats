@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { getRecipe, deleteRecipe } from '../../store/recipe';
 import { getFavoredRecipes } from '../../store/favorite';
-import { loadReviews, deleteReview } from '../../store/review';
+import { loadReviews } from '../../store/review';
 import FavoriteButton from '../FavoriteButton';
 import ReviewSection from '../ReviewSection';
 import FourOFourPage from '../FourOFourPage';
