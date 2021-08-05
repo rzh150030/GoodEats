@@ -17,7 +17,6 @@ import Homepage from './components/Homepage';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
-  const recipeList = useSelector(state => Object.values(state.recipe.recipes));
 
   useEffect(() => {
     (async() => {
@@ -49,16 +48,12 @@ function App() {
           <ProtectedRoute path="/profile" exact={true}>
             <ProfilePage />
           </ProtectedRoute>
-          {recipeList.map(recipe => (
-            <Route path="/recipe/detail/:id" key={recipe.id} exact={true}>
-              <RecipeDetailPage />
-            </Route>
-          ))}
-          {recipeList.map(recipe => (
-            <ProtectedRoute path="/recipe/edit/:id" key={recipe.id} exact={true}>
-              <EditRecipe />
-            </ProtectedRoute>
-          ))}
+          <Route path="/recipe/detail/:id" exact={true}>
+            <RecipeDetailPage />
+          </Route>
+          <ProtectedRoute path="/recipe/edit/:id" exact={true}>
+            <EditRecipe />
+          </ProtectedRoute>
           <ProtectedRoute path="/recipe/create" exact={true}>
             <CreateRecipe />
           </ProtectedRoute>
