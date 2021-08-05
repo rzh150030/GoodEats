@@ -14,9 +14,6 @@ export default function ReviewSection() {
     const deleteUserReview = (e) => {
         e.preventDefault();
 
-        console.log("FFFFFFF")
-        console.log(userReview.id)
-        console.log(typeof userReview.id)
         dispatch(deleteReview(userReview.id));
     }
 

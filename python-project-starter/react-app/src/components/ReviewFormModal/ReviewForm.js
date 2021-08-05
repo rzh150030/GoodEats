@@ -16,12 +16,10 @@ export default function ReviewForm({setShowModal}) {
         e.preventDefault();
 
         let result;
-
         if (updating) {
             result = await dispatch(updateReview(review, currentRecipe.id));
         }
         else {
-            console.log("CREAETE")
             result = await dispatch(createReview(review, currentRecipe.id));
         }
 
