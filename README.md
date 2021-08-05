@@ -1,6 +1,7 @@
 # GoodEats
 
-*By Richard Huang*
+*Developed by Richard Huang*
+
 [Live Link](https://good-eats-capstone-project.herokuapp.com/)
 
 ### Table of Contents
