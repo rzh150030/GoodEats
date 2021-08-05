@@ -50,7 +50,7 @@ function App() {
             <ProfilePage />
           </ProtectedRoute>
           {recipeList.map(recipe => (
-            <Route path="/recipe/detail/:id" key={recipe.id}>
+            <Route path="/recipe/detail/:id" key={recipe.id} exact={true}>
               <RecipeDetailPage />
             </Route>
           ))}

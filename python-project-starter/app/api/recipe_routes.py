@@ -72,11 +72,11 @@ def create_recipe():
 
 # Edit recipe information
 # ingredient and direction table data is handled as follows:
-# - data from front end contains mixture of items with ids of 0s and numbers
+# - data from frontend contains mixture of items with ids of 0s and numbers
 #  - item with id of 0 is new information that needs to be created
-#  - item with an id number other than 0 is edited
-# - front end data is compared with backend data
-# - delete items in data from backend after being found and updated
+#  - item with an id number other than 0 is new information to edit backend data
+# - frontend data is compared with backend data
+# - delete items in data query from backend after being found and updated
 # - remaining data fetched from backend is deleted from database
 @recipe_routes.route("/edit/<int:id>", methods=["PATCH"])
 @login_required
