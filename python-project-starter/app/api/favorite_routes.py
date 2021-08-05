@@ -24,7 +24,7 @@ def favor_recipe(id):
         db.session.commit()
         return user.to_dict_with_favors()
 
-    return {"errors": ["Something went wrong, please try again later."]}
+    return {"errors": ["Something went wrong, please try again later."]}, 400
 
 # Unfavor a recipe
 @favorite_routes.route("/unfavor/<int:id>", methods=["DELETE"])
@@ -38,4 +38,4 @@ def unfavor_recipe(id):
         db.session.commit()
         return user.to_dict_with_favors()
 
-    return {"errors": ["Something went wrong, please try again later."]}
+    return {"errors": ["Something went wrong, please try again later."]}, 400

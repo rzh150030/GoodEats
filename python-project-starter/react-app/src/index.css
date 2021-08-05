@@ -1,10 +1,15 @@
 #about-links-footer {
     display: flex;
     justify-content: space-around;
+    align-items: center;
+    background-color: #DEC3F7;
+    height: 50px;
+    font-family: Monaco, 'monospace', Arial, sans-serif;
 }
 
 .footer-links {
     text-decoration: none;
     color: black;
     font-weight: bold;
+    font-family: Monaco, 'monospace', Arial, sans-serif;
 }

@@ -1,26 +1,18 @@
 .recent-recipes-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 20%);
+    grid-template-columns: repeat(5, 0.4fr);
     grid-template-rows: auto;
     margin-top: 20px;
+    padding-bottom: 200px;
     column-gap: 10px;
     row-gap: 10px;
     margin-left: 100px;
+    margin-right: 100px;
 }
 
 .recipe-containers {
     display: grid;
     grid-template-rows: 1fr 1fr;
-}
-
-#recent-recipe-title {
-    display: flex;
-    justify-content: center;
-    color: #b34700;
-    font-family: 'Trebuchet MS', sans-serif, Times, serif;
-    font-size: 40px;
-    padding-top: 20px;
-    padding-bottom: 10px;
 }
 
 .recipe-links {
@@ -41,4 +33,18 @@
 
 .recipe-links:hover {
     box-shadow: 0px 2px 2px 2px #8B89E5;
+}
+
+#recent-recipe-title {
+    display: flex;
+    justify-content: center;
+    color: #b34700;
+    font-family: 'Trebuchet MS', sans-serif, Times, serif;
+    font-size: 40px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+#home-owner-username {
+    font-family: Monaco, 'monospace', Arial, sans-serif;
 }

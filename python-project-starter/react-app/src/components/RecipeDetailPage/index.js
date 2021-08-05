@@ -6,6 +6,7 @@ import { getFavoredRecipes } from '../../store/favorite';
 import { loadReviews, deleteReview } from '../../store/review';
 import FavoriteButton from '../FavoriteButton';
 import ReviewSection from '../ReviewSection';
+import FourOFourPage from '../FourOFourPage';
 import "./RecipeDetailPage.css";
 
 export default function RecipeDetailPage() {
@@ -46,7 +47,7 @@ export default function RecipeDetailPage() {
         );
     }
 
-    return (
+    return (currentRecipe.id ?
         <div id="recipe-detail-page">
             <h1 id="current-recipe-name">{currentRecipe.name}</h1>
             <article className="recipe-article">
@@ -67,6 +68,7 @@ export default function RecipeDetailPage() {
                 <h2 className="recipe-detail-category">Category: {currentRecipe.category_name}</h2>
             </article>
             <ReviewSection />
-        </div>
+        </div> :
+        <FourOFourPage />
     )
 }
