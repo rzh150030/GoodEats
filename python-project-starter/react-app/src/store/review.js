@@ -30,7 +30,7 @@ export const createReview = (review, recipeId) => async dispatch => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(review)
+        body: JSON.stringify({review})
     });
 
     if (response.ok) {
@@ -41,7 +41,7 @@ export const createReview = (review, recipeId) => async dispatch => {
     else if (response.status < 500) {
         const data = await response.json();
         if (data.errors) {
-            return data;
+            return data.errors;
         }
     }
     else {
@@ -66,7 +66,7 @@ export const updateReview = (updatedReview, reviewId) => async dispatch => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(updatedReview)
+        body: JSON.stringify({updatedReview})
     });
 
     if (response.ok) {

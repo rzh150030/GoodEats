@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function ReviewForm({setShowModal}) {
     const dispatch = useDispatch();
+    const currentRecipe = useSelector(state => state.recipe.currentRecipe);
     const [review, setReview] = useState("");
     const [errors, setErrors] = useState([]);
     let updating = false;
@@ -17,14 +18,15 @@ export default function ReviewForm({setShowModal}) {
         let result;
 
         if (updating) {
-            result = await dispatch(updateReview(review));
+            result = await dispatch(updateReview(review, currentRecipe.id));
         }
         else {
-            result = await dispatch(createReview(review));
+            console.log("CREAETE")
+            result = await dispatch(createReview(review, currentRecipe.id));
         }
 
-        if (result.errors) {
-            setErrors(result.errors);
+        if (result) {
+            setErrors(result);
         }
         else {
             setShowModal(false);
