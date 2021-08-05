@@ -63,7 +63,7 @@ function App() {
         </Switch>
       )}
       <footer id="about-links-footer">
-        Created by: Richard Huang
+        Developed by: Richard Huang
         <a className="footer-links" href="https://www.linkedin.com/in/richard-huang-0a6658207/">LinkedIn</a>
         <a className="footer-links" href="https://github.com/rzh150030">Github</a>
         <a className="footer-links" href="https://github.com/rzh150030/GoodEats">Repo</a>

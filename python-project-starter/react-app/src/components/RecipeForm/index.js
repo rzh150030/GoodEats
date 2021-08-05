@@ -103,12 +103,7 @@ export default function RecipeForm(props) {
     const cancelForm = (e) => {
         e.preventDefault();
 
-        if (id) {
-            history.push(`/recipe/detail/${id}`);
-        }
-        else {
-            history.push("/");
-        }
+        history.goBack();
     }
 
     return (
@@ -145,7 +140,7 @@ export default function RecipeForm(props) {
                 <button onClick={newDirectInput} className="add-input-button">One More Step</button>
             </div>
             <button type="submit" className="save-recipe-button">Save Recipe</button>
-            <button onClick={cancelForm}>Cancel</button>
+            <button onClick={cancelForm} className="cancel-button">Cancel</button>
         </form>
     )
 }

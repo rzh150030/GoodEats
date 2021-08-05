@@ -32,6 +32,13 @@
     height: 50px;
 }
 
+.cancel-button {
+    background-color: red;
+    color: white;
+    margin-top: 8px;
+    height: 50px;
+}
+
 .input-recipe {
     margin-top: 10px;
     width: 329px;
