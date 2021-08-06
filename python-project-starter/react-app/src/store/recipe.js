@@ -5,6 +5,7 @@ const GET_CATEGORIES = "recipe/getCategories";
 const UPDATE_RECIPE = "recipe/updateRecipe";
 const DELETE_RECIPE = "recipe/deleteRecipe";
 const USER_RECIPES = "recipe/loadUserRecipes";
+const FINISH_LOAD = "recipe/finishLoading";
 
 const makeRecipe = (recipe) => ({
     type: CREATE_RECIPE,
@@ -41,6 +42,10 @@ const loadUserRecipes = (userRecipesData) => ({
     payload: userRecipesData
 });
 
+const doneLoading = () => ({
+    type: FINISH_LOAD
+})
+
 //thunk for get a recipe
 export const getRecipe = (recipeId) => async dispatch => {
     const response = await fetch(`/api/recipes/${recipeId}`);
@@ -49,6 +54,7 @@ export const getRecipe = (recipeId) => async dispatch => {
         const data = await response.json();
         dispatch(loadRecipe(data));
     }
+    dispatch(doneLoading());
 };
 
 //thunk for getting all recipes
@@ -144,10 +150,12 @@ export const userRecipes = (userId) => async dispatch => {
     }
 };
 
-const initialState = {recipes: [], currentRecipe: {}, categories: {}, userRecipes: {}};
+const initialState = {recipes: [], currentRecipe: {}, categories: {}, userRecipes: {}, loaded: false};
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
+        case FINISH_LOAD:
+            return {...state, loaded: true};
         case CREATE_RECIPE:
             return {
                 ...state,
@@ -163,9 +171,9 @@ export default function reducer(state = initialState, action) {
             });
             return stateWithCat;
         case LOAD_RECIPE:
-            return {...state, currentRecipe: action.payload};
+            return {...state, currentRecipe: action.payload, loaded: true};
         case LOAD_ALL_RECIPES:
-            return {...state, recipes: action.payload.recipes};
+            return {...state, recipes: action.payload.recipes, currentRecipe: {}, loaded: false};
         case UPDATE_RECIPE:
             return {...state, currentRecipe: action.payload};
         case DELETE_RECIPE:
@@ -178,7 +186,7 @@ export default function reducer(state = initialState, action) {
             }
             break;
         case USER_RECIPES:
-            let userRecipesState = {...state, userRecipes: {}};
+            let userRecipesState = {...state, userRecipes: {}, currentRecipe: {}, loaded: false};
             action.payload.recipes.forEach(recipe => {
                 userRecipesState.userRecipes[recipe.id] = recipe;
             });
