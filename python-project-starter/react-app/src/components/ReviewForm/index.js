@@ -18,7 +18,7 @@ export default function ReviewForm({updateState, initReview, reviewId, setShowMo
 
         let result;
         if (updating) {
-            result = await dispatch(updateReview(review, reviewId)); 
+            result = await dispatch(updateReview(review, reviewId));
         }
         else {
             result = await dispatch(createReview(review, currentRecipe.id));
@@ -40,7 +40,7 @@ export default function ReviewForm({updateState, initReview, reviewId, setShowMo
             </ul>
             <label>Review: </label>
             <div>
-                <textarea rows="20" cols="80" value={review} onChange={updateInputReview}/>
+                <textarea rows="5" cols="80" value={review} onChange={updateInputReview}/>
             </div>
             <button type="submit">Submit</button>
         </form>
