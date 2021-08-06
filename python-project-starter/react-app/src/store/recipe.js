@@ -48,7 +48,6 @@ const doneLoading = () => ({
 
 //thunk for get a recipe
 export const getRecipe = (recipeId) => async dispatch => {
-    // dispatch(resetLoadedStat());
     const response = await fetch(`/api/recipes/${recipeId}`);
 
     if (response.ok) {
