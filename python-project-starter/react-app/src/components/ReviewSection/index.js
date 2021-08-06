@@ -16,6 +16,8 @@ export default function ReviewSection() {
     if (sessionUser) {
         userReview = recipeReviews.find(review => sessionUser.id === review.user_id);
     }
+    let updateState = false;
+    const initReview = userReview ? userReview.review : "";
 
     //Onclick event handlers
     const deleteUserReview = async (e) => {
@@ -31,6 +33,7 @@ export default function ReviewSection() {
         e.preventDefault();
 
         setShowModal(true);
+        updateState = true;
     }
 
 
@@ -48,10 +51,10 @@ export default function ReviewSection() {
                 {errors && errors.map((err, i) => <li key={i}>{err}</li>)}
             </ul>
             <h2>Reviews</h2>
-            {sessionUser && sessionUser.id !== currentRecipe.user_id && !userReview && <ReviewFormModal />}
+            {sessionUser && sessionUser.id !== currentRecipe.user_id && !userReview && <ReviewFormModal updateState={updateState} initReview={initReview}/>}
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <ReviewForm />
+                    <ReviewForm updateState={updateState} initReview={initReview} reviewId={userReview.id}/>
                 </Modal>
             )}
             {recipeReviews?.sort(({id: a}, {id: b}) => a - b).map(rev => (

@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { createReview, updateReview } from "../../store/review";
 import { useDispatch, useSelector } from "react-redux";
 
-export default function ReviewForm() {
+export default function ReviewForm({updateState, initReview, reviewId}) {
     const dispatch = useDispatch();
     const currentRecipe = useSelector(state => state.recipe.currentRecipe);
-    const [review, setReview] = useState("");
+    const [review, setReview] = useState(initReview); //get default from review section
     const [errors, setErrors] = useState([]);
-    let updating = false;
+    let updating = updateState; //get state from review section
 
     //onChange handler
     const updateInputReview = (e) => setReview(e.target.value);
@@ -17,7 +17,7 @@ export default function ReviewForm() {
 
         let result;
         if (updating) {
-            result = await dispatch(updateReview(review, currentRecipe.id)); //need to pass down review id
+            result = await dispatch(updateReview(review, reviewId)); //need to pass down review id
         }
         else {
             result = await dispatch(createReview(review, currentRecipe.id));
