@@ -26,11 +26,14 @@ def user_recipes(id):
     return {"errors": ["Unauthorized"]}, 401
 
 # Get a specific recipe and its ingredients and directions
-@recipe_routes.route("/<int:id>")
+@recipe_routes.route("/<id>")
 def recipe(id):
-    recipe = Recipe.query.get(id)
-
-    return recipe.to_dict_with_details()
+    try:
+        int(id)
+        recipe = Recipe.query.get(id)
+        return recipe.to_dict_with_details()
+    except ValueError:
+        return {"errors": "bad request"}, 400
 
 # Get all recipes in database
 # Note: to limit how many to return chop off a portion of the array
