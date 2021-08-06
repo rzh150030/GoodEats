@@ -10,7 +10,6 @@ import CreateRecipe from './components/CreateRecipe';
 import EditRecipe from "./components/EditRecipe";
 import ProfilePage from './components/ProfilePage';
 import FourOFourPage from './components/FourOFourPage';
-import LoadingPage from './components/LoadingPage';
 import { authenticate } from './store/session';
 import { grabCategories, getAllRecipes } from './store/recipe';
 import Homepage from './components/Homepage';
@@ -58,9 +57,6 @@ function App() {
           <ProtectedRoute path="/recipe/create" exact={true}>
             <CreateRecipe />
           </ProtectedRoute>
-          <Route path="/seeload" exact>
-            <LoadingPage/>
-          </Route>
           <Route>
             <FourOFourPage />
           </Route>
