@@ -4,6 +4,7 @@ import { deleteReview } from '../../store/review';
 import ReviewFormModal from '../ReviewFormModal';
 import ReviewForm from '../ReviewForm';
 import { Modal } from '../../context/Modal';
+import { BiPencil } from 'react-icons/bi';
 import "./ReviewSection.css";
 
 export default function ReviewSection() {
@@ -40,7 +41,7 @@ export default function ReviewSection() {
 
     const editDeleteReview = (
         <div className="edit-delete-buttons">
-            <button onClick={editUserReview}>Edit</button>
+            <button onClick={editUserReview}><BiPencil/></button>
             <button onClick={deleteUserReview}>Delete</button>
         </div>
     )
