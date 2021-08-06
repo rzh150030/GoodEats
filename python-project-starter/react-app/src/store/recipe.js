@@ -6,6 +6,7 @@ const UPDATE_RECIPE = "recipe/updateRecipe";
 const DELETE_RECIPE = "recipe/deleteRecipe";
 const USER_RECIPES = "recipe/loadUserRecipes";
 const RESET_LOAD_STATUS = "recipe/loadStatus";
+const FINISH_LOAD = "recipe/finishLoading";
 
 const makeRecipe = (recipe) => ({
     type: CREATE_RECIPE,
@@ -46,6 +47,10 @@ const resetLoadedStat = () => ({
     type: RESET_LOAD_STATUS
 });
 
+const doneLoading = () => ({
+    type: FINISH_LOAD
+})
+
 //thunk for get a recipe
 export const getRecipe = (recipeId) => async dispatch => {
     dispatch(resetLoadedStat());
@@ -55,6 +60,7 @@ export const getRecipe = (recipeId) => async dispatch => {
         const data = await response.json();
         dispatch(loadRecipe(data));
     }
+    dispatch(doneLoading());
 };
 
 //thunk for getting all recipes
@@ -155,7 +161,9 @@ const initialState = {recipes: [], currentRecipe: {}, categories: {}, userRecipe
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case RESET_LOAD_STATUS:
-            return {...state, loaded: false}
+            return {...state, loaded: false};
+        case FINISH_LOAD:
+            return {...state, loaded: true};
         case CREATE_RECIPE:
             return {
                 ...state,
