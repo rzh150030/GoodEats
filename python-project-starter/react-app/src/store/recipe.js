@@ -5,7 +5,6 @@ const GET_CATEGORIES = "recipe/getCategories";
 const UPDATE_RECIPE = "recipe/updateRecipe";
 const DELETE_RECIPE = "recipe/deleteRecipe";
 const USER_RECIPES = "recipe/loadUserRecipes";
-const RESET_LOAD_STATUS = "recipe/loadStatus";
 const FINISH_LOAD = "recipe/finishLoading";
 
 const makeRecipe = (recipe) => ({
@@ -43,17 +42,13 @@ const loadUserRecipes = (userRecipesData) => ({
     payload: userRecipesData
 });
 
-const resetLoadedStat = () => ({
-    type: RESET_LOAD_STATUS
-});
-
 const doneLoading = () => ({
     type: FINISH_LOAD
 })
 
 //thunk for get a recipe
 export const getRecipe = (recipeId) => async dispatch => {
-    dispatch(resetLoadedStat());
+    // dispatch(resetLoadedStat());
     const response = await fetch(`/api/recipes/${recipeId}`);
 
     if (response.ok) {
@@ -160,8 +155,6 @@ const initialState = {recipes: [], currentRecipe: {}, categories: {}, userRecipe
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
-        case RESET_LOAD_STATUS:
-            return {...state, loaded: false};
         case FINISH_LOAD:
             return {...state, loaded: true};
         case CREATE_RECIPE:
@@ -181,7 +174,7 @@ export default function reducer(state = initialState, action) {
         case LOAD_RECIPE:
             return {...state, currentRecipe: action.payload, loaded: true};
         case LOAD_ALL_RECIPES:
-            return {...state, recipes: action.payload.recipes};
+            return {...state, recipes: action.payload.recipes, currentRecipe: {}, loaded: false};
         case UPDATE_RECIPE:
             return {...state, currentRecipe: action.payload};
         case DELETE_RECIPE:
@@ -194,7 +187,7 @@ export default function reducer(state = initialState, action) {
             }
             break;
         case USER_RECIPES:
-            let userRecipesState = {...state, userRecipes: {}};
+            let userRecipesState = {...state, userRecipes: {}, currentRecipe: {}, loaded: false};
             action.payload.recipes.forEach(recipe => {
                 userRecipesState.userRecipes[recipe.id] = recipe;
             });
