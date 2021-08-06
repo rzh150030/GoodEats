@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import ReviewForm from '../ReviewForm';
+import "./ReviewFormModal.css";
 
 export default function ReviewFormModal({updateState, initReview, setUpdateState}) {
     const [showModal, setShowModal] = useState(false);
@@ -15,7 +16,7 @@ export default function ReviewFormModal({updateState, initReview, setUpdateState
 
     return (
         <>
-            <button onClick={openModal}>Write a review</button>
+            <button onClick={openModal} className="create-review-button">Write a review</button>
             {showModal && (
                 <Modal onClose={closeModal}>
                     <ReviewForm updateState={updateState} initReview={initReview}/>
