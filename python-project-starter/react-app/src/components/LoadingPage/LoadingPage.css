@@ -1,19 +1,41 @@
-#load-spinner {
-    width: 100px;
-    height: 100px;
-    background-color: #0CB1C4;
-    animation-name: spin;
-    animation-duration: 5000ms;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
+.lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
 }
 
-@keyframes spin {
-    from {
-        transform:rotate(0deg);
+.lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border: 8px solid #3361C6;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #3361C6 transparent transparent transparent;
+}
+
+.lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+}
+
+.lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+}
+
+.lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+}
+
+@keyframes lds-ring {
+    0% {
+      transform: rotate(0deg);
     }
-    to {
-        transform:rotate(360deg);
+    100% {
+      transform: rotate(360deg);
     }
 }
 
@@ -25,4 +47,5 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
