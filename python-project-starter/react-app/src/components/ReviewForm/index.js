@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 export default function ReviewForm({updateState, initReview, reviewId, setShowModal}) {
     const dispatch = useDispatch();
     const currentRecipe = useSelector(state => state.recipe.currentRecipe);
-    const [review, setReview] = useState(initReview); //get default from review section
+    const [review, setReview] = useState(initReview); //get initreview from review section
     const [errors, setErrors] = useState([]);
     let updating = updateState; //get state from review section
 
@@ -18,7 +18,7 @@ export default function ReviewForm({updateState, initReview, reviewId, setShowMo
 
         let result;
         if (updating) {
-            result = await dispatch(updateReview(review, reviewId)); //need to pass down review id
+            result = await dispatch(updateReview(review, reviewId)); 
         }
         else {
             result = await dispatch(createReview(review, currentRecipe.id));

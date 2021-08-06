@@ -9,7 +9,7 @@ export default function ReviewFormModal({updateState, initReview, setUpdateState
         setShowModal(false);
     }
     const openModal = () => {
-        setUpdateState(false);
+        setUpdateState(false); //set update state in parent comp to false to allow create state on form
         setShowModal(true)
     }
 
