@@ -40,9 +40,9 @@ export default function ReviewForm({updateState, initReview, reviewId, setShowMo
                 {errors && errors.map((err, i) => <li key={i}>{err}</li>)}
             </ul>
             <div id="review-input-container">
-                <textarea rows="5" cols="80" value={review} onChange={updateInputReview}/>
+                <textarea rows="5" cols="80" value={review} onChange={updateInputReview} id="review-input"/>
             </div>
-            <button type="submit">Submit</button>
+            <button type="submit" id="submit-review-button">Submit</button>
         </form>
     )
 }
