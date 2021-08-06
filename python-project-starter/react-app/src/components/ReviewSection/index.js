@@ -16,7 +16,7 @@ export default function ReviewSection() {
     if (sessionUser) {
         userReview = recipeReviews.find(review => sessionUser.id === review.user_id);
     }
-    let updateState = false;
+    let [updateState, setUpdateState] = useState(false);
     const initReview = userReview ? userReview.review : "";
 
     //Onclick event handlers
@@ -33,7 +33,8 @@ export default function ReviewSection() {
         e.preventDefault();
 
         setShowModal(true);
-        updateState = true;
+        setUpdateState(true);
+        console.log(updateState)
     }
 
 

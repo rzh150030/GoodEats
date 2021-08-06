@@ -62,7 +62,7 @@ export const loadReviews = (recipeId) => async dispatch => {
 //thunk for updating a review
 export const updateReview = (updatedReview, reviewId) => async dispatch => {
     const response = await fetch(`/api/reviews/update/${reviewId}`, {
-        methods: "PUT",
+        method: "PUT",
         headers: {
             'Content-Type': 'application/json'
         },
