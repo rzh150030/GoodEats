@@ -35,11 +35,11 @@ export default function ReviewForm({updateState, initReview, reviewId, setShowMo
 
     return (
         <form onSubmit={handleSubmit} className="review-form">
+            <label id="review-form-label">Review</label>
             <ul className="errors">
                 {errors && errors.map((err, i) => <li key={i}>{err}</li>)}
             </ul>
-            <label>Review: </label>
-            <div>
+            <div id="review-input-container">
                 <textarea rows="5" cols="80" value={review} onChange={updateInputReview}/>
             </div>
             <button type="submit">Submit</button>

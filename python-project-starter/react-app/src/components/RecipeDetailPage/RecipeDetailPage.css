@@ -41,13 +41,6 @@
     font-family: 'Trebuchet MS', sans-serif, Times, serif;
 }
 
-#current-recipe-name {
-    display: flex;
-    justify-content: center;
-    font-family: 'Trebuchet MS', sans-serif, Times, serif;
-    font-size: 40px;
-}
-
 .ingredients {
     margin: 12px 0px;
 }
@@ -65,11 +58,6 @@
     color: white;
 }
 
-#current-recipe-name {
-    display: flex;
-    justify-content: center;
-}
-
 #delete-button {
     height: 30px;
     width: 80px;
@@ -78,12 +66,17 @@
     color: white;
 }
 
-#current-recipe-name {
-    margin-top: 0px;
-    padding-top: 15px;
-}
-
 #recipe-detail-page {
     background: linear-gradient(#0FF499, #94D00D);
     padding-bottom: 427px;
+}
+
+#current-recipe-name {
+    display: flex;
+    justify-content: center;
+    font-family: 'Trebuchet MS', sans-serif, Times, serif;
+    font-size: 40px;
+    justify-content: center;
+    margin-top: 0px;
+    padding-top: 15px;
 }
