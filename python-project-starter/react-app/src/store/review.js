@@ -60,13 +60,13 @@ export const loadReviews = (recipeId) => async dispatch => {
 };
 
 //thunk for updating a review
-export const updateReview = (updatedReview, reviewId) => async dispatch => {
+export const updateReview = (review, reviewId) => async dispatch => {
     const response = await fetch(`/api/reviews/update/${reviewId}`, {
         method: "PUT",
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({updatedReview})
+        body: JSON.stringify({review})
     });
 
     if (response.ok) {
