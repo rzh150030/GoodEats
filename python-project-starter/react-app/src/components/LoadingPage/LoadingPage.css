@@ -3,6 +3,7 @@
     position: relative;
     width: 80px;
     height: 80px;
+    padding-top: 40px;
 }
 
 .lds-ring div {
@@ -48,4 +49,5 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-bottom: 400px;
 }
