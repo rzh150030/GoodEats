@@ -17,7 +17,7 @@ export default function ReviewForm() {
 
         let result;
         if (updating) {
-            result = await dispatch(updateReview(review, currentRecipe.id));
+            result = await dispatch(updateReview(review, currentRecipe.id)); //need to pass down review id
         }
         else {
             result = await dispatch(createReview(review, currentRecipe.id));
