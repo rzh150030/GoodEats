@@ -9,7 +9,11 @@ export default function ReviewSection() {
     const sessionUser = useSelector(state => state.session.user);
     const recipeReviews = useSelector(state => Object.values(state.recipeReviews.reviews));
     const [errors, setErrors] = useState([]);
-    const userReview = recipeReviews.find(review => sessionUser.id === review.user_id);
+
+    let userReview;
+    if (sessionUser) {
+        userReview = recipeReviews.find(review => sessionUser.id === review.user_id);
+    }
     let modalState = false;
 
     //Onclick event handlers
@@ -25,7 +29,7 @@ export default function ReviewSection() {
     const editUserReview = async (e) => {
         e.preventDefault();
 
-        
+        modalState = true;
     }
 
     const editDeleteReview = (
