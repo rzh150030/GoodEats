@@ -39,7 +39,7 @@ export default function ReviewSection() {
 
 
     const editDeleteReview = (
-        <div>
+        <div className="edit-delete-buttons">
             <button onClick={editUserReview}>Edit</button>
             <button onClick={deleteUserReview}>Delete</button>
         </div>
@@ -63,8 +63,8 @@ export default function ReviewSection() {
                 </Modal>
             )}
             {recipeReviews?.sort(({id: a}, {id: b}) => a - b).map(rev => (
-                <article key={rev.id}>
-                    <div>{rev.review}</div>
+                <article key={rev.id} className="review-articles">
+                    <div className="review">{rev.review}</div>
                     {sessionUser && sessionUser.id === rev.user_id && editDeleteReview}
                 </article>
             ))}
