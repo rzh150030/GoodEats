@@ -18,5 +18,7 @@
     background-color: white;
     align-items: center;
     word-break: break-word;
-    width: 400px;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 375px;
 }
