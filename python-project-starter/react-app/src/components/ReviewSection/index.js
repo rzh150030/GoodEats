@@ -4,6 +4,7 @@ import { deleteReview } from '../../store/review';
 import ReviewFormModal from '../ReviewFormModal';
 import ReviewForm from '../ReviewForm';
 import { Modal } from '../../context/Modal';
+import "./ReviewSection.css";
 
 export default function ReviewSection() {
     const dispatch = useDispatch();
@@ -46,7 +47,7 @@ export default function ReviewSection() {
 
 
     return (
-        <div>
+        <div className="review-section">
             <ul className="errors">
                 {errors && errors.map((err, i) => <li key={i}>{err}</li>)}
             </ul>
