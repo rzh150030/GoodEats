@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { createReview, updateReview } from "../../store/review";
 import { useDispatch, useSelector } from "react-redux";
 
-export default function ReviewForm({updateState, initReview, reviewId}) {
+export default function ReviewForm({updateState, initReview, reviewId, setShowModal}) {
     const dispatch = useDispatch();
     const currentRecipe = useSelector(state => state.recipe.currentRecipe);
     const [review, setReview] = useState(initReview); //get default from review section
@@ -11,6 +11,7 @@ export default function ReviewForm({updateState, initReview, reviewId}) {
 
     //onChange handler
     const updateInputReview = (e) => setReview(e.target.value);
+    console.log(updating)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -25,6 +26,9 @@ export default function ReviewForm({updateState, initReview, reviewId}) {
 
         if (result) {
             setErrors(result);
+        }
+        else if (setShowModal) {
+            setShowModal(false);
         }
     };
 

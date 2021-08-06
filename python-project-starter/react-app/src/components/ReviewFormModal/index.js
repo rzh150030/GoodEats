@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import ReviewForm from '../ReviewForm';
 
-export default function ReviewFormModal({updateState, initReview}) {
+export default function ReviewFormModal({updateState, initReview, setUpdateState}) {
     const [showModal, setShowModal] = useState(false);
 
     const closeModal = () => {
         setShowModal(false);
     }
     const openModal = () => {
-        updateState = false;
+        setUpdateState(false);
         setShowModal(true)
     }
 

@@ -34,7 +34,6 @@ export default function ReviewSection() {
 
         setShowModal(true);
         setUpdateState(true);
-        console.log(updateState)
     }
 
 
@@ -52,10 +51,10 @@ export default function ReviewSection() {
                 {errors && errors.map((err, i) => <li key={i}>{err}</li>)}
             </ul>
             <h2>Reviews</h2>
-            {sessionUser && sessionUser.id !== currentRecipe.user_id && !userReview && <ReviewFormModal updateState={updateState} initReview={initReview}/>}
+            {sessionUser && sessionUser.id !== currentRecipe.user_id && !userReview && <ReviewFormModal updateState={updateState} initReview={initReview} setUpdateState={setUpdateState}/>}
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <ReviewForm updateState={updateState} initReview={initReview} reviewId={userReview.id}/>
+                    <ReviewForm updateState={updateState} initReview={initReview} reviewId={userReview.id} setShowModal={setShowModal}/>
                 </Modal>
             )}
             {recipeReviews?.sort(({id: a}, {id: b}) => a - b).map(rev => (
