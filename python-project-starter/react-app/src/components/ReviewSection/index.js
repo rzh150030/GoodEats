@@ -5,6 +5,7 @@ import ReviewFormModal from '../ReviewFormModal';
 import ReviewForm from '../ReviewForm';
 import { Modal } from '../../context/Modal';
 import { BiPencil } from 'react-icons/bi';
+import { BsFillTrashFill } from 'react-icons/bs';
 import "./ReviewSection.css";
 
 export default function ReviewSection() {
@@ -41,8 +42,8 @@ export default function ReviewSection() {
 
     const editDeleteReview = (
         <div className="edit-delete-buttons">
-            <button onClick={editUserReview}><BiPencil/></button>
-            <button onClick={deleteUserReview}>Delete</button>
+            <BiPencil onClick={editUserReview}/>
+            <BsFillTrashFill onClick={deleteUserReview}/>
         </div>
     )
 
