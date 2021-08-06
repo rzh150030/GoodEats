@@ -62,12 +62,14 @@ export default function ReviewSection() {
                     />
                 </Modal>
             )}
-            {recipeReviews?.sort(({id: a}, {id: b}) => a - b).map(rev => (
-                <article key={rev.id} className="review-articles">
-                    <div className="review">{rev.review}</div>
-                    {sessionUser && sessionUser.id === rev.user_id && editDeleteReview}
-                </article>
-            ))}
+            <div className="reviews-container">
+                {recipeReviews?.sort(({id: a}, {id: b}) => a - b).map(rev => (
+                    <article key={rev.id} className="review-articles">
+                        <div className="review">{rev.review}</div>
+                        {sessionUser && sessionUser.id === rev.user_id && editDeleteReview}
+                    </article>
+                ))}
+            </div>
         </div>
     )
 }

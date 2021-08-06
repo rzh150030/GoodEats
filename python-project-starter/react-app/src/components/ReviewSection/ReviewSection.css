@@ -1,7 +1,12 @@
 .review-section {
     display: grid;
-    grid-template-rows: fit-content(100%);
+    grid-template-rows: 50px 75px;
     justify-content: center;
+}
+
+.reviews-container {
+    display: grid;
+    grid-auto-rows: 70px;
 }
 
 .review-articles {
@@ -9,6 +14,9 @@
 }
 
 .review {
-    display: block;
+    display: flex;
     background-color: white;
+    align-items: center;
+    word-break: break-word;
+    width: 400px;
 }
