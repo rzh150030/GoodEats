@@ -42,8 +42,8 @@ export default function ReviewSection() {
 
     const editDeleteReview = (
         <div className="edit-delete-buttons">
-            <BiPencil onClick={editUserReview}/>
-            <BsFillTrashFill onClick={deleteUserReview}/>
+            <BiPencil onClick={editUserReview} size={25}/>
+            <BsFillTrashFill onClick={deleteUserReview} size={25}/>
         </div>
     )
 
