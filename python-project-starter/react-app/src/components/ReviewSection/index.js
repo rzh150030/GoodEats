@@ -9,12 +9,10 @@ export default function ReviewSection() {
     const sessionUser = useSelector(state => state.session.user);
     const recipeReviews = useSelector(state => Object.values(state.recipeReviews.reviews));
     const [errors, setErrors] = useState([]);
-
     let userReview;
     if (sessionUser) {
         userReview = recipeReviews.find(review => sessionUser.id === review.user_id);
     }
-    let modalState = false;
 
     //Onclick event handlers
     const deleteUserReview = async (e) => {
@@ -29,7 +27,7 @@ export default function ReviewSection() {
     const editUserReview = async (e) => {
         e.preventDefault();
 
-        modalState = true;
+        
     }
 
     const editDeleteReview = (
@@ -46,7 +44,7 @@ export default function ReviewSection() {
                 {errors && errors.map((err, i) => <li key={i}>{err}</li>)}
             </ul>
             <h2>Reviews</h2>
-            {sessionUser && sessionUser.id !== currentRecipe.user_id && !userReview && <ReviewFormModal modalState={modalState}/>}
+            {sessionUser && sessionUser.id !== currentRecipe.user_id && !userReview && <ReviewFormModal />}
             {recipeReviews?.sort(({id: a}, {id: b}) => a - b).map(rev => (
                 <article key={rev.id}>
                     <div>{rev.review}</div>
