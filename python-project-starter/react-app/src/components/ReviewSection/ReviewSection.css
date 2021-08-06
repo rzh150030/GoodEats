@@ -27,6 +27,7 @@
 .edit-delete-buttons {
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
     margin-left: 20px;
 }
 
