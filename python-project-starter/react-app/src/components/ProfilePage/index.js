@@ -24,7 +24,7 @@ export default function ProfilePage() {
             </div>
             <div className="profile-items">
                 <div className="profile-recipes-container">
-                    {userOwnRecipes && userOwnRecipes.map(recipe => (
+                    {userOwnRecipes && userOwnRecipes.sort(({id: a}, {id: b}) => b - a).map(recipe => (
                         <div className="user-recipe-containers" key={recipe.id}>
                             <NavLink to={`/recipe/detail/${recipe.id}`} className="recipe-links">
                                 {recipe.name}

@@ -5,6 +5,7 @@ import { getRecipe, deleteRecipe } from '../../store/recipe';
 import { getFavoredRecipes } from '../../store/favorite';
 import FavoriteButton from '../FavoriteButton';
 import FourOFourPage from '../FourOFourPage';
+import LoadingPage from '../LoadingPage';
 import "./RecipeDetailPage.css";
 
 export default function RecipeDetailPage() {
@@ -14,6 +15,7 @@ export default function RecipeDetailPage() {
     const currentRecipe = useSelector(state => state.recipe.currentRecipe);
     const sessionUser = useSelector(state => state.session.user);
     const userFavorites = useSelector(state => state.favoriteRecipe.favorites);
+    const recipeLoaded = useSelector(state => state.recipe.loaded);
     let favorited;
     if (sessionUser) { //check if user already favorited current recipe
         favorited = userFavorites.find(recipe => recipe.id === currentRecipe.id);
@@ -65,6 +67,6 @@ export default function RecipeDetailPage() {
                 <h2 className="recipe-detail-category">Category: {currentRecipe.category_name}</h2>
             </article>
         </div> :
-        <FourOFourPage />
+        recipeLoaded ? <FourOFourPage /> : <LoadingPage />
     )
 }
