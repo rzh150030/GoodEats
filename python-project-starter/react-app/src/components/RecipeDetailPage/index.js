@@ -5,6 +5,7 @@ import { getRecipe, deleteRecipe } from '../../store/recipe';
 import { getFavoredRecipes } from '../../store/favorite';
 import FavoriteButton from '../FavoriteButton';
 import FourOFourPage from '../FourOFourPage';
+import LoadingPage from '../LoadingPage';
 import "./RecipeDetailPage.css";
 
 export default function RecipeDetailPage() {
@@ -66,6 +67,6 @@ export default function RecipeDetailPage() {
                 <h2 className="recipe-detail-category">Category: {currentRecipe.category_name}</h2>
             </article>
         </div> :
-        <FourOFourPage />
+        recipeLoaded ? <FourOFourPage /> : <LoadingPage />
     )
 }
