@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { createReview, updateReview } from "../../store/review";
 import { useDispatch, useSelector } from "react-redux";
+import "./ReviewForm.css";
 
 export default function ReviewForm({updateState, initReview, reviewId, setShowModal}) {
     const dispatch = useDispatch();
@@ -11,7 +12,6 @@ export default function ReviewForm({updateState, initReview, reviewId, setShowMo
 
     //onChange handler
     const updateInputReview = (e) => setReview(e.target.value);
-    console.log(updating)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -34,8 +34,8 @@ export default function ReviewForm({updateState, initReview, reviewId, setShowMo
 
 
     return (
-        <form onSubmit={handleSubmit}>
-            <ul>
+        <form onSubmit={handleSubmit} className="review-form">
+            <ul className="errors">
                 {errors && errors.map((err, i) => <li key={i}>{err}</li>)}
             </ul>
             <label>Review: </label>
