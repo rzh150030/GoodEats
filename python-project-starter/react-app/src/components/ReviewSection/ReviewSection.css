@@ -2,7 +2,6 @@
     display: grid;
     grid-template-rows: 50px 75px;
     justify-content: center;
-    justify-items: center;
 }
 
 .reviews-container {
@@ -21,5 +20,9 @@
     word-break: break-word;
     padding-left: 15px;
     padding-right: 15px;
-    width: 375px;
+    width: 430px;
+}
+
+#reviews-label {
+    padding-left: 20px;
 }

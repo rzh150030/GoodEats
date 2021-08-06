@@ -51,7 +51,7 @@ export default function ReviewSection() {
             <ul className="errors">
                 {errors && errors.map((err, i) => <li key={i}>{err}</li>)}
             </ul>
-            <h2>Reviews</h2>
+            <h2 id="reviews-label">Reviews</h2>
             {sessionUser && sessionUser.id !== currentRecipe.user_id && !userReview &&
             <ReviewFormModal updateState={updateState} initReview={initReview} setUpdateState={setUpdateState}
             />}
