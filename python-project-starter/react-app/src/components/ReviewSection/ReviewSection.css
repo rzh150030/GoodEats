@@ -7,6 +7,7 @@
 .reviews-container {
     display: grid;
     grid-auto-rows: 70px;
+    row-gap: 2ch;
 }
 
 .review-articles {
