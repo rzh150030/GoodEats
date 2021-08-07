@@ -22,6 +22,7 @@
     padding-left: 15px;
     padding-right: 15px;
     width: 430px;
+    border-radius: 25px;
 }
 
 .edit-delete-buttons {
