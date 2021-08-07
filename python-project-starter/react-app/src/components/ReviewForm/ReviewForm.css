@@ -14,5 +14,9 @@
 }
 
 #submit-review-button {
+    background-color: #1A720C;
+    color: white;
     margin-top: 40px;
+    width: 100px;
+    height: 100px;
 }
