@@ -1,0 +1,23 @@
+.review-form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 100px;
+    height: 40vh;
+    width: 50vw;
+    align-items: center;
+}
+
+#review-form-label {
+    font-family: 'Trebuchet MS', sans-serif, Times, serif;
+    font-size: 40px;
+    margin-top: 70px;
+}
+
+#submit-review-button {
+    background-color: #1A720C;
+    color: white;
+    margin-top: 40px;
+    width: 100px;
+    height: 100px;
+    border-radius: 25px;
+}

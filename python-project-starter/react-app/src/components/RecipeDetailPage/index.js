@@ -3,7 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { getRecipe, deleteRecipe } from '../../store/recipe';
 import { getFavoredRecipes } from '../../store/favorite';
+import { loadReviews } from '../../store/review';
 import FavoriteButton from '../FavoriteButton';
+import ReviewSection from '../ReviewSection';
 import FourOFourPage from '../FourOFourPage';
 import LoadingPage from '../LoadingPage';
 import "./RecipeDetailPage.css";
@@ -23,18 +25,19 @@ export default function RecipeDetailPage() {
 
     useEffect(() => { //fetch recipe from database
         dispatch(getRecipe(id));
+        dispatch(loadReviews(id));
         if (sessionUser) dispatch(getFavoredRecipes(sessionUser.id)); //get logged user's favorites to determine which button to show
     }, [dispatch, id, sessionUser]);
 
     const editRecipe = () => {
         history.push(`/recipe/edit/${currentRecipe.id}`);
-    }
+    };
 
     const deletion = async () => {
         let deleted = await dispatch(deleteRecipe(currentRecipe.id));
 
         if (deleted) history.push("/");
-    }
+    };
 
     let editDeleteButton;
     if (sessionUser && sessionUser.id === currentRecipe.user_id) {
@@ -66,6 +69,7 @@ export default function RecipeDetailPage() {
                 <FavoriteButton favorited={favorited} currentRecipe={currentRecipe} sessionUser={sessionUser}/>
                 <h2 className="recipe-detail-category">Category: {currentRecipe.category_name}</h2>
             </article>
+            <ReviewSection />
         </div> :
         recipeLoaded ? <FourOFourPage /> : <LoadingPage />
     )

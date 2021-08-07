@@ -1,0 +1,9 @@
+.create-review-button {
+    height: 39px;
+    width: 100px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    background-color: #EF6510;
+    color: white;
+    margin-left: 10px;
+}

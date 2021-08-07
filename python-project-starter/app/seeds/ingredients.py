@@ -9,6 +9,7 @@ def seed_ingredients():
     r3ingredients = [Ingredient(ingredient="ribs", recipe_id=3), Ingredient(ingredient="BBQ sauce", recipe_id=3)]
     r4ingredients = [Ingredient(ingredient="pizza dough", recipe_id=4), Ingredient(ingredient="tomato sauce", recipe_id=4),
     Ingredient(ingredient="cheese", recipe_id=4), Ingredient(ingredient="pepperoni", recipe_id=4)]
+    r5ingredients = [Ingredient(ingredient="corned beef", recipe_id=5), Ingredient(ingredient="cabbage", recipe_id=5)]
 
     for ing1 in r1ingredients:
         db.session.add(ing1)
@@ -18,6 +19,8 @@ def seed_ingredients():
         db.session.add(ing3)
     for ing4 in r4ingredients:
         db.session.add(ing4)
+    for ing5 in r5ingredients:
+        db.session.add(ing5)
 
     db.session.commit()
 

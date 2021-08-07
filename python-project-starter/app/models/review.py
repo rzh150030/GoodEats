@@ -11,3 +11,11 @@ class Review(db.Model):
 
     recipe = db.relationship("Recipe", back_populates="reviews")
     user = db.relationship("User", back_populates="reviews")
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "review": self.review,
+            "recipe_id": self.recipe_id,
+            "user_id": self.user_id
+        }
