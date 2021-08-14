@@ -10,7 +10,7 @@ export default function RecipeForm(props) {
     const dispatch = useDispatch();
     const categories = useSelector(state => Object.values(state.recipe.categories));
     const submitCat = useSelector(state => state.recipe.categories); //submit category id for backend
-    const [category, setCategory] = useState("Ainu"); //key into submitCat
+    const [category, setCategory] = useState(props.categoryName); //key into submitCat
     const [name, setName] = useState(props.initName);
     const [ingredients, setIngredients] = useState(props.initIngredients);
     const [directions, setDirections] = useState(props.initDirections);
