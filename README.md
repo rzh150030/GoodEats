@@ -9,6 +9,7 @@
 - [Application Architecture & Technologies](https://github.com/rzh150030/GoodEats#application-architecture-&-technologies)
 - [Frontend Technologies](https://github.com/rzh150030/GoodEats#frontend-technologies)
 - [Backend Technologies](https://github.com/rzh150030/GoodEats#backend-technologies)
+- [Current Features](https://github.com/rzh150030/GoodEats#current-features)
 - [Future Developments](https://github.com/rzh150030/GoodEats#future-developments)
 
 ## Overview
@@ -44,6 +45,10 @@ PostgreSQL was used for database storage of information since it allows storage 
 WTForms allows for validation of form inputs when dealing with data on the backend. It validates the name and category of the form data sent by the frontend. Unfortunately, it could not handle data for ingredients and directions so it was not used for validating those data. Instead a custom validation method was used to validate ingredient and directions data.
 ### Alembic
 Used to migrate and seed the database. Alembic's ability to notice changes and create new versions of a migration helps simplify the process of updating tables in the database. Compared with sequelize, you would need to unseed and unmigrate a table before remigrating it to make changes on tables in the database. Seeding in alembic required creation of a custom seed command unlike with Sequelize.
+
+## Current Features
+### Create, Update, Delete Recipes
+Logged in users are able to create recipes by entering the ingredients and direction for each recipe. Ingredients and directions are stored separately in their own tables to ensure proper ordering and keeping each items separate. Developed custom logic in recipe backend to handle creating, editing, and deleting ingredients and directions.
 
 ## Future Developments
 There will be other features that would be included in the future. Being able to review a recipe is currently being worked on. Other features to be implemented later include rating, search by categories and searching. Some upcoming challenge with the features is being able to create a search functionality on the frontend as well as styling the components properly.
