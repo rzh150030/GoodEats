@@ -49,6 +49,7 @@ Used to migrate and seed the database. Alembic's ability to notice changes and c
 ## Current Features
 ### Create, Update, Delete Recipes
 Logged in users are able to create recipes by entering the ingredients and direction for each recipe. Ingredients and directions are stored separately in their own tables to ensure proper ordering and keeping each items separate. Developed custom logic and validators in recipe backend to handle creating, editing, and deleting ingredients and directions.
+
 `def edit_recipe(id):
     form = RecipeForm()
     recipe = Recipe.query.get(id)
