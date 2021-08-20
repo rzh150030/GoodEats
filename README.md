@@ -49,60 +49,6 @@ Used to migrate and seed the database. Alembic's ability to notice changes and c
 ## Current Features
 ### Create, Update, Delete Recipes
 Logged in users are able to create recipes by entering the ingredients and direction for each recipe. Ingredients and directions are stored separately in their own tables to ensure proper ordering and keeping each items separate. Developed custom logic and validators in recipe backend to handle creating, editing, and deleting ingredients and directions.
-`def edit_recipe(id):
-    form = RecipeForm()
-    recipe = Recipe.query.get(id)
-
-    # data from backend
-    table_ingredients = recipe.to_dict_ingreds()
-    table_directions = recipe.to_dict_directs()
-
-    form["csrf_token"].data = request.cookies["csrf_token"]
-    data = request.json
-
-    # check if ingredients or directions list has empty values
-    errors = validate_ingreds_directs(data["ingredients"], data["directions"])
-    if errors:
-        return errors
-
-    if form.validate_on_submit():
-        recipe.name = form.data["name"]
-        recipe.category_id = form.data["category"]
-
-        # update ingredients table
-        for ingred in data["ingredients"]:
-            if int(ingred["id"]) == 0:
-                ingredient = Ingredient(ingredient=ingred["ingredient"], recipe_id=recipe.id)
-                recipe.ingredients.append(ingredient)
-                db.session.add(ingredient)
-            elif table_ingredients[int(ingred["id"])]:
-                ingredient_from_table = Ingredient.query.get(int(ingred["id"]))
-                ingredient_from_table.ingredient = ingred["ingredient"]
-                del table_ingredients[int(ingred["id"])]
-
-        # update directions table
-        for direct in data["directions"]:
-            if int(direct["id"]) == 0:
-                direction = Direction(step=direct["step"], recipe_id=recipe.id)
-                recipe.directions.append(direction)
-                db.session.add(direction)
-            elif table_directions[int(direct["id"])]:
-                direction_from_table = Direction.query.get(int(direct["id"]))
-                direction_from_table.step = direct["step"]
-                del table_directions[int(direct["id"])]
-
-        # delete remaining data from backend
-        for key in table_ingredients.keys():
-            ingredient = Ingredient.query.get(key)
-            db.session.delete(ingredient)
-        for key in table_directions.keys():
-            direction = Direction.query.get(key)
-            db.session.delete(direction)
-
-        db.session.commit()
-        return recipe.to_dict_with_details()
-
-    return {"errors": validation_errors_to_error_messages(form.errors)}, 400`
 ### Favoriting recipes
 Logged in users are allowed to favor recipes they do not own and have quick access to them in their profile page.
 ### Reviewing a recipe
