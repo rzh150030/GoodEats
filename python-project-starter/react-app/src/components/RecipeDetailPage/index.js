@@ -24,7 +24,7 @@ export default function RecipeDetailPage() {
         favorited = userFavorites.find(recipe => recipe.id === currentRecipe.id);
         recipeOwner = sessionUser.id === currentRecipe.user_id; //determines whether to render favorite buttons
     }
-    console.log(recipeOwner)
+
     useEffect(() => { //fetch recipe from database
         dispatch(getRecipe(id));
         dispatch(loadReviews(id));
