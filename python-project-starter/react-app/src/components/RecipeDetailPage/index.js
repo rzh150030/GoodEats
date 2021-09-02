@@ -19,10 +19,12 @@ export default function RecipeDetailPage() {
     const userFavorites = useSelector(state => state.favoriteRecipe.favorites);
     const recipeLoaded = useSelector(state => state.recipe.loaded);
     let favorited;
+    let recipeOwner = false;
     if (sessionUser) { //check if user already favorited current recipe
         favorited = userFavorites.find(recipe => recipe.id === currentRecipe.id);
+        recipeOwner = sessionUser.id === currentRecipe.user_id; //determines whether to render favorite buttons
     }
-
+    console.log(recipeOwner)
     useEffect(() => { //fetch recipe from database
         dispatch(getRecipe(id));
         dispatch(loadReviews(id));
@@ -66,7 +68,7 @@ export default function RecipeDetailPage() {
                     ))}
                 </ol>
                 {editDeleteButton}
-                <FavoriteButton favorited={favorited} currentRecipe={currentRecipe} sessionUser={sessionUser}/>
+                {recipeOwner ? null : <FavoriteButton favorited={favorited} currentRecipe={currentRecipe} sessionUser={sessionUser}/>}
                 <h2 className="recipe-detail-category">Category: {currentRecipe.category_name}</h2>
             </article>
             <ReviewSection />
