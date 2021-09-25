@@ -10,7 +10,6 @@ import CreateRecipe from './components/CreateRecipe';
 import EditRecipe from "./components/EditRecipe";
 import ProfilePage from './components/ProfilePage';
 import FourOFourPage from './components/FourOFourPage';
-import CategoryPage from './components/CategoryPage';
 import { authenticate } from './store/session';
 import { grabCategories, getAllRecipes } from './store/recipe';
 import Homepage from './components/Homepage';
@@ -51,9 +50,6 @@ function App() {
           </ProtectedRoute>
           <Route path="/recipe/detail/:id" exact={true}>
             <RecipeDetailPage />
-          </Route>
-          <Route path="/category/:id">
-            <CategoryPage />
           </Route>
           <ProtectedRoute path="/recipe/edit/:id" exact={true}>
             <EditRecipe />
