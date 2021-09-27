@@ -12,6 +12,8 @@
 
 .recipe-containers {
     display: grid;
+    background-color: white;
+    border-radius: 15px;
     grid-template-rows: 1fr 1fr;
 }
 
