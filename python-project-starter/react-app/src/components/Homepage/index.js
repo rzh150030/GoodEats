@@ -20,7 +20,7 @@ export default function Homepage() {
             <div className="recent-recipes-container">
                 {recipeList?.sort(({id: a}, {id: b}) => b - a).map(recipe => (
                     <NavLink to={`/recipe/detail/${recipe.id}`} className="recipe-links" key={recipe.id}>
-                        <h3>{recipe.name}</h3>
+                        <h3 id="recipe-name">{recipe.name}</h3>
                         <span id="home-owner-username">{"By: " + recipe.User?.username}</span>
                     </NavLink>
                 ))}

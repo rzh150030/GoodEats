@@ -10,18 +10,11 @@
     margin-right: 100px;
 }
 
-/* .recipe-containers {
-    display: grid;
-    background-color: white;
-    border-radius: 15px;
-    grid-template-rows: 1fr 1fr;
-} */
-
 .recipe-links {
     display: grid;
     background-color: white;
     border-radius: 15px;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 0.5fr 0.5fr;
     font-family: 'Trebuchet MS', sans-serif, Times, serif;
     font-size: 1.6em;
     text-decoration: none;
@@ -39,6 +32,11 @@
 
 .recipe-links:hover {
     box-shadow: 0px 2px 2px 2px #8B89E5;
+}
+
+#recipe-name {
+    border-bottom: 2px solid #FFB344;
+    width: fit-content;
 }
 
 #recent-recipe-title {
