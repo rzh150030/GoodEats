@@ -27,8 +27,8 @@
 .home-page {
     background: linear-gradient(#F5E112, #F59412);
     height: auto;
-    padding-bottom: 310px;
-    margin-bottom: 0px;
+    padding-bottom: 9%;
+    margin-bottom: 0%;
 }
 
 .recipe-links:hover {
