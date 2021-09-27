@@ -6,8 +6,8 @@
     padding-bottom: 12.2%;
     column-gap: 3%;
     row-gap: 30%;
-    margin-left: 100px;
-    margin-right: 100px;
+    margin-left: 6%;
+    margin-right: 6%;
 }
 
 .recipe-links {
@@ -20,6 +20,10 @@
     text-decoration: none;
     color: black;
     transition: box-shadow .5s;
+    padding-left: 1em;
+    padding-right: 1em;
+    overflow-wrap: anywhere;
+    height: 10em;
 }
 
 .home-page {
