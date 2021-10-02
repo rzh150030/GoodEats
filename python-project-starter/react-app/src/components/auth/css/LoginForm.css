@@ -8,10 +8,10 @@
 
 .login-labels {
     display: flex;
-    justify-content: left;
-    width: 247px;
-    margin-top: 10px;
-    margin-bottom: 2px;
+    justify-content: center;
+    margin-top: 1.5%;
+    margin-bottom: 1%;
+    font-family: 'Trebuchet MS', sans-serif, Times, serif;
 }
 
 .errors {
@@ -19,8 +19,8 @@
 }
 
 .input-login {
-    width: 240px;
-    height: 30px;
+    width: 150%;
+    height: 3em;
 }
 
 .submit-login {
