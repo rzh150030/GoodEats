@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import { login } from '../../store/session';
 import "./css/SignUpForm.css";
 
 const SignUpForm = () => {
@@ -25,6 +26,14 @@ const SignUpForm = () => {
       setErrors(["Passwords must match"]);
     }
   };
+
+  const demoLogin = async (e) => {
+    e.preventDefault();
+    const data = await dispatch(login("demo@aa.io", "password"));
+    if (data) {
+      setErrors(data);
+    }
+  }
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -53,7 +62,7 @@ const SignUpForm = () => {
           <li key={ind}>{error}</li>
         ))}
       </ul>
-      <label className="signup-labels">User Name</label>
+      <label className="signup-labels">Username</label>
       <div>
         <input
           type='text'
@@ -94,7 +103,8 @@ const SignUpForm = () => {
           className="input-signup"
         ></input>
       </div>
-      <button type='submit' id="submit-signup">Sign Up</button>
+      <button type='submit' className="submit-login">Sign Up</button>
+      <button type="submit" onClick={demoLogin} className="submit-login">Demo</button>
     </form>
   );
 };
