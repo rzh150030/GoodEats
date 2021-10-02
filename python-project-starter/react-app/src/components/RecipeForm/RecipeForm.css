@@ -23,12 +23,19 @@
     background-color: red;
     color: white;
     margin-left: 0.6em;
+    font-family: 'Trebuchet MS', sans-serif, Times, serif;
+    position: relative;
+    bottom: 2em;
 }
 
 .add-input-button {
     background-color: green;
     color: white;
-    margin-top: 8px;
+    margin-top: 1em;
+    border-radius: 8px;
+    width: 15em;
+    height: 2.5em;
+    font-family: 'Trebuchet MS', sans-serif, Times, serif;
 }
 
 .save-recipe-button {
@@ -36,6 +43,7 @@
     color: white;
     margin-top: 8px;
     height: 50px;
+    font-family: 'Trebuchet MS', sans-serif, Times, serif;
 }
 
 .cancel-button {
@@ -43,6 +51,7 @@
     color: white;
     margin-top: 8px;
     height: 50px;
+    font-family: 'Trebuchet MS', sans-serif, Times, serif;
 }
 
 .input-recipe {
