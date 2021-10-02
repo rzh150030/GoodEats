@@ -27,7 +27,7 @@ export default function ProfilePage() {
                     {userOwnRecipes.length ? userOwnRecipes.sort(({id: a}, {id: b}) => b - a).map(recipe => (
                         <div className="user-recipe-containers" key={recipe.id}>
                             <NavLink to={`/recipe/detail/${recipe.id}`} className="profile-links">
-                                {recipe.name}
+                                <h3>{recipe.name}</h3>
                             </NavLink>
                         </div>
                     )) :
