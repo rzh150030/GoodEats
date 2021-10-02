@@ -26,6 +26,8 @@
     font-family: 'Trebuchet MS', sans-serif, Times, serif;
     position: relative;
     bottom: 2em;
+    width: 4.2em;
+    border-radius: 8px;
 }
 
 .add-input-button {
