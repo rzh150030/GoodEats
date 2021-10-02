@@ -31,8 +31,8 @@ export default function ProfilePage() {
                             </NavLink>
                         </div>
                     )) :
-                        <div>
-                            <h2>You have no recipes</h2>
+                        <div className="empty-message">
+                            <h2 id="no-recipes">You have no recipes</h2>
                             <NavLink to="/recipe/create">Let's create one!</NavLink>
                         </div>}
                 </div>
@@ -45,8 +45,8 @@ export default function ProfilePage() {
                             </NavLink>
                         </div>
                     )) :
-                        <div>
-                            <h2>You have no favorites</h2>
+                        <div className="empty-message">
+                            <h2 id="no-favorites">You have no favorites</h2>
                             <NavLink to="/">Let's find one!</NavLink>
                         </div>}
                 </div>
