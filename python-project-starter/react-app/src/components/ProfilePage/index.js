@@ -24,13 +24,13 @@ export default function ProfilePage() {
             </div>
             <div className="profile-items">
                 <div className="profile-recipes-container">
-                    {userOwnRecipes ? userOwnRecipes.sort(({id: a}, {id: b}) => b - a).map(recipe => (
+                    {userOwnRecipes.length ? userOwnRecipes.sort(({id: a}, {id: b}) => b - a).map(recipe => (
                         <div className="user-recipe-containers" key={recipe.id}>
                             <NavLink to={`/recipe/detail/${recipe.id}`} className="profile-links">
                                 {recipe.name}
                             </NavLink>
                         </div>
-                    )) : <h1>FFF</h1>}
+                    )) : <h2>FFF</h2>}
                 </div>
                 <div className="profile-recipes-container">
                     {userFavorites.length ? userFavorites.map(recipe => (
@@ -40,7 +40,7 @@ export default function ProfilePage() {
                                 <span id="recipe-owner-name">{`By: ${recipe.User.username}`}</span>
                             </NavLink>
                         </div>
-                    )) : <h1>FFF</h1>}
+                    )) : <h2>FFF</h2>}
                 </div>
             </div>
         </div>
