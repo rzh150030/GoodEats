@@ -8,21 +8,23 @@
 
 .signup-labels {
     display: flex;
-    justify-content: left;
-    width: 247px;
-    margin-top: 10px;
-    margin-bottom: 2px;
+    justify-content: center;
+    margin-top: 1.5%;
+    margin-bottom: 1%;
+    font-family: 'Trebuchet MS', sans-serif, Times, serif;
 }
 
 .input-signup {
-    width: 240px;
-    height: 30px;
+    width: 19em;
+    height: 3em;
+    border-radius: 5px;
+    border: 1px solid #DFE1E5;
 }
 
 #submit-signup {
-    margin-top: 20px;
+    margin-top: 3em;
     margin-bottom: 20px;
     width: 249px;
     height: 40px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Trebuchet MS', sans-serif, Times, serif;
 }

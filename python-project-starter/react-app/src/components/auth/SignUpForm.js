@@ -53,7 +53,7 @@ const SignUpForm = () => {
           <li key={ind}>{error}</li>
         ))}
       </ul>
-      <label className="signup-labels">User Name</label>
+      <label className="signup-labels">Username</label>
       <div>
         <input
           type='text'
