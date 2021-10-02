@@ -2,37 +2,46 @@
     display: grid;
     grid-template-columns: repeat(5, 0.4fr);
     grid-template-rows: auto;
-    margin-top: 20px;
-    padding-bottom: 200px;
-    column-gap: 10px;
-    row-gap: 10px;
-    margin-left: 100px;
-    margin-right: 100px;
-}
-
-.recipe-containers {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
+    margin-top: 2em;
+    padding-bottom: 12.2%;
+    column-gap: 3%;
+    row-gap: 30%;
+    margin-left: 6%;
+    margin-right: 6%;
 }
 
 .recipe-links {
+    display: grid;
+    background-color: white;
+    border-radius: 15px;
+    grid-template-rows: 0.5fr 0.5fr;
     font-family: 'Trebuchet MS', sans-serif, Times, serif;
-    font-size: 25px;
+    font-size: 1.5em;
     text-decoration: none;
-    margin-bottom: 25px;
     color: black;
     transition: box-shadow .5s;
+    padding-left: 1em;
+    padding-right: 1em;
+    overflow-wrap: anywhere;
+    height: 10em;
+    border: 3px solid black;
 }
 
 .home-page {
     background: linear-gradient(#F5E112, #F59412);
     height: auto;
-    padding-bottom: 310px;
-    margin-bottom: 0px;
+    padding-bottom: 9%;
+    margin-bottom: 0%;
 }
 
 .recipe-links:hover {
-    box-shadow: 0px 2px 2px 2px #8B89E5;
+    box-shadow: 0px 2px 2px 10px black;
+    color: #FFB344;
+}
+
+#recipe-name {
+    border-bottom: 2px solid #FFB344;
+    width: fit-content;
 }
 
 #recent-recipe-title {

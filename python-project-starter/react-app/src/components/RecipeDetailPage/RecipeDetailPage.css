@@ -1,7 +1,7 @@
 .recipe-article {
     display: grid;
     grid-template-columns: 400px 1fr 1fr;
-    grid-template-rows: auto auto;
+    grid-template-rows: auto;
     column-gap: 15px;
     grid-template-areas:
         "ingred list1 buttons"
@@ -10,7 +10,7 @@
 
 .ingred-detail-label {
     grid-area: ingred;
-    padding-left: 290px;
+    padding-left: 71%;
     font-family: 'Trebuchet MS', sans-serif, Times, serif;
     font-size: x-large;
 }
@@ -18,11 +18,12 @@
 .ingred-detail-list {
     grid-area: list1;
     font-family: Monaco, 'monospace', Arial, sans-serif;
+    font-size: 1.1em;
 }
 
 .direct-detail-label {
     grid-area: direct;
-    padding-left: 290px;
+    padding-left: 71%;
     font-family: 'Trebuchet MS', sans-serif, Times, serif;
     font-size: x-large;
 }
@@ -30,6 +31,7 @@
 .direct-detail-list {
     grid-area: list2;
     font-family: Monaco, 'monospace', Arial, sans-serif;
+    font-size: 1.1em;
 }
 
 .recipe-detail-buttons {
@@ -68,15 +70,15 @@
 
 #recipe-detail-page {
     background: linear-gradient(#0FF499, #94D00D);
-    padding-bottom: 427px;
+    padding-bottom: 13.2%;
 }
 
 #current-recipe-name {
     display: flex;
     justify-content: center;
     font-family: 'Trebuchet MS', sans-serif, Times, serif;
-    font-size: 40px;
+    font-size: 3em;
     justify-content: center;
     margin-top: 0px;
-    padding-top: 15px;
+    padding-top: 0.5em;
 }

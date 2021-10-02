@@ -6,16 +6,52 @@
 .profile-recipes-container {
     display: flex;
     flex-direction: column;
-    margin-left: 100px;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 .user-recipe-containers {
-    margin-top: 20px;
+    margin-top: 1.5em;
+}
+
+.profile-links {
+    display: flex;
+    background-color: white;
+    border-radius: 15px;
+    justify-content: space-evenly;
+    align-items: center;
+    font-family: 'Trebuchet MS', sans-serif, Times, serif;
+    font-size: 1.5em;
+    text-decoration: none;
+    color: black;
+    transition: box-shadow .5s;
+    overflow-wrap: anywhere;
+    height: 3em;
+    border: 3px solid black;
+}
+
+.profile-links:hover {
+    box-shadow: 0px 2px 2px 6px black;
+    color: #FFB344;
 }
 
 .user-profile-page {
     background: linear-gradient(#F5E112, #F59412);
-    padding-bottom: 600px;
+    padding-bottom: 29.1%;
+}
+
+.empty-message {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Trebuchet MS', sans-serif, Times, serif;
+    margin-right: 2em;
+}
+
+.empty-links {
+    text-decoration: none;
+    font-family: Monaco, 'monospace', Arial, sans-serif;
+    color: #0077cc;
 }
 
 #profile-labels {
@@ -23,7 +59,7 @@
     justify-content: space-around;
     color: #b34700;
     font-size: 40px;
-    padding-top: 20px;
+    padding-top: 1.8%;
     font-family: 'Trebuchet MS', sans-serif, Times, serif;
 }
 

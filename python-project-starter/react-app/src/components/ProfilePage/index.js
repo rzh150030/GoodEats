@@ -24,23 +24,31 @@ export default function ProfilePage() {
             </div>
             <div className="profile-items">
                 <div className="profile-recipes-container">
-                    {userOwnRecipes && userOwnRecipes.sort(({id: a}, {id: b}) => b - a).map(recipe => (
+                    {userOwnRecipes.length ? userOwnRecipes.sort(({id: a}, {id: b}) => b - a).map(recipe => (
                         <div className="user-recipe-containers" key={recipe.id}>
-                            <NavLink to={`/recipe/detail/${recipe.id}`} className="recipe-links">
-                                {recipe.name}
+                            <NavLink to={`/recipe/detail/${recipe.id}`} className="profile-links">
+                                <h3>{recipe.name}</h3>
                             </NavLink>
                         </div>
-                    ))}
+                    )) :
+                        <div className="empty-message">
+                            <h2>You have no recipes</h2>
+                            <NavLink to="/recipe/create" className="empty-links">Let's create one!</NavLink>
+                        </div>}
                 </div>
                 <div className="profile-recipes-container">
-                    {userFavorites && userFavorites.map(recipe => (
+                    {userFavorites.length ? userFavorites.map(recipe => (
                         <div className="user-recipe-containers" key={recipe.id}>
-                            <NavLink to={`/recipe/detail/${recipe.id}`} className="recipe-links">
-                                {recipe.name}
+                            <NavLink to={`/recipe/detail/${recipe.id}`} className="profile-links">
+                                <h3>{recipe.name}</h3>
+                                <span id="recipe-owner-name">{`By: ${recipe.User.username}`}</span>
                             </NavLink>
-                            <span id="recipe-owner-name">{`By: ${recipe.User.username}`}</span>
                         </div>
-                    ))}
+                    )) :
+                        <div className="empty-message">
+                            <h2>You have no favorites</h2>
+                            <NavLink to="/" className="empty-links">Let's find one!</NavLink>
+                        </div>}
                 </div>
             </div>
         </div>

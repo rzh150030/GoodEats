@@ -1,46 +1,80 @@
 .recipe-form {
     display: grid;
-    grid-template-rows: 40px;
-    grid-template-columns: 400px;
+    grid-template-rows: 1fr;
+    grid-template-columns: 30%;
     justify-content: center;
     row-gap: 10px;
-    padding-bottom: 314px;
+    padding-bottom: 8%;
     background: linear-gradient(#E3B11A, #EF6510);
 }
 
 .recipe-form-labels {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 0.2em;
+    font-family: 'Trebuchet MS', sans-serif, Times, serif;
+}
+
+.dynamic-input-containers {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .delete-input-button {
     background-color: red;
     color: white;
-    margin-left: 10px;
+    margin-left: 0.6em;
+    font-family: 'Trebuchet MS', sans-serif, Times, serif;
+    position: relative;
+    bottom: 2em;
+    width: 4.2em;
+    border-radius: 8px;
 }
 
 .add-input-button {
     background-color: green;
     color: white;
-    margin-top: 8px;
+    margin-top: 1em;
+    border-radius: 8px;
+    width: 15em;
+    height: 2.5em;
+    font-family: 'Trebuchet MS', sans-serif, Times, serif;
 }
 
 .save-recipe-button {
     background-color: blue;
     color: white;
-    margin-top: 8px;
-    height: 50px;
+    margin-top: 2em;
+    height: 4em;
+    font-family: 'Trebuchet MS', sans-serif, Times, serif;
+    border-radius: 8px;
 }
 
 .cancel-button {
     background-color: red;
     color: white;
-    margin-top: 8px;
-    height: 50px;
+    margin-top: 2em;
+    height: 4em;
+    font-family: 'Trebuchet MS', sans-serif, Times, serif;
+    border-radius: 8px;
 }
 
 .input-recipe {
     margin-top: 10px;
-    width: 329px;
-    font-size: .8rem;
+    width: 82%;
+    font-size: 1rem;
+    border-radius: 7px;
+    border: 2px solid #DFE1E5;
+}
+
+.recipe-name {
+    border-radius: 7px;
+    border: 2px solid #DFE1E5;
+    font-size: 1em;
+}
+
+.category-select {
+    border-radius: 7px;
+    border: 2px solid #DFE1E5;
+    font-size: 1em;
 }

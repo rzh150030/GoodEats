@@ -112,33 +112,33 @@ export default function RecipeForm(props) {
                 {errors && errors.map((err, i) => <li key={i}>{err}</li>)}
             </ul>
             <label className="recipe-form-labels">Name: </label>
-            <input type="text" value={name} onChange={addName} required/>
+            <input type="text" className="recipe-name" value={name} onChange={addName} required/>
             <label className="recipe-form-labels">Category: </label>
             <select value={category} onChange={addCat} className="category-select">
                 {categories?.map(cat => (
                     <option key={cat.id}>{cat.name}</option>
                 ))}
             </select>
+            <label className="recipe-form-labels">Ingredients: </label>
             <div className="dynamic-input-containers">
-                <label className="recipe-form-labels">Ingredients: </label>
                 {ingredients?.map((ingred, i) => (
                 <div key={i} className="input-containers">
                     <textarea rows="4" type="text" value={ingred.ingredient} onChange={(e) => addIngred(e, i)} className="input-recipe" required/>
                     <button onClick={(e) => deleteIngred(e, i)} className="delete-input-button">Delete</button>
                 </div>
             ))}
-                <button onClick={newIngredInput} className="add-input-button">Add More Ingredients</button>
             </div>
+            <button onClick={newIngredInput} className="add-input-button">Add More Ingredients</button>
+            <label className="recipe-form-labels">Directions: </label>
             <div className="dynamic-input-containers">
-                <label className="recipe-form-labels">Directions: </label>
                 {directions?.map((direct, i) => (
                 <div key={i} className="input-containers">
                     <textarea rows="4" type="text" value={direct.step} onChange={(e) => addDirect(e, i)} className="input-recipe" required/>
                     <button onClick={(e) => deleteDirect(e, i)} className="delete-input-button">Delete</button>
                 </div>
                 ))}
-                <button onClick={newDirectInput} className="add-input-button">Add More Steps</button>
             </div>
+            <button onClick={newDirectInput} className="add-input-button">Add More Steps</button>
             <button type="submit" className="save-recipe-button">Save Recipe</button>
             <button onClick={cancelForm} className="cancel-button">Cancel</button>
         </form>
