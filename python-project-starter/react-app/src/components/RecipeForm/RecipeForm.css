@@ -1,7 +1,7 @@
 .recipe-form {
     display: grid;
-    grid-template-rows: 40px;
-    grid-template-columns: 400px;
+    grid-template-rows: 1fr;
+    grid-template-columns: 30%;
     justify-content: center;
     row-gap: 10px;
     padding-bottom: 8%;
@@ -11,6 +11,7 @@
 .recipe-form-labels {
     display: block;
     margin-bottom: 0.2em;
+    font-family: 'Trebuchet MS', sans-serif, Times, serif;
 }
 
 .dynamic-input-containers {
@@ -58,6 +59,10 @@
 
 .input-recipe {
     margin-top: 10px;
-    width: 329px;
+    width: 82%;
     font-size: .8rem;
+}
+
+#recipe-name {
+    width: 100%;
 }
