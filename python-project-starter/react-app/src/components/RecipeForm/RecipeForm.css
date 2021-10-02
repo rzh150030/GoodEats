@@ -44,8 +44,8 @@
 .save-recipe-button {
     background-color: blue;
     color: white;
-    margin-top: 8px;
-    height: 50px;
+    margin-top: 2em;
+    height: 4em;
     font-family: 'Trebuchet MS', sans-serif, Times, serif;
     border-radius: 8px;
 }
@@ -53,8 +53,8 @@
 .cancel-button {
     background-color: red;
     color: white;
-    margin-top: 8px;
-    height: 50px;
+    margin-top: 2em;
+    height: 4em;
     font-family: 'Trebuchet MS', sans-serif, Times, serif;
     border-radius: 8px;
 }
