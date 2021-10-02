@@ -23,6 +23,11 @@
     height: 3em;
 }
 
+.login-input-containers {
+    display: flex;
+    justify-content: center;
+}
+
 .submit-login {
     margin-top: 20px;
     margin-bottom: 20px;
