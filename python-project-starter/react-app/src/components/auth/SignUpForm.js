@@ -103,7 +103,7 @@ const SignUpForm = () => {
           className="input-signup"
         ></input>
       </div>
-      <button type='submit' id="submit-signup">Sign Up</button>
+      <button type='submit' className="submit-login">Sign Up</button>
       <button type="submit" onClick={demoLogin} className="submit-login">Demo</button>
     </form>
   );
