@@ -119,8 +119,8 @@ export default function RecipeForm(props) {
                     <option key={cat.id}>{cat.name}</option>
                 ))}
             </select>
+            <label className="recipe-form-labels">Ingredients: </label>
             <div className="dynamic-input-containers">
-                <label className="recipe-form-labels">Ingredients: </label>
                 {ingredients?.map((ingred, i) => (
                 <div key={i} className="input-containers">
                     <textarea rows="4" type="text" value={ingred.ingredient} onChange={(e) => addIngred(e, i)} className="input-recipe" required/>
@@ -129,8 +129,8 @@ export default function RecipeForm(props) {
             ))}
                 <button onClick={newIngredInput} className="add-input-button">Add More Ingredients</button>
             </div>
+            <label className="recipe-form-labels">Directions: </label>
             <div className="dynamic-input-containers">
-                <label className="recipe-form-labels">Directions: </label>
                 {directions?.map((direct, i) => (
                 <div key={i} className="input-containers">
                     <textarea rows="4" type="text" value={direct.step} onChange={(e) => addDirect(e, i)} className="input-recipe" required/>

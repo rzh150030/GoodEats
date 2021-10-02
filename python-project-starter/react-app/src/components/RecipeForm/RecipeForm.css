@@ -10,13 +10,17 @@
 
 .recipe-form-labels {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 0.2em;
+}
+
+.dynamic-input-containers {
+    display: flex;
 }
 
 .delete-input-button {
     background-color: red;
     color: white;
-    margin-left: 10px;
+    margin-left: 0.6em;
 }
 
 .add-input-button {
