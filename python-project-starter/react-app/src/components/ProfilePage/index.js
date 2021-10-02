@@ -30,7 +30,11 @@ export default function ProfilePage() {
                                 {recipe.name}
                             </NavLink>
                         </div>
-                    )) : <h2>FFF</h2>}
+                    )) :
+                        <div>
+                            <h2>You have no recipes</h2>
+                            <NavLink to="/recipe/create">Let's create one!</NavLink>
+                        </div>}
                 </div>
                 <div className="profile-recipes-container">
                     {userFavorites.length ? userFavorites.map(recipe => (
@@ -40,7 +44,11 @@ export default function ProfilePage() {
                                 <span id="recipe-owner-name">{`By: ${recipe.User.username}`}</span>
                             </NavLink>
                         </div>
-                    )) : <h2>FFF</h2>}
+                    )) :
+                        <div>
+                            <h2>You have no favorites</h2>
+                            <NavLink to="/">Let's find one!</NavLink>
+                        </div>}
                 </div>
             </div>
         </div>
