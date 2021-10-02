@@ -26,7 +26,7 @@ export default function ProfilePage() {
                 <div className="profile-recipes-container">
                     {userOwnRecipes && userOwnRecipes.sort(({id: a}, {id: b}) => b - a).map(recipe => (
                         <div className="user-recipe-containers" key={recipe.id}>
-                            <NavLink to={`/recipe/detail/${recipe.id}`} className="recipe-links">
+                            <NavLink to={`/recipe/detail/${recipe.id}`} className="profile-links">
                                 {recipe.name}
                             </NavLink>
                         </div>
@@ -35,10 +35,10 @@ export default function ProfilePage() {
                 <div className="profile-recipes-container">
                     {userFavorites && userFavorites.map(recipe => (
                         <div className="user-recipe-containers" key={recipe.id}>
-                            <NavLink to={`/recipe/detail/${recipe.id}`} className="recipe-links">
-                                {recipe.name}
+                            <NavLink to={`/recipe/detail/${recipe.id}`} className="profile-links">
+                                <h3>{recipe.name}</h3>
+                                <span id="recipe-owner-name">{`By: ${recipe.User.username}`}</span>
                             </NavLink>
-                            <span id="recipe-owner-name">{`By: ${recipe.User.username}`}</span>
                         </div>
                     ))}
                 </div>
