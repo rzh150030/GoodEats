@@ -77,8 +77,8 @@
     display: flex;
     justify-content: center;
     font-family: 'Trebuchet MS', sans-serif, Times, serif;
-    font-size: 40px;
+    font-size: 3em;
     justify-content: center;
     margin-top: 0px;
-    padding-top: 15px;
+    padding-top: 0.5em;
 }
