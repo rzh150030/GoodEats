@@ -127,8 +127,8 @@ export default function RecipeForm(props) {
                     <button onClick={(e) => deleteIngred(e, i)} className="delete-input-button">Delete</button>
                 </div>
             ))}
-                <button onClick={newIngredInput} className="add-input-button">Add More Ingredients</button>
             </div>
+            <button onClick={newIngredInput} className="add-input-button">Add More Ingredients</button>
             <label className="recipe-form-labels">Directions: </label>
             <div className="dynamic-input-containers">
                 {directions?.map((direct, i) => (
@@ -137,8 +137,8 @@ export default function RecipeForm(props) {
                     <button onClick={(e) => deleteDirect(e, i)} className="delete-input-button">Delete</button>
                 </div>
                 ))}
-                <button onClick={newDirectInput} className="add-input-button">Add More Steps</button>
             </div>
+            <button onClick={newDirectInput} className="add-input-button">Add More Steps</button>
             <button type="submit" className="save-recipe-button">Save Recipe</button>
             <button onClick={cancelForm} className="cancel-button">Cancel</button>
         </form>
