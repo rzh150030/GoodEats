@@ -19,19 +19,26 @@
 }
 
 .input-login {
-    width: 150%;
+    width: 16%;
     height: 3em;
+    border-radius: 5px;
+    padding-left: 1em;
+    border: 1px solid #DFE1E5;
 }
 
 .login-input-containers {
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 
 .submit-login {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    width: 249px;
-    height: 40px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-top: 2.5em;
+    margin-bottom: 1%;
+    width: 10%;
+    height: 3em;
+    font-family: 'Trebuchet MS', sans-serif, Times, serif;
+    background-color: #ECE7B4;
+    border: none;
+    border-radius: 5px;
 }
